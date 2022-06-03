@@ -1,0 +1,161 @@
+.homeMyJobs {
+    display: flex;
+
+    .homeMyJobsContainer {
+        flex: 6;
+
+        .PersonalPage {
+            width: 100%;
+            display: flex;
+
+            .personalContainer {
+                flex: 1;
+
+                .topPersonalPage {
+                    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+                    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+                    padding: 10px;
+                    margin: 20px;
+                    display: flex;
+
+                    h1 {
+                        color: lightgray;
+                        font-size: 20px;
+                        // margin-left: 500px;
+                    }
+                }
+
+                .bottomPersonalPage {
+                    margin-left: 150px;
+                    width: 800px;
+                    display: flex;
+                    flex-direction: column;
+                    
+                    .searchItem {
+                        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+                        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+                        border: 1px solid lightgray;
+                        padding: 10px;
+                        border-radius: 5px;
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 10px;
+                        margin-bottom: 20px;
+                        // display: flex;
+                        // flex-direction: column;
+                        cursor: pointer;
+                    }
+
+                    .siImg {
+                        width: 150px;
+                        height: 200px;
+                        object-fit: cover;
+                    }
+
+                    .siDesc {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                        flex: 2.3;
+                    }
+
+                    .siTitle {
+                        font-size: 20px;
+                        color: #0071c2;
+                        margin-top: 2px;
+                        margin-bottom: 2px;
+                    }
+
+                    .siDistance {
+                        font-size: 12px;
+                    }
+
+                    .siTaxiOp {
+                        font-size: 12px;
+                        background-color: #008009;
+                        color: white;
+                        width: max-content;
+                        padding: 3px;
+                        border-radius: 5px;
+                    }
+
+                    .siSubtitle {
+                        font-size: 12px;
+                        font-weight: bold;
+                    }
+
+                    .siFeatures {
+                        font-size: 12px;
+                    }
+
+                    .siCancelOp {
+                        font-size: 12px;
+                        color: #008009;
+                        font-weight: bold;
+                    }
+
+                    .siCancelOpSubtitle {
+                        font-size: 12px;
+                        color: #008009;
+                    }
+
+                    .siDetails {
+                        flex: 0.7;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between
+                    }
+
+                    .siRating {
+                        display: flex;
+                        justify-content:center
+                    }
+
+                    .siRating>span {
+                        font-weight: 500;
+                        padding: 5px;
+
+                    }
+
+                    .siRating>button {
+                        background-color: #fcfcfc;
+                        color: rgb(10, 100, 246);
+                        padding: 5px;
+                        font-weight: bold;
+                        border: none;
+                    }
+
+                    .siDetailTexts {
+                        text-align: right;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                    }
+
+                    .siPrice {
+                        font-size: 24px;
+                    }
+
+                    .siTaxOp {
+                        font-size: 12px;
+                        color: gray;
+                    }
+
+                    #siCheckButton {
+                        background-color: #0071c2;
+                        color: white;
+                        /* font-weight: bold; */
+                        padding: 10px 5px;
+                        border: none;
+                        /* cursor: pointer; */
+                        border-radius: 5px;
+                        text-align: center;
+                    }
+                }
+
+
+            }
+        }
+
+    }
+}

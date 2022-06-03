@@ -1,0 +1,39 @@
+.featuredNews {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    z-index: 1;
+    // margin: 50px 0px 0px 190px;
+
+    .featuredItem {
+        position: relative;
+        color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        height: 250px;
+        flex: 1;
+
+        .featuredImg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            position: absolute;
+            bottom: 30px;
+            left: 20px;
+            font-size: 30px;
+        }
+
+        h2 {
+            position: absolute;
+            bottom: 5px;
+            left: 20px;
+            font-size: 20px;
+
+        }
+    }
+}
