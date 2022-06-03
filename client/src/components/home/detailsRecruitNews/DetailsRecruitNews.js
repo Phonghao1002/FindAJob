@@ -31,9 +31,6 @@ const DetailsRecruitNews = () => {
 
   const photos = [
     {
-      src: "https://teky.edu.vn/blog/wp-content/uploads/2021/08/Cong-ty-IT-so-huu-nhung-nhan-tai.jpg",
-    },
-    {
       src: "https://teky.edu.vn/blog/wp-content/uploads/2021/08/Moi-truong-cong-ty-nang-dong-phat-trien.jpg",
     },
     {
