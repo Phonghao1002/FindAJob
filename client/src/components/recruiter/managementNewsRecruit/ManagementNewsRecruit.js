@@ -1,76 +1,186 @@
-import "./managementNewsRecruit.scss"
+import "./managementNewsRecruit.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns1, userRows1 } from "../../../datatablesource";
+import { userColumns, userRows } from "../../../datatablesource";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { Button } from "@mui/material";
 import SidebarRecruiter from "../sidebarRecruiter/SidebarRecruiter";
 import NavbarRecruiter from "../navbarRecruiter/NavbarRecruiter";
-import { GlobalState } from "../../../GlobalState"
+import { GlobalState } from "../../../GlobalState";
+import axios from "axios";
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 12,
+  },
+}));
 
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
+}));
 
 const ManagementNewsRecruit = () => {
-    const [data, setData] = useState(userRows1);
-    const state = useContext(GlobalState)
+  const [data, setData] = useState(userRows);
+  const state = useContext(GlobalState);
 
-    const [recruitNews] = state.recruitmentNewsAPI.recruitNews
+  // const [recruitNews] = state.recruitmentNewsAPI.recruitNews
 
+  const [recruitments, setRecruitments] = useState([]);
 
-
-    const handleDelete = (id) => {
-        setData(data.filter((item) => item.id !== id));
+  const handleDelete = (id) => {
+    setData(data.filter((item) => item.id !== id));
+  };
+  useEffect(() => {
+    const getRecruitMent = async () => {
+      const res = await axios.get("/api/getuploadCV");
+      setRecruitments(res.data);
+      console.log("aaa", res.data);
     };
+    getRecruitMent();
+  }, []);
+  //   const actionColumn1 = [
+  //     {
+  //       field: "action",
+  //       headerName: "Action",
+  //       width: 200,
+  //       renderCell: (params) => {
+  //         return (
+  //           <div className="cellAction">
+  //             <Link to="#" style={{ textDecoration: "none" }}>
+  //               <div className="viewButton">View</div>
+  //             </Link>
+  //             <div
+  //               className="deleteButton"
+  //               onClick={() => handleDelete(params.row.id)}
+  //             >
+  //               Delete
+  //             </div>
+  //           </div>
+  //         );
+  //       },
+  //     },
+  //   ];
 
-    const actionColumn1 = [
-        {
-            field: "action",
-            headerName: "Action",
-            width: 200,
-            renderCell: (params) => {
-                return (
-                    <div className="cellAction">
-                        <Link to="/recruiter/edit_RecruitNews/${product._id}" style={{ textDecoration: "none" }}>
-                            <div className="viewButton">View</div>
-                        </Link>
-                        <div
-                            className="deleteButton"
-                            onClick={() => handleDelete(params.row.id)}
-                        >
-                            Delete
-                        </div>
-                    </div>
-                );
-            },
-        },
-    ];
+  return (
+    <div className="homeManagementNewsRecruit">
+      <SidebarRecruiter />
+      <div className="homeCategoryContainer">
+        <NavbarRecruiter />
+        <div className="datatable">
+          <div className="datatableTitle">
+            Add New Recruit News
+            <Link to="/#" className="link">
+              Add New
+            </Link>
+          </div>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 800 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell align="right">id</StyledTableCell>
+                  <StyledTableCell>urlCV</StyledTableCell>
+                  {/* <StyledTableCell align="right">image</StyledTableCell> */}
+                  <StyledTableCell align="right">name</StyledTableCell>
+                  <StyledTableCell align="right">descriptions</StyledTableCell>
+                  <StyledTableCell align="right">
+                    phoneNumber&nbsp;
+                  </StyledTableCell>
+                  <StyledTableCell align="right">email&nbsp;</StyledTableCell>
+                  <StyledTableCell align="right">
+                    createdAt&nbsp;
+                  </StyledTableCell>
+                  <StyledTableCell align="right">status&nbsp;</StyledTableCell>
+                  <StyledTableCell align="left">Action&nbsp;</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {recruitments.map((recruitment, index) => (
+                  <StyledTableRow key={recruitment.urlCV}>
+                    <StyledTableCell align="right">
+                      {index + 1}{" "}
+                    </StyledTableCell>
 
-    return (
-        <div className="homeManagementNewsRecruit">
-            <SidebarRecruiter />
-            <div className='homeCategoryContainer'>
-                <NavbarRecruiter />
-                <div className="datatable">
-                    <div className="datatableTitle">
-                        Add New Recruit News
-                        <Link to="/recruiter/createRecruitNews" className="link">
-                            Add New
-                        </Link>
-                    </div>
-                    <DataGrid
-                        className="datagrid"
-                        rows={data}
-                        columns={userColumns1.concat(actionColumn1)}
-                        pageSize={9}
-                        rowsPerPageOptions={[10]}
-                        checkboxSelection
-                    />
+                    <StyledTableCell component="th" scope="row">
+                      {recruitment.urlCV}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {recruitment.name}{" "}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {recruitment.descriptions}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {recruitment.phoneNumber}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {recruitment.email}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {new Date(recruitment.createdAt).toLocaleDateString()}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {recruitment.status}
+                    </StyledTableCell>
+                    <StyledTableCell className="cellActionRN">
+                      <Link
+                        id="btn_view"
+                        to="#"
+                        // to={`/recruiter/edit_RecruitNews/${recruitNew._id}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <Button className="viewButtonRN">Edit</Button>
+                      </Link>
 
-                </div>
-            </div>
+                      <Link
+                        id="btn_delete"
+                        to="#"
+                        // onClick={() =>
+                        //   deleteRecruitNews(
+                        //     recruitNew._id,
+                        //     recruitNew.images.public_id
+                        //   )
+                        // }
+                        style={{ textDecoration: "none" }}
+                      >
+                        <Button className="deleteButtonRN">Delete</Button>
+                      </Link>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
 
+          {/* <DataGrid
+            className="datagrid"
+            rows={recruitNews}
+            columns={userColumns.concat(actionColumn1)}
+            pageSize={9}
+            rowsPerPageOptions={[10]}
+            checkboxSelection
+          /> */}
         </div>
+      </div>
+    </div>
+  );
+};
 
-    )
-}
-
-export default ManagementNewsRecruit
+export default ManagementNewsRecruit;

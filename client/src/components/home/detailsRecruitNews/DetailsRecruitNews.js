@@ -27,6 +27,7 @@ const DetailsRecruitNews = () => {
   const [detailRecruitNew, setDetailRecruitNew] = useState([]);
 
   const [slideNumber, setSlideNumber] = useState(0);
+
   const [open, setOpen] = useState(false);
 
   const photos = [
