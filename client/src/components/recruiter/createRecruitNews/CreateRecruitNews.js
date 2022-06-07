@@ -24,7 +24,7 @@ const CreateRecruitNews = () => {
   const [categories] = state.categoriesAPI.categories;
   const [images, setImages] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  console.log("assasasa", state.userAPI.isAdmin);
   const [token] = state.token;
   const [isAdmin] = state.userAPI.isAdmin;
   const [callback, setCallback] = state.recruitmentNewsAPI.callback;
@@ -53,7 +53,7 @@ const CreateRecruitNews = () => {
   const handleUpload = async (e) => {
     e.preventDefault();
     try {
-      if (!isAdmin) return alert("You're not an admin");
+      // if (!isAdmin) return alert("You're not an admin");
       const file = e.target.files[0];
 
       if (!file) return alert("File not exist.");
@@ -85,7 +85,7 @@ const CreateRecruitNews = () => {
 
   const handleDestroy = async () => {
     try {
-      if (!isAdmin) return alert("You're not an admin");
+      // if (!isAdmin) return alert("You're not an admin");
       setLoading(true);
       await axios.post(
         "/api/destroy",
@@ -109,7 +109,7 @@ const CreateRecruitNews = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (!isAdmin) return alert("You're not an admin");
+      // if (!isAdmin) return alert("You're not an admin");
       if (!images) return alert("No Image Upload");
 
       if (onEdit) {

@@ -1,7 +1,6 @@
 import "./managementNewsRecruit.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../../datatablesource";
-import { Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -16,6 +15,7 @@ import SidebarRecruiter from "../sidebarRecruiter/SidebarRecruiter";
 import NavbarRecruiter from "../navbarRecruiter/NavbarRecruiter";
 import { GlobalState } from "../../../GlobalState";
 import axios from "axios";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -40,7 +40,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const ManagementNewsRecruit = () => {
   const [data, setData] = useState(userRows);
   const state = useContext(GlobalState);
-
+  const params = useParams();
   // const [recruitNews] = state.recruitmentNewsAPI.recruitNews
 
   const [recruitments, setRecruitments] = useState([]);
@@ -48,12 +48,15 @@ const ManagementNewsRecruit = () => {
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
+  const getRecruitMent = async () => {
+    const res = await axios.get(`/api/recruitment?idJob=${params.id}`);
+    setRecruitments(res.data.data);
+    console.log("aaa", res.data.data);
+  };
   useEffect(() => {
-    const getRecruitMent = async () => {
-      const res = await axios.get("/api/getuploadCV");
-      setRecruitments(res.data);
-      console.log("aaa", res.data);
-    };
+    if (params) {
+      console.log("asdsdas", params);
+    }
     getRecruitMent();
   }, []);
   //   const actionColumn1 = [

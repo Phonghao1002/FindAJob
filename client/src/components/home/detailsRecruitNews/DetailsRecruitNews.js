@@ -74,6 +74,9 @@ const DetailsRecruitNews = () => {
 
     setSlideNumber(newslideNumber);
   };
+
+  const onRecruitmentClick = () => {};
+
   return (
     <div>
       <Navbar />
@@ -176,7 +179,7 @@ const DetailsRecruitNews = () => {
                 <li>Bằng cấp: Đại học</li>
                 <li>Độ tuổi: Không giới hạn tuổi</li>
               </ul>
-              <Link to="/recruitment">
+              <Link to={`/recruitment/${detailRecruitNew._id}`}>
                 <button className="btndetailsRecruit">Ứng tuyển ngay</button>
               </Link>
             </div>

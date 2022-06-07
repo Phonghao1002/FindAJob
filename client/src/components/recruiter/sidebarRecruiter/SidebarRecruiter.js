@@ -75,16 +75,19 @@ const SidebarRecruiter = () => {
             </li>
           </Link>
 
-          <Link
-            to="/recruiter/managementNewsRecruit"
+          {/* <Link
+            to="/recruiter/managementRecruitMentId/${}"
             style={{ textDecoration: "none" }}
           >
             <li>
               <NewspaperIcon className="icon" />
               <span>Quản lý bài ứng tuyển</span>
             </li>
-          </Link>
-          <Link to="/recruiter/test" style={{ textDecoration: "none" }}>
+          </Link> */}
+          <Link
+            to="/recruiter/managementRecruitMent"
+            style={{ textDecoration: "none" }}
+          >
             <li>
               <NewspaperIcon className="icon" />
               <span>test</span>

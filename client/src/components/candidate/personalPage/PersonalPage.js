@@ -71,10 +71,10 @@ const PersonalPage = () => {
                 <label>Mô tả về bản thân</label>
                 <textarea type="" placeholder="Mô tả bản thân" />
               </div>
-              <div className="formInput">
+              {/* <div className="formInput">
                 <label>Địa chỉ</label>
                 <textarea type="" placeholder="Đà Nẵng" />
-              </div>
+              </div> */}
 
               <button>Cập nhật</button>
             </form>

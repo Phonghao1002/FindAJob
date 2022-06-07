@@ -172,15 +172,69 @@ const userCtrl = {
     }
   },
 
+  createUsers: async (req, res) => {
+    try {
+      const {
+        name,
+        email,
+        avatar,
+        phone,
+        address,
+        gender,
+        birthday,
+        company,
+        password,
+      } = req.body;
+      // if (!images) return res.status(400).json({ msg: "No image upload" });
+
+      const user = await Users.findOne({ name });
+      if (user)
+        return res.status(400).json({ msg: "This users already exists." });
+
+      const newUser = new Users({
+        name,
+        email,
+        avatar,
+        phone,
+        address,
+        gender,
+        birthday,
+        company,
+        password,
+        status: "pending",
+      });
+      // res.json(newRecruitNew)
+      await newUser.save();
+      res.json({ msg: "Created a User News!" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
   updateUser: async (req, res) => {
     try {
-      const { name, email, avatar } = req.body;
+      const {
+        name,
+        email,
+        avatar,
+        phone,
+        address,
+        gender,
+        birthday,
+        company,
+        password,
+      } = req.body;
       await Users.findOneAndUpdate(
-        { _id: req.user.id },
+        { _id: req.params.id },
         {
           name,
           email,
           avatar,
+          phone,
+          address,
+          gender,
+          birthday,
+          company,
+          password,
         }
       );
 
@@ -219,7 +273,7 @@ const userCtrl = {
         }
       );
 
-      return res.json({ msg: "Added to cart" });
+      return res.json({ msg: "Added to cartAdded to my work" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

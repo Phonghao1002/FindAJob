@@ -28,6 +28,7 @@ import BrowseCandidate from "./components/recruiter/browseCandidate/BrowseCandid
 import RecruiterPersonalPage from "./components/recruiter/recruiterPersonalPage/RecruiterPersonalPage";
 import TestCruiterNews from "./components/recruiter/testCruiterNews/TestCruiterNews";
 import Recruitment from "./components/candidate/recruitment/Recruitment";
+import PersonalPage from "./components/candidate/personalPage/PersonalPage";
 
 export default function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -53,7 +54,7 @@ export default function App() {
               path="detailsRecruitNews/:id"
               element={<DetailsRecruitNews />}
             />
-            <Route path="recruitment" element={<Recruitment />} />
+            <Route path="recruitment/:id" element={<Recruitment />} />
 
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
@@ -66,14 +67,17 @@ export default function App() {
 
             <Route path="recruiter">
               <Route index element={<HomeRecruiter />} />
-              <Route path=":candidateId" element={<ChangePassword />} />
+              <Route path=":candidateId" element={<Single />} />
               <Route path="personalPage" element={<RecruiterPersonalPage />} />
               <Route path="category" element={<Categories />} />
               <Route
-                path="managementNewsRecruit"
+                path="managementRecruitMentId/:id"
                 element={<ManagementNewsRecruit />}
               />
-              <Route path="test" element={<TestCruiterNews />} />
+              <Route
+                path="managementRecruitMent"
+                element={<TestCruiterNews />}
+              />
               <Route path="createRecruitNews" element={<CreateRecruitNews />} />
               <Route
                 path="edit_RecruitNews/:id"
@@ -84,7 +88,8 @@ export default function App() {
 
             <Route path="candidate">
               <Route index element={<HomeCandidate />} />
-              <Route path=":candidateId" element={<ChangePassword />} />
+              <Route path="editcandidate/:id" element={<PersonalPage />} />
+              <Route path="changePassword" element={<ChangePassword />} />
               <Route path="myJobs" element={<MyJobsCandidate />} />
               <Route
                 path="applicationHistory"

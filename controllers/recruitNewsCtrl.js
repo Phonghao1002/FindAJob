@@ -82,6 +82,7 @@ const recruitNewsCtrl = {
         category,
         rank,
         address,
+        dayApply,
       } = req.body;
       if (!images) return res.status(400).json({ msg: "No image upload" });
 

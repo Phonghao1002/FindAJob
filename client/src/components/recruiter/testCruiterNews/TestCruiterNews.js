@@ -162,6 +162,20 @@ const TestCruiterNews = () => {
                       >
                         <Button className="deleteButtonRN">Delete</Button>
                       </Link>
+
+                      <Link
+                        id="btn_delete"
+                        to={`/recruiter/managementRecruitMentId/${recruitNew._id}`}
+                        // onClick={() =>
+                        //   deleteRecruitNews(
+                        //     recruitNew._id,
+                        //     recruitNew.images.public_id
+                        //   )
+                        // }
+                        style={{ textDecoration: "none" }}
+                      >
+                        <Button className="deleteButtonRN">DS ứng tuyển</Button>
+                      </Link>
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}

@@ -3,27 +3,27 @@ import { useEffect, useState } from "react";
 
 export default function UserAPI(token) {
   const [isLogged, setIsLogged] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState();
   const [saveJob, setSaveJob] = useState([]);
   const [users, setUsers] = useState([]);
 
+  const getUser = async () => {
+    try {
+      const res = await axios.get("/user/infor", {
+        headers: { Authorization: token },
+      });
+
+      setIsLogged(true);
+      console.log("res", res.data.role);
+      res.data.role == 1 ? setIsAdmin(true) : setIsAdmin(false);
+      // console.log(res)
+      // setCart(res.data.cart)
+    } catch (err) {
+      alert(err.response.data.msg);
+    }
+  };
   useEffect(() => {
     if (token) {
-      const getUser = async () => {
-        try {
-          const res = await axios.get("/user/infor", {
-            headers: { Authorization: token },
-          });
-
-          setIsLogged(true);
-          res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
-          // console.log(res)
-          // setCart(res.data.cart)
-        } catch (err) {
-          alert(err.response.data.msg);
-        }
-      };
-
       getUser();
     }
   }, [token]);

@@ -1,61 +1,61 @@
 .homeManagementNewsRecruit {
-    display: flex;
+  display: flex;
 }
 
 .homeCategoryContainer {
-    flex: 5;
-
+  flex: 5;
 }
 
 .tableForm {
-    height: 100%;
-    width: 100%;
-    padding: 20px;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
 }
 
 .datatableTitle {
-    width: 100%;
-    font-size: 24px;
-    color: gray;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  font-size: 24px;
+  color: gray;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    .link {
-        text-decoration: none;
-        color: green;
-        font-size: 16px;
-        font-weight: 400;
-        border: 1px solid green;
-        padding: 5px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+  .link {
+    text-decoration: none;
+    color: green;
+    font-size: 16px;
+    font-weight: 400;
+    border: 1px solid green;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }
 
 .cellActionRN {
-    width: 190px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  width: 290px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-    .viewButtonRN {
-        padding: 2px 5px;
-        border-radius: 5px;
-        color: darkblue;
-        background-color: aquamarine;
-        border: 1px dotted rgba(0, 0, 139, 0.596);
-        cursor: pointer;
-        margin-right: 10px;
-    }
+  .viewButtonRN {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: darkblue;
+    background-color: aquamarine;
+    border: 1px dotted rgba(0, 0, 139, 0.596);
+    cursor: pointer;
+    margin-right: 10px;
+  }
 
-    .deleteButtonRN {
-        padding: 2px 5px;
-        border-radius: 5px;
-        color: crimson;
-        background-color: rgb(246, 198, 184);
-        border: 1px dotted rgba(220, 20, 60, 0.6);
-        cursor: pointer;
-    }
+  .deleteButtonRN {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: crimson;
+    background-color: rgb(246, 198, 184);
+    border: 1px dotted rgba(220, 20, 60, 0.6);
+    cursor: pointer;
+    margin-right: 10px;
+  }
 }
