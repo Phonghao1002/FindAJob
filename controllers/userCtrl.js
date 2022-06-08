@@ -184,8 +184,9 @@ const userCtrl = {
         birthday,
         company,
         password,
+        logo,
       } = req.body;
-      // if (!images) return res.status(400).json({ msg: "No image upload" });
+      if (!avatar) return res.status(400).json({ msg: "No image upload" });
 
       const user = await Users.findOne({ name });
       if (user)
@@ -201,6 +202,7 @@ const userCtrl = {
         birthday,
         company,
         password,
+        logo,
         status: "pending",
       });
       // res.json(newRecruitNew)
@@ -211,10 +213,10 @@ const userCtrl = {
     }
   },
   updateUser: async (req, res) => {
+    // res.json({ msg: "Update Success!" });
     try {
       const {
         name,
-        email,
         avatar,
         phone,
         address,
@@ -222,12 +224,14 @@ const userCtrl = {
         birthday,
         company,
         password,
+        logo,
       } = req.body;
-      await Users.findOneAndUpdate(
+      if (!avatar) return res.status(400).json({ msg: "No image upload" });
+
+      await Users.findByIdAndUpdate(
         { _id: req.params.id },
         {
           name,
-          email,
           avatar,
           phone,
           address,
@@ -235,6 +239,7 @@ const userCtrl = {
           birthday,
           company,
           password,
+          logo,
         }
       );
 

@@ -66,7 +66,7 @@ const Sidebar = () => {
             </li>
           </Link>
 
-          <Link
+          {/* <Link
             to="/recruiter/createRecruitNews"
             style={{ textDecoration: "none" }}
           >
@@ -74,7 +74,7 @@ const Sidebar = () => {
               <NewspaperIcon className="icon" />
               <span>Quản lý bài ứng tuyển</span>
             </li>
-          </Link>
+          </Link> */}
           {/* <p className="title">SERVICE</p>
                     <li>
                         <SettingsSystemDaydreamOutlinedIcon className="icon" />

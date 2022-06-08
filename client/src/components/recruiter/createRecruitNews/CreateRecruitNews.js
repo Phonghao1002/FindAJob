@@ -24,7 +24,7 @@ const CreateRecruitNews = () => {
   const [categories] = state.categoriesAPI.categories;
   const [images, setImages] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log("assasasa", state.userAPI.isAdmin);
+  // console.log("assasasa", state.userAPI.isAdmin);
   const [token] = state.token;
   const [isAdmin] = state.userAPI.isAdmin;
   const [callback, setCallback] = state.recruitmentNewsAPI.callback;
@@ -78,6 +78,7 @@ const CreateRecruitNews = () => {
       });
       setLoading(false);
       setImages(res.data);
+      console.log(res.data);
     } catch (err) {
       alert(err.response.data.msg);
     }
@@ -130,7 +131,7 @@ const CreateRecruitNews = () => {
         );
       }
       setCallback(!callback);
-      navigate("/recruiter/test");
+      navigate("/recruiter/managementRecruitMent");
     } catch (err) {
       alert(err.response.data.msg);
     }

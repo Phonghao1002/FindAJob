@@ -25,10 +25,12 @@ import ManagementNewsRecruit from "./components/recruiter/managementNewsRecruit/
 import MyJobsCandidate from "./components/candidate/myJobsCandidate/MyJobsCandidate";
 import ApplicationHistory from "./components/candidate/applicationHistory/ApplicationHistory";
 import BrowseCandidate from "./components/recruiter/browseCandidate/BrowseCandidate";
-import RecruiterPersonalPage from "./components/recruiter/recruiterPersonalPage/RecruiterPersonalPage";
+import RecruiterPersonalPage from "./components/recruiter/editrecruiterPersonalPage/EditrecruiterPersonalPage";
 import TestCruiterNews from "./components/recruiter/testCruiterNews/TestCruiterNews";
 import Recruitment from "./components/candidate/recruitment/Recruitment";
 import PersonalPage from "./components/candidate/personalPage/PersonalPage";
+import EditrecruiterPersonalPage from "./components/recruiter/editrecruiterPersonalPage/EditrecruiterPersonalPage";
+import PersonalPageRecruit from "./components/recruiter/personalPageRecruit/PersonalPageRecruit";
 
 export default function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -67,8 +69,11 @@ export default function App() {
 
             <Route path="recruiter">
               <Route index element={<HomeRecruiter />} />
-              <Route path=":candidateId" element={<Single />} />
-              <Route path="personalPage" element={<RecruiterPersonalPage />} />
+              <Route path="personalPage" element={<PersonalPageRecruit />} />
+              <Route
+                path="EditrecruiterPersonalPage/:id"
+                element={<EditrecruiterPersonalPage />}
+              />
               <Route path="category" element={<Categories />} />
               <Route
                 path="managementRecruitMentId/:id"

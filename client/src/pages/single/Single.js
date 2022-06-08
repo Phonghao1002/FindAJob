@@ -25,11 +25,7 @@ const Single = () => {
             <div className="editButton">Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
-              <img
-                src="https://phunugioi.com/wp-content/uploads/2020/10/avatar-chat-1.jpg"
-                alt=""
-                className="itemImg"
-              />
+              <img src={infoUser?.avatar?.url} alt="" className="itemImg" />
               <div className="details">
                 <h1 className="itemTitle">{infoUser.name}</h1>
                 <div className="detailItem">

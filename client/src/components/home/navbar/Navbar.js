@@ -39,6 +39,7 @@ const Navbar = () => {
     if (data) {
       setInfoUser(data);
     }
+    console.log("infoUser", infoUser);
   }, []);
 
   const checkUserLogin = () => {
@@ -66,10 +67,10 @@ const Navbar = () => {
             {!checkUserLogin() && (
               <>
                 <Link to="/register">
-                  <button className="navButton">Register</button>
+                  <button className="navButton">Đăng ký</button>
                 </Link>
                 <Link to="/login">
-                  <button className="navButton">Login</button>
+                  <button className="navButton">Đăng nhập</button>
                 </Link>
               </>
             )}
@@ -90,11 +91,20 @@ const Navbar = () => {
                 </div>
                 {/* <button class="dropbtn">Dropdown</button> */}
                 <div class="dropdown-content">
-                  <a href="#">Link 1</a>
+                  <a href="#">Trang cá nhân</a>
                   <a
                     href="#"
                     onClick={() => {
-                      window.location.href = "/admin";
+                      {
+                        if (infoUser.role == "0") {
+                          window.location.href = "/candidate";
+                        } else if (infoUser.role == "2") {
+                          window.location.href = "/recruiter";
+                        } else {
+                          window.location.href = "/admin";
+                        }
+                        // role = 1 ? 2 : (window.location.href = "/admin");
+                      }
                     }}
                   >
                     Trang Quản lý
@@ -103,7 +113,7 @@ const Navbar = () => {
                     </div>
                   </a>
                   <a href="#" onClick={handleOnLogout}>
-                    Logout
+                    Đăng xuất
                   </a>
                 </div>
               </div>

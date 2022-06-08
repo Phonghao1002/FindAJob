@@ -4,6 +4,11 @@ const auth = require("../middleware/auth");
 const authAdmin = require("../middleware/authAdmin");
 
 router.route("/recruitment").get(RecruitmentCtrl.getRecruitment);
+
+router.route("/applicationHistory").get(RecruitmentCtrl.getRecruitmentHistory);
+//
+router.route("/updateRecruitMent/:id").patch(RecruitmentCtrl.updateRecuitment); //
+
 // .post(recruitNewsCtrl.createRecruitNews)
 
 // router.route('/recruitNews/:id')

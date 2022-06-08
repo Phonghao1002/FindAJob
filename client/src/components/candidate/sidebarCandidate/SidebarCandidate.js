@@ -71,6 +71,15 @@ const SidebarCandidate = () => {
               </li>
             </Link>
           </div>
+          <Link
+            to="/candidate/applicationHistory"
+            style={{ textDecoration: "none" }}
+          >
+            <li>
+              <WorkIcon className="icon" />
+              <span>Lịch sử ứng tuyển</span>
+            </li>
+          </Link>
 
           {/* <li>
                         <CreditCardIcon className="icon" />
@@ -105,7 +114,7 @@ const SidebarCandidate = () => {
           <p className="title">USER</p>
           <li onClick={logoutUser}>
             <ExitToAppIcon className="icon" />
-            <span>Logout</span>
+            <span>Đăng xuất</span>
           </li>
         </ul>
       </div>

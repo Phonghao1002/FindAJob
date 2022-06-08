@@ -57,8 +57,20 @@ const ManagementNewsRecruit = () => {
     if (params) {
       console.log("asdsdas", params);
     }
+
     getRecruitMent();
   }, []);
+
+  const handleBrowser = async (id) => {
+    await axios
+      .patch(`http://localhost:4110/api/updateRecruitMent/${id}`, {
+        status: "success",
+      })
+      .then((res) => {
+        alert(res.data.msg);
+      })
+      .catch((err) => console.log("err"));
+  };
   //   const actionColumn1 = [
   //     {
   //       field: "action",
@@ -89,7 +101,7 @@ const ManagementNewsRecruit = () => {
         <NavbarRecruiter />
         <div className="datatable">
           <div className="datatableTitle">
-            Add New Recruit News
+            Danh sách hồ sơ ứng tuyển
             <Link to="/#" className="link">
               Add New
             </Link>
@@ -122,7 +134,9 @@ const ManagementNewsRecruit = () => {
                     </StyledTableCell>
 
                     <StyledTableCell component="th" scope="row">
-                      {recruitment.urlCV}
+                      <a href={recruitment.urlCV} target="_blank">
+                        {recruitment.name}_CV
+                      </a>
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {recruitment.name}{" "}
@@ -139,32 +153,40 @@ const ManagementNewsRecruit = () => {
                     <StyledTableCell align="right">
                       {new Date(recruitment.createdAt).toLocaleDateString()}
                     </StyledTableCell>
-                    <StyledTableCell align="right">
+                    <StyledTableCell align="right" className="cellWithStatus">
                       {recruitment.status}
                     </StyledTableCell>
                     <StyledTableCell className="cellActionRN">
-                      <Link
-                        id="btn_view"
-                        to="#"
-                        // to={`/recruiter/edit_RecruitNews/${recruitNew._id}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <Button className="viewButtonRN">Edit</Button>
-                      </Link>
-
-                      <Link
-                        id="btn_delete"
-                        to="#"
-                        // onClick={() =>
-                        //   deleteRecruitNews(
-                        //     recruitNew._id,
-                        //     recruitNew.images.public_id
-                        //   )
-                        // }
-                        style={{ textDecoration: "none" }}
-                      >
-                        <Button className="deleteButtonRN">Delete</Button>
-                      </Link>
+                      {recruitment.status !== "success" && (
+                        <>
+                          <Link
+                            id="btn_view"
+                            to="#"
+                            // to={`/recruiter/edit_RecruitNews/${recruitNew._id}`}
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Button
+                              className="viewButtonRN"
+                              onClick={() => handleBrowser(recruitment._id)}
+                            >
+                              Duyệt
+                            </Button>
+                          </Link>
+                          {/* <Link
+                            id="btn_delete"
+                            to="#"
+                            // onClick={() =>
+                            //   deleteRecruitNews(
+                            //     recruitNew._id,
+                            //     recruitNew.images.public_id
+                            //   )
+                            // }
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Button className="deleteButtonRN">Bỏ duyệt</Button>
+                          </Link> */}
+                        </>
+                      )}
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}

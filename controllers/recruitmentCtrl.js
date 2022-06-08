@@ -1,4 +1,5 @@
 const Recruitment = require("../models/recruitmentModel");
+const User = require("../models/userModel");
 const RecruitmentCtrl = {
   getRecruitment: async (req, res) => {
     try {
@@ -7,6 +8,37 @@ const RecruitmentCtrl = {
       });
 
       return res.status(200).json({ status: "Success", data: recruitNews });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+
+  getRecruitmentHistory: async (req, res) => {
+    try {
+      const recruitmentHistory = await Recruitment.find({
+        idUser: req.query.idUser,
+      });
+
+      return res
+        .status(200)
+        .json({ status: "Success", data: recruitmentHistory });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+
+  updateRecuitment: async (req, res) => {
+    // res.json({ msg: "Update Success!" });
+    try {
+      const { status } = req.body;
+
+      await Recruitment.findByIdAndUpdate(
+        { _id: req.params.id },
+        {
+          status,
+        }
+      );
+      res.json({ msg: "Profile browsing successful!" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

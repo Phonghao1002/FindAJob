@@ -90,11 +90,11 @@ const SidebarRecruiter = () => {
           >
             <li>
               <NewspaperIcon className="icon" />
-              <span>test</span>
+              <span>Quản lý tin tuyển dụng</span>
             </li>
           </Link>
 
-          <Link
+          {/* <Link
             to="/recruiter/browseCandidate"
             style={{ textDecoration: "none" }}
           >
@@ -102,7 +102,7 @@ const SidebarRecruiter = () => {
               <BrowseGalleryIcon className="icon" />
               <span>Browse candidate profile</span>
             </li>
-          </Link>
+          </Link> */}
 
           <p className="title">USER</p>
           <li>

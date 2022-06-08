@@ -78,6 +78,7 @@ const TestCruiterNews = () => {
       alert(err.response.data.msg);
     }
   };
+  console.log("đsấd", recruitNews);
   return (
     <div className="homeManagementNewsRecruit">
       <SidebarRecruiter />
@@ -112,7 +113,7 @@ const TestCruiterNews = () => {
                 {recruitNews.map((recruitNew, index) => (
                   <StyledTableRow key={recruitNew.title}>
                     <StyledTableCell align="right">
-                      {index + 1}{" "}
+                      {recruitNew._id}
                     </StyledTableCell>
 
                     <StyledTableCell component="th" scope="row">
