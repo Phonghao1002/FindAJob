@@ -16,6 +16,7 @@ import ChangePassword from "./components/candidate/changePassword/ChangePassword
 import HomeRecruiter from "./pages/homeRecruiter/HomeRecruiter";
 import Decentralization from "./components/adminManagement/decentralization/Decentralization";
 import DetailsRecruitNews from "./components/home/detailsRecruitNews/DetailsRecruitNews";
+import ResetPassword from "./pages/login/resetPassword/ResetPassword";
 
 import { GlobalState } from "./GlobalState";
 import NotFound from "./pages/not_found/NotFound";
@@ -60,7 +61,7 @@ export default function App() {
 
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
-            <Route path="resetPassword" element={<Register />} />
+            <Route path="resetPassword" element={<ResetPassword />} />
 
             <Route path="admin">
               <Route index element={<HomeAdmin />} />

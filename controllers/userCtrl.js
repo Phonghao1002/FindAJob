@@ -1,14 +1,14 @@
 const Users = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-// const sendMail = require('./sendMail')
+const emailService = require("../routes/emailService");
 // const {google} = require('googleapis')
 // const {OAuth2} = google.auth
 // const fetch = require('node-fetch')
 
 // const client = new OAuth2(process.env.MAILING_SERVICE_CLIENT_ID)
 
-// const { CLIENT_URL } = process.env
+// const { CLIENT_URL } = process.env;
 const userCtrl = {
   register: async (req, res) => {
     try {
@@ -19,7 +19,9 @@ const userCtrl = {
 
       // if (!validateEmail(email))
       //     return res.status(400).json({ msg: "Invalid emails." })
-
+      // await emailService.sendSimpleEmail({
+      //   reciverEmail: email,
+      // });
       const user = await Users.findOne({ email });
       if (user)
         return res.status(400).json({ msg: "This email already exists." });
@@ -42,7 +44,7 @@ const userCtrl = {
       // Save mongodb
       await newUser.save();
 
-      const accesstoken = createAccessToken({ id: newUser._id });
+      // const accesstoken = createAccessToken({ id: newUser._id });
       const refreshtoken = createRefreshToken({ id: newUser._id });
 
       res.cookie("refreshtoken", refreshtoken, {
@@ -53,9 +55,9 @@ const userCtrl = {
 
       // res.json({ accesstoken })
 
-      // const activation_token = createActivationToken(newUser)
-      // const url = `${CLIENT_URL}/user/activate/${activation_token}`
-      // sendMail(email, url)
+      // const activation_token = createActivationToken(newUser);
+      // const url = `${CLIENT_URL}/user/activate/${activation_token}`;
+      // sendMail(email, url);
 
       res.json({ msg: "Register Success! " });
 
@@ -284,28 +286,33 @@ const userCtrl = {
     }
   },
   // activateEmail: async (req, res) => {
-  //     try {
-  //         const { activation_token } = req.body
-  //         const user = jwt.verify(activation_token, process.env.ACTIVATION_TOKEN_SECRET)
+  //   try {
+  //     const { activation_token } = req.body;
+  //     const user = jwt.verify(
+  //       activation_token,
+  //       process.env.ACTIVATION_TOKEN_SECRET
+  //     );
 
-  //         // console.log(user)
+  //     // console.log(user)
 
-  //         const { name, email, password } = user
+  //     const { name, email, password } = user;
 
-  //         const check = await Users.findOne({ email })
-  //         if (check) return res.status(400).json({ msg: "This email already exists." })
+  //     const check = await Users.findOne({ email });
+  //     if (check)
+  //       return res.status(400).json({ msg: "This email already exists." });
 
-  //         const newUser = new Users({
-  //             name, email, password
-  //         })
+  //     const newUser = new Users({
+  //       name,
+  //       email,
+  //       password,
+  //     });
 
-  //         await newUser.save()
+  //     await newUser.save();
 
-  //         res.json({ msg: "Account has been activated!" })
-
-  //     } catch (err) {
-  //         return res.status(500).json({ msg: err.message })
-  //     }
+  //     res.json({ msg: "Account has been activated!" });
+  //   } catch (err) {
+  //     return res.status(500).json({ msg: err.message });
+  //   }
   // },
 
   // login: async (req, res) => {
@@ -333,14 +340,17 @@ const userCtrl = {
   // },
 };
 
-// function validateEmail(email) {
-//     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//     return re.test(email);
-// }
+function validateEmail(email) {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
 
-// const createActivationToken = (payload) => {
-//     return jwt.sign(payload, process.env.ACTIVATION_TOKEN_SECRET, { expiresIn: '5m' })
-// }
+const createActivationToken = (payload) => {
+  return jwt.sign(payload, process.env.ACTIVATION_TOKEN_SECRET, {
+    expiresIn: "5m",
+  });
+};
 
 const createAccessToken = (user) => {
   return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "11m" });

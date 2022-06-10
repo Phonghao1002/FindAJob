@@ -70,9 +70,9 @@ const ApplicationHistory = () => {
   // const [recruitNews] = state.recruitmentNewsAPI.recruitNews
   // console.log(recruitNews)
   return (
-    <div className="homeMyJobs">
+    <div className="homeApplyHistory">
       <SidebarCandidate />
-      <div className="homeMyJobsContainer">
+      <div className="homeApplyHistoryContainer">
         <NavbarCandidate />
         <div className="PersonalPage">
           <div className="personalContainer">
@@ -81,36 +81,34 @@ const ApplicationHistory = () => {
             </div>
             <div className="bottomPersonalPage">
               <div className="datatableTitle">
-                Add New Recruit News
-                <Link to="/#" className="link">
+                Danh sách đã ứng tuyển thành công
+                {/* <Link to="/#" className="link">
                   Add New
-                </Link>
+                </Link> */}
               </div>
               <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 800 }} aria-label="customized table">
                   <TableHead>
                     <TableRow>
                       <StyledTableCell align="right">id</StyledTableCell>
-                      <StyledTableCell>urlCV</StyledTableCell>
+                      <StyledTableCell>File CV</StyledTableCell>
                       {/* <StyledTableCell align="right">image</StyledTableCell> */}
-                      <StyledTableCell align="right">name</StyledTableCell>
+                      <StyledTableCell align="right">Họ và Tên</StyledTableCell>
+                      <StyledTableCell align="right">Mô tả</StyledTableCell>
                       <StyledTableCell align="right">
-                        descriptions
-                      </StyledTableCell>
-                      <StyledTableCell align="right">
-                        phoneNumber&nbsp;
+                        Số điện thoại&nbsp;
                       </StyledTableCell>
                       <StyledTableCell align="right">
                         email&nbsp;
                       </StyledTableCell>
                       <StyledTableCell align="right">
-                        createdAt&nbsp;
+                        Ngày tạo&nbsp;
                       </StyledTableCell>
                       <StyledTableCell align="right">
-                        status&nbsp;
+                        trạng thái&nbsp;
                       </StyledTableCell>
                       <StyledTableCell align="left">
-                        Action&nbsp;
+                        Hành động&nbsp;
                       </StyledTableCell>
                     </TableRow>
                   </TableHead>
@@ -122,7 +120,9 @@ const ApplicationHistory = () => {
                         </StyledTableCell>
 
                         <StyledTableCell component="th" scope="row">
-                          {recruitment.urlCV}
+                          <a href={recruitment.urlCV} target="_blank">
+                            {recruitment.name}_CV
+                          </a>
                         </StyledTableCell>
                         <StyledTableCell align="right">
                           {recruitment.name}{" "}

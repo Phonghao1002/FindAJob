@@ -4,6 +4,7 @@ import SidebarCandidate from "../../components/candidate/sidebarCandidate/Sideba
 import NavbarCandidate from "../../components/candidate/NavbarCandidate/NavbarCandidate";
 import Single from "../single/Single";
 import { useEffect, useState } from "react";
+import Navbargeneral from "../../components/navbargeneral/Navbargeneral";
 
 const HomeCandidate = () => {
   const [infoUser, setInfoUser] = useState({});
@@ -28,7 +29,7 @@ const HomeCandidate = () => {
     <div className="homeCandidate">
       <SidebarCandidate />
       <div className="homeCandidateContainer">
-        <NavbarCandidate />
+        <Navbargeneral infoUser={infoUser} />
         <Single />
       </div>
     </div>

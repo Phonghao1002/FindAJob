@@ -22,8 +22,8 @@ const Single = () => {
       <div className="singleContainer">
         <div className="top">
           <div className="left">
-            <div className="editButton">Edit</div>
-            <h1 className="title">Information</h1>
+            {/* <div className="editButton">Edit</div> */}
+            <h1 className="title">Thông tin cá nhân</h1>
             <div className="item">
               <img src={infoUser?.avatar?.url} alt="" className="itemImg" />
               <div className="details">
@@ -33,19 +33,19 @@ const Single = () => {
                   <span className="itemValue">{infoUser.email}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">birthday:</span>
+                  <span className="itemKey">Ngày sinh:</span>
                   <span className="itemValue">{infoUser.birthday}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Phone:</span>
+                  <span className="itemKey">Số điện thoại:</span>
                   <span className="itemValue">{infoUser.phone}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">gender:</span>
+                  <span className="itemKey">Giới tính:</span>
                   <span className="itemValue">{infoUser.gender}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Address:</span>
+                  <span className="itemKey">Địa chỉ:</span>
                   <span className="itemValue">{infoUser.address}</span>
                 </div>
                 {/* <div className="detailItem">

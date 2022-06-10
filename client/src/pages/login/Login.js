@@ -56,7 +56,7 @@ const Login = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Đăng nhập
         </Typography>
         <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={loginSubmit}>
           <TextField
@@ -64,7 +64,7 @@ const Login = () => {
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="Email"
             name="email"
             autoComplete="email"
             autoFocus
@@ -76,34 +76,34 @@ const Login = () => {
             required
             fullWidth
             name="password"
-            label="Password"
+            label="Mật khẩu"
             type="password"
             id="password"
             value={user.password}
             autoComplete="current-password"
             onChange={onChangeInput}
           />
-          <FormControlLabel
+          {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
-          />
+          /> */}
           <Button
             type="submit"
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            Đăng nhập
           </Button>
           <Grid container>
             <Grid item xs>
               <Link href="/resetPassword" variant="body2">
-                Forgot password?
+                Đổi mật khẩu?
               </Link>
             </Grid>
             <Grid item>
               <Link href="/register" variant="body2">
-                {"Don't have an account? Sign Up"}
+                {"Bạn chưa có tài khoản? Đăng ký"}
               </Link>
             </Grid>
           </Grid>

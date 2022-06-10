@@ -7,6 +7,7 @@ import Chart from "../../components/adminManagement/chart/Chart";
 import Table from "../../components/adminManagement/table/Table";
 import Loading from "../../components/utils/loading/Loading";
 import { useContext, useState, useEffect } from "react";
+import Navbargeneral from "../../components/navbargeneral/Navbargeneral";
 
 const Home = () => {
   // const [loading, setLoading] = useState(false)
@@ -20,6 +21,7 @@ const Home = () => {
         window.location.href = "/";
       }
       setInfoUser(data);
+      // console.log("infoUser", infoUser);
     } else {
       window.location.href = "/";
     }
@@ -32,7 +34,7 @@ const Home = () => {
     <div className="home">
       <Sidebar />
       <div className="homeAdminContainer">
-        <NavbarAdmin />
+        <Navbargeneral infoUser={infoUser} />
         <div className="widgets">
           <Widget type="Tài khoản chờ phê duyệt" />
           <Widget type="Tài khoản hoạt động" />
@@ -41,7 +43,7 @@ const Home = () => {
         </div>
         <div className="charts">
           <Featured />
-          <Chart title="Last 6 Months (Recruit)" aspect={2 / 1} />
+          <Chart title="Biểu đồ tuyển dụng trong 6 tháng qua" aspect={2 / 1} />
         </div>
         <div className="listContainer">
           <div className="listTitle">Recruitment List latest job</div>

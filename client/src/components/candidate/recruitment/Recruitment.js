@@ -64,7 +64,7 @@ const Recruitment = () => {
         })
         .then((response) => {
           alert("Ứng tuyển thành công");
-          navigation("/");
+          navigation("/candidate/applicationHistory");
         });
     } catch (err) {
       alert(err.response.data.msg);

@@ -38,13 +38,13 @@ const Sidebar = () => {
           <Link to="/admin" style={{ textDecoration: "none" }}>
             <li>
               <AssessmentIcon className="icon" />
-              <span>View stats</span>
+              <span>Xem thống kê</span>
             </li>
           </Link>
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
-              <span>Quản lý danh sách User</span>
+              <span>Quản lý danh sách Người Dùng</span>
             </li>
           </Link>
           {/* <Link to="/candidateManager" style={{ textDecoration: "none" }}>

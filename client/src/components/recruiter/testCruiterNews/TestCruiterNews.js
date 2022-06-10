@@ -86,9 +86,9 @@ const TestCruiterNews = () => {
         <NavbarRecruiter />
         <div className="tableForm">
           <div className="datatableTitle">
-            Add New Recruit News
+            Danh sách tin tuyển dụng
             <Link to="/recruiter/createRecruitNews" className="link">
-              Add New
+              Tạo mới tin tuyển dụng
             </Link>
           </div>
           <TableContainer component={Paper}>
@@ -96,25 +96,29 @@ const TestCruiterNews = () => {
               <TableHead>
                 <TableRow>
                   <StyledTableCell align="right">id</StyledTableCell>
-                  <StyledTableCell>Title</StyledTableCell>
+                  <StyledTableCell>Tiêu đề</StyledTableCell>
                   {/* <StyledTableCell align="right">image</StyledTableCell> */}
-                  <StyledTableCell align="right">Content</StyledTableCell>
-                  <StyledTableCell align="right">salary</StyledTableCell>
-                  <StyledTableCell align="right">address&nbsp;</StyledTableCell>
-                  <StyledTableCell align="right">rank&nbsp;</StyledTableCell>
+                  <StyledTableCell align="right">Tên Công Ty</StyledTableCell>
+                  <StyledTableCell align="right">lương</StyledTableCell>
+                  <StyledTableCell align="right">Địa chỉ&nbsp;</StyledTableCell>
                   <StyledTableCell align="right">
-                    category&nbsp;
+                    Vị trí cần tuyển&nbsp;
                   </StyledTableCell>
-                  <StyledTableCell align="right">status&nbsp;</StyledTableCell>
-                  <StyledTableCell align="left">Action&nbsp;</StyledTableCell>
+                  <StyledTableCell align="right">
+                    Danh mục&nbsp;
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    Trạng thái&nbsp;
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    Hành động&nbsp;
+                  </StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {recruitNews.map((recruitNew, index) => (
                   <StyledTableRow key={recruitNew.title}>
-                    <StyledTableCell align="right">
-                      {recruitNew._id}
-                    </StyledTableCell>
+                    <StyledTableCell align="right">{index + 1}</StyledTableCell>
 
                     <StyledTableCell component="th" scope="row">
                       <div className="cellWithImg">
@@ -147,7 +151,7 @@ const TestCruiterNews = () => {
                         to={`/recruiter/edit_RecruitNews/${recruitNew._id}`}
                         style={{ textDecoration: "none" }}
                       >
-                        <Button className="viewButtonRN">Edit</Button>
+                        <Button className="viewButtonRN">Sửa</Button>
                       </Link>
 
                       <Link
@@ -161,7 +165,7 @@ const TestCruiterNews = () => {
                         }
                         style={{ textDecoration: "none" }}
                       >
-                        <Button className="deleteButtonRN">Delete</Button>
+                        <Button className="deleteButtonRN">Xóa</Button>
                       </Link>
 
                       <Link

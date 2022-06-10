@@ -39,25 +39,25 @@ const Header = ({ type }) => {
           <Link to="/" style={{ textDecoration: "none" }}>
             <div className="headerListItem active">
               <WorkIcon />
-              <span>Jobs</span>
+              <span>Việc làm</span>
             </div>
           </Link>
 
           <div className="headerListItem">
             <PeopleAltIcon />
-            <span>Interviews</span>
+            <span>Phỏng vấn</span>
           </div>
           <div className="headerListItem">
             <PaidIcon />
-            <span>Salary</span>
+            <span>Lương</span>
           </div>
           <div className="headerListItem">
             <BusinessIcon />
-            <span>Companies</span>
+            <span>Các công ty</span>
           </div>
           <div className="headerListItem">
             <FileOpenIcon />
-            <span>WowCV</span>
+            <span>CV tuyệt vời</span>
           </div>
         </div>
         {type !== "list" && (
@@ -69,7 +69,7 @@ const Header = ({ type }) => {
               Việc làm IT - Việc làm IT xịn dành cho Developer chất
             </p>
             <Link to="/register" style={{ textDecoration: "none" }}>
-              <button className="headerBtn">Sign in / Register</button>
+              {/* <button className="headerBtn">Đăng nhập / Đăng ký</button> */}
             </Link>
             <div className="headerSearch">
               <div className="headerSearchItem">
@@ -100,7 +100,7 @@ const Header = ({ type }) => {
                     placeholder="Nhập vị trí, Tên công ty, địa chỉ..."
                     onChange={(e) => setSearch(e.target.value.toLowerCase())}
                   />
-                  <button className="headerBtn">Search</button>
+                  <button className="headerBtn">Tìm kiếm</button>
                 </div>
               </div>
 

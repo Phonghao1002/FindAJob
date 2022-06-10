@@ -58,7 +58,7 @@ const RecruitmentNews = () => {
                   <option>...</option>
                 </select>
               </div>
-              <div className="lsOptionItem">
+              {/* <div className="lsOptionItem">
                 <span className="lsOptionText">Ngành nghề</span>
                 <select className="lsOptioncbbox">
                   <option>Tất cả ngành nghề</option>
@@ -73,7 +73,7 @@ const RecruitmentNews = () => {
                   <option>Quản trị cơ sở dữ liệu </option>
                   <option>Quản trị mạng</option>
                 </select>
-              </div>
+              </div> */}
               <div className="lsOptionItem">
                 <span className="lsOptionText">Tất cả trình độ</span>
                 <select className="lsOptioncbbox">
@@ -91,12 +91,12 @@ const RecruitmentNews = () => {
                   value={sort}
                   onChange={(e) => setSort(e.target.value)}
                 >
-                  <option>1.500000 - 3.000000</option>
+                  {/* <option>1.500000 - 3.000000</option>
                   <option>4.000000 - 7.000000</option>
                   <option>7.000000 - 8.500000</option>
-                  <option>8.500000 - 9.000000</option>
-                  <option value="sort=-price">Price: Hight-Low</option>
-                  <option value="sort=price">Price: Low-Hight</option>
+                  <option>8.500000 - 9.000000</option> */}
+                  <option value="sort=-price">Lương: Cao - Thấp</option>
+                  <option value="sort=price">Lương: Thấp - Cao</option>
                 </select>
                 {/* <input
                                     type="number"
@@ -107,7 +107,7 @@ const RecruitmentNews = () => {
               </div>
             </div>
           </div>
-          <button>Search</button>
+          <button>Tìm kiếm</button>
         </div>
         <div className="listResult">
           {recruitNews.map((recruitNew) => {

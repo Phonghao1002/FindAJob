@@ -8,6 +8,7 @@ import Table from "../../components/adminManagement/table/Table";
 // import TableRecruiter from "../../components/recruiter/tableRecruiter/TableRecruiter"
 import "./homeRecruiter.scss";
 import { useState, useEffect } from "react";
+import Navbargeneral from "../../components/navbargeneral/Navbargeneral";
 
 const HomeRecruiter = () => {
   const [infoUser, setInfoUser] = useState({});
@@ -32,7 +33,7 @@ const HomeRecruiter = () => {
     <div className="homeRecruiter">
       <SidebarRecruiter />
       <div className="homeRecruiterContainer">
-        <NavbarRecruiter />
+        <Navbargeneral infoUser={infoUser} />
         <div className="widgets">
           <Widget type="Tài khoản chờ phê duyệt" />
           <Widget type="Tài khoản hoạt động" />

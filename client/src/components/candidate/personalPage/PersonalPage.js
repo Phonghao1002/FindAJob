@@ -129,7 +129,7 @@ const PersonalPage = () => {
             <form onSubmit={handleSubmit}>
               <div className="formInput">
                 <label htmlFor="file">
-                  Image: <DriveFolderUploadOutlinedIcon />
+                  File ảnh: <DriveFolderUploadOutlinedIcon />
                 </label>
                 <input
                   type="file"
@@ -141,7 +141,7 @@ const PersonalPage = () => {
               </div>
 
               <div className="formInput">
-                <label>Name and surname</label>
+                <label>Họ và Tên</label>
                 <input
                   type="text"
                   name="name"
@@ -152,7 +152,7 @@ const PersonalPage = () => {
                 />
               </div>
               <div className="formInput">
-                <label>Ngay sinh</label>
+                <label>Ngày sinh</label>
                 <input
                   type="text"
                   name="birthday"
@@ -163,7 +163,7 @@ const PersonalPage = () => {
                 />
               </div>
               <div className="formInput">
-                <label>Phone</label>
+                <label>Số điện thoại</label>
                 <input
                   type="text"
                   name="phone"
@@ -174,7 +174,7 @@ const PersonalPage = () => {
                 />
               </div>
               <div className="formInput">
-                <label>Address</label>
+                <label>Địa chỉ</label>
                 <input
                   type="text"
                   name="address"
@@ -206,7 +206,7 @@ const PersonalPage = () => {
                 />
               </div> */}
               <div className="formInput">
-                <label>Gender</label>
+                <label>Giới tính</label>
                 <input
                   type="text"
                   name="gender"

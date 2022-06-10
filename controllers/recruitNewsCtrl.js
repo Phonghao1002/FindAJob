@@ -56,8 +56,8 @@ const recruitNewsCtrl = {
       // console.log(req.query)
       const features = new APIfeatures(RecruitNews.find(), req.query)
         .filtering()
-        .sorting()
-        .paginating();
+        .sorting();
+      // .paginating();
       const recruitNews = await features.query;
 
       res.json({
@@ -151,6 +151,40 @@ const recruitNewsCtrl = {
       res.json({ msg: "Updated a recruit News!" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
+    }
+  },
+
+  getpagination: async (req, res) => {
+    try {
+      let { page, size, sort } = req.query;
+
+      // If the page is not applied in query
+      if (!page) {
+        // Make the Default value one
+        page = 1;
+      }
+
+      if (!size) {
+        size = 10;
+      }
+
+      //  We have to make it integer because
+      // the query parameter passed is string
+      const limit = parseInt(size);
+
+      // We pass 1 for sorting data in
+      // descending order using ids
+      const user = await RecruitNews.find()
+        .sort({ votes: 1, _id: -1 })
+        .limit(limit);
+
+      res.send({
+        page,
+        size,
+        Info: user,
+      });
+    } catch (error) {
+      res.sendStatus(500);
     }
   },
 };

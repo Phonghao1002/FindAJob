@@ -108,9 +108,11 @@ const Navbar = () => {
                     }}
                   >
                     Trang Quản lý
-                    <div className="cart-icon">
-                      <h1>0</h1>
-                    </div>
+                    {infoUser.role == 0 && (
+                      <div className="cart-icon">
+                        <h1>0</h1>
+                      </div>
+                    )}
                   </a>
                   <a href="#" onClick={handleOnLogout}>
                     Đăng xuất

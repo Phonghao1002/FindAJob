@@ -1,0 +1,38 @@
+.homeApplyHistory {
+  display: flex;
+
+  .homeApplyHistoryContainer {
+    flex: 5;
+
+    .PersonalPage {
+      width: 100%;
+      display: flex;
+
+      .personalContainer {
+        flex: 1;
+
+        .topPersonalPage {
+          -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+          box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+          padding: 10px;
+          margin: 20px;
+          display: flex;
+          flex-direction: column;
+
+          h1 {
+            color: lightgray;
+            font-size: 20px;
+            // margin-left: 500px;
+          }
+        }
+
+        .bottomPersonalPage {
+          display: flex;
+          flex-direction: column;
+          //   margin-left: 150px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -98,7 +98,7 @@ const SidebarCandidate = () => {
                         <NotificationsNoneIcon className="icon" />
                         <span>Notifications</span>
                     </li> */}
-          <p className="title">SERVICE</p>
+          {/* <p className="title">SERVICE</p> */}
           {/* <li>
                         <SettingsSystemDaydreamOutlinedIcon className="icon" />
                         <span>System Health</span>
@@ -107,10 +107,10 @@ const SidebarCandidate = () => {
                         <PsychologyOutlinedIcon className="icon" />
                         <span>Logs</span>
                     </li> */}
-          <li>
+          {/* <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
-          </li>
+          </li> */}
           <p className="title">USER</p>
           <li onClick={logoutUser}>
             <ExitToAppIcon className="icon" />

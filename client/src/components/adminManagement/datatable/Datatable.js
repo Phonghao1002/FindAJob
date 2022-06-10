@@ -70,9 +70,9 @@ const Datatable = ({}) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New User
+        Danh sách Người Dùng
         <Link to="/users/new" className="link">
-          Add New
+          Tạo mới Người Dùng
         </Link>
       </div>
       <TableContainer component={Paper}>
@@ -81,14 +81,14 @@ const Datatable = ({}) => {
             <TableRow>
               <StyledTableCell align="right">ID</StyledTableCell>
 
-              <StyledTableCell>Name</StyledTableCell>
+              <StyledTableCell>Tên Tài khoản</StyledTableCell>
               {/* <StyledTableCell align="right">image</StyledTableCell> */}
               <StyledTableCell align="right">Email</StyledTableCell>
               <StyledTableCell align="right">Password</StyledTableCell>
-              <StyledTableCell align="right">CreatedAt&nbsp;</StyledTableCell>
+              <StyledTableCell align="right">Ngày tạo&nbsp;</StyledTableCell>
               {/* <StyledTableCell align="right">Avartar&nbsp;</StyledTableCell> */}
               {/* <StyledTableCell align="right">updatedAt&nbsp;</StyledTableCell> */}
-              <StyledTableCell align="left">Action&nbsp;</StyledTableCell>
+              <StyledTableCell align="left">Hành động&nbsp;</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
