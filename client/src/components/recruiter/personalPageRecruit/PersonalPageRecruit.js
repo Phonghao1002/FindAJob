@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import SidebarRecruiter from "../sidebarRecruiter/SidebarRecruiter";
 import NavbarRecruiter from "../navbarRecruiter/NavbarRecruiter";
 import Chart from "./../../adminManagement/chart/Chart";
+import Navbargeneral from "../../navbargeneral/Navbargeneral";
 
 const PersonalPageRecruit = () => {
   const [infoUser, setInfoUser] = useState({});
@@ -22,7 +23,7 @@ const PersonalPageRecruit = () => {
     <div className="homerecruitPage">
       <SidebarRecruiter />
       <div className="homerecruitPageContainer">
-        <NavbarRecruiter />
+        <Navbargeneral infoUser={infoUser} />
         <div className="single">
           <div className="singleContainer">
             <div className="top">

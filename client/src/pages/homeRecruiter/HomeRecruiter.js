@@ -42,10 +42,12 @@ const HomeRecruiter = () => {
         </div>
         <div className="charts">
           <Featured />
-          <Chart title="Last 6 Months (Recruit)" aspect={2 / 1} />
+          <Chart title="6 tháng trước (Tuyển dụng)" aspect={2 / 1} />
         </div>
         <div className="listContainer">
-          <div className="listTitle">Recruitment List latest job</div>
+          <div className="listTitle">
+            Danh sách đã nộp hồ sơ ứng tuyển trong 1 tuần qua
+          </div>
           <Table />
         </div>
       </div>

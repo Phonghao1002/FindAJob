@@ -3,6 +3,8 @@ const RecruitmentCtrl = require("../controllers/recruitmentCtrl");
 const auth = require("../middleware/auth");
 const authAdmin = require("../middleware/authAdmin");
 
+router.route("/listRecruitment").get(RecruitmentCtrl.getListRecruitment);
+
 router.route("/recruitment").get(RecruitmentCtrl.getRecruitment);
 
 router.route("/applicationHistory").get(RecruitmentCtrl.getRecruitmentHistory);

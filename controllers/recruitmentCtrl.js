@@ -1,6 +1,14 @@
 const Recruitment = require("../models/recruitmentModel");
 const User = require("../models/userModel");
 const RecruitmentCtrl = {
+  getListRecruitment: async (req, res) => {
+    try {
+      const recruitment = await Recruitment.find();
+      res.json(recruitment);
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
   getRecruitment: async (req, res) => {
     try {
       const recruitNews = await Recruitment.find({
@@ -21,7 +29,7 @@ const RecruitmentCtrl = {
 
       return res
         .status(200)
-        .json({ status: "Success", data: recruitmentHistory });
+        .json({ status: "Approved", data: recruitmentHistory });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

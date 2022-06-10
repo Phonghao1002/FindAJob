@@ -3,15 +3,18 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import NavbarRecruiter from "../navbarRecruiter/NavbarRecruiter";
 import SidebarRecruiter from "../sidebarRecruiter/SidebarRecruiter";
 import "./editrecruiterPersonalPage.scss";
+import Navbargeneral from "../../navbargeneral/Navbargeneral";
 
 const EditrecruiterPersonalPage = () => {
   const [file, SetFile] = useState("");
   const [logo, SetLogo] = useState("");
+  const [infoUser, setInfoUser] = useState({});
+
   return (
     <div className="homeRecruiterPersonalPage">
       <SidebarRecruiter />
       <div className="homePersonalPageContainer">
-        <NavbarRecruiter />
+        <Navbargeneral infoUser={infoUser} />
         <div className="PersonalPage">
           <div className="personalContainer">
             <div className="topPersonalPage">

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -14,6 +14,7 @@ import NavbarRecruiter from "../navbarRecruiter/NavbarRecruiter";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./testCruiterNews.scss";
+import Navbargeneral from "../../navbargeneral/Navbargeneral";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -54,6 +55,19 @@ const TestCruiterNews = () => {
   const [token] = state.token;
   const [isAdmin] = state.userAPI.isAdmin;
   const [callback, setCallback] = state.recruitmentNewsAPI.callback;
+  const [infoUser, setInfoUser] = useState({});
+  const [initial, setInitial] = useState(true);
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("infoUser"));
+    if (data) {
+      setInfoUser(data);
+    }
+    if (initial) setInitial(false);
+    // console.log(data);
+  }, []);
+
+  if (initial) return null;
 
   // console.log(recruitNews)
 
@@ -83,7 +97,7 @@ const TestCruiterNews = () => {
     <div className="homeManagementNewsRecruit">
       <SidebarRecruiter />
       <div className="homeCategoryContainer">
-        <NavbarRecruiter />
+        <Navbargeneral infoUser={infoUser} />
         <div className="tableForm">
           <div className="datatableTitle">
             Danh sách tin tuyển dụng
@@ -145,7 +159,7 @@ const TestCruiterNews = () => {
                     <StyledTableCell align="right">
                       {recruitNew.status}
                     </StyledTableCell>
-                    <StyledTableCell className="cellActionRN">
+                    <StyledTableCell className="cellActionRN" align="center">
                       <Link
                         id="btn_view"
                         to={`/recruiter/edit_RecruitNews/${recruitNew._id}`}

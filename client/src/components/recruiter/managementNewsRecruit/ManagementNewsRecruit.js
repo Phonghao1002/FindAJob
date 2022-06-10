@@ -16,6 +16,7 @@ import NavbarRecruiter from "../navbarRecruiter/NavbarRecruiter";
 import { GlobalState } from "../../../GlobalState";
 import axios from "axios";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import Navbargeneral from "../../navbargeneral/Navbargeneral";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -41,9 +42,21 @@ const ManagementNewsRecruit = () => {
   const [data, setData] = useState(userRows);
   const state = useContext(GlobalState);
   const params = useParams();
+  const [infoUser, setInfoUser] = useState({});
   // const [recruitNews] = state.recruitmentNewsAPI.recruitNews
 
   const [recruitments, setRecruitments] = useState([]);
+  const [initial, setInitial] = useState(true);
+
+  // useEffect(() => {
+  //   const data = JSON.parse(localStorage.getItem("infoUser"));
+  //   if (data) {
+  //     setInfoUser(data);
+  //   }
+  //   if (initial) setInitial(false);
+  //   // console.log(data);
+  // }, []);
+  // if (initial) return null;
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
@@ -64,7 +77,7 @@ const ManagementNewsRecruit = () => {
   const handleBrowser = async (id) => {
     await axios
       .patch(`http://localhost:4110/api/updateRecruitMent/${id}`, {
-        status: "success",
+        status: "Approved",
       })
       .then((res) => {
         alert(res.data.msg);
@@ -98,7 +111,7 @@ const ManagementNewsRecruit = () => {
     <div className="homeManagementNewsRecruit">
       <SidebarRecruiter />
       <div className="homeCategoryContainer">
-        <NavbarRecruiter />
+        <Navbargeneral infoUser={infoUser} />
         <div className="datatable">
           <div className="datatableTitle">
             Danh sách hồ sơ ứng tuyển
@@ -153,7 +166,10 @@ const ManagementNewsRecruit = () => {
                     <StyledTableCell align="right">
                       {new Date(recruitment.createdAt).toLocaleDateString()}
                     </StyledTableCell>
-                    <StyledTableCell align="right" className="cellWithStatus">
+                    <StyledTableCell
+                      align="right"
+                      className={`status ${recruitment.status}`}
+                    >
                       {recruitment.status}
                     </StyledTableCell>
                     <StyledTableCell className="cellActionRN">

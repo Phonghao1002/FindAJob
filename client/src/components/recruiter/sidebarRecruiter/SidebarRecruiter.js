@@ -25,20 +25,20 @@ const SidebarRecruiter = () => {
     <div className="sidebarRecruiter">
       <div className="top">
         <Link to="/recruiter" style={{ textDecoration: "none" }}>
-          <span className="logo">Recruiter</span>
+          <span className="logo">THANH QUẢN LÝ</span>
         </Link>
       </div>
       <hr />
       <div className="center">
         <ul>
-          <p className="title">MAIN</p>
+          <p className="title">CHÍNH</p>
           <Link to="/recruiter" style={{ textDecoration: "none" }}>
             <li>
               <DashboardIcon className="icon" />
-              <span>Dashboard</span>
+              <span>Báo cáo thống kê</span>
             </li>
           </Link>
-          <p className="title">LISTS</p>
+          <p className="title">CÁ NHÂN</p>
           <Link to="/recruiter/personalPage" style={{ textDecoration: "none" }}>
             <li>
               <AccountCircleOutlinedIcon className="icon" />
@@ -67,7 +67,7 @@ const SidebarRecruiter = () => {
               <span>Đổi mật khẩu</span>
             </li>
           </Link>
-          <p className="title">USEFUL</p>
+          <p className="title">DANH SÁCH QUẢN LÝ</p>
           <Link to="/recruiter/category" style={{ textDecoration: "none" }}>
             <li>
               <CategoryIcon className="icon" />
@@ -104,7 +104,7 @@ const SidebarRecruiter = () => {
             </li>
           </Link> */}
 
-          <p className="title">USER</p>
+          <p className="title">CÀI ĐẶT</p>
           {/* <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>

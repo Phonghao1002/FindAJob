@@ -53,11 +53,11 @@
     // }
   }
 
-  .cellWithStatus {
+  .status {
     padding: 5px;
     border-radius: 5px;
 
-    &.success {
+    &.Approved {
       background-color: rgba(0, 128, 0, 0.05);
       color: green;
     }

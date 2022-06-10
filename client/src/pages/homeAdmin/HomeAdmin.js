@@ -8,6 +8,7 @@ import Table from "../../components/adminManagement/table/Table";
 import Loading from "../../components/utils/loading/Loading";
 import { useContext, useState, useEffect } from "react";
 import Navbargeneral from "../../components/navbargeneral/Navbargeneral";
+import { axios } from "axios";
 
 const Home = () => {
   // const [loading, setLoading] = useState(false)
@@ -29,7 +30,6 @@ const Home = () => {
   }, []);
 
   if (initial) return null;
-
   return (
     <div className="home">
       <Sidebar />
@@ -46,7 +46,9 @@ const Home = () => {
           <Chart title="Biểu đồ tuyển dụng trong 6 tháng qua" aspect={2 / 1} />
         </div>
         <div className="listContainer">
-          <div className="listTitle">Recruitment List latest job</div>
+          <div className="listTitle">
+            Danh sách đã nộp hồ sơ ứng tuyển trong 1 tuần qua
+          </div>
           <Table />
         </div>
       </div>

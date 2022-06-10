@@ -29,18 +29,19 @@ const Sidebar = () => {
       <hr />
       <div className="center">
         <ul>
-          <p className="title">MAIN</p>
+          {/* <p className="title">CHÍNH</p>
           <li>
             <DashboardIcon className="icon" />
             <span>Dashboard</span>
-          </li>
-          <p className="title">LISTS</p>
+          </li> */}
+          <p className="title">chính</p>
           <Link to="/admin" style={{ textDecoration: "none" }}>
             <li>
               <AssessmentIcon className="icon" />
               <span>Xem thống kê</span>
             </li>
           </Link>
+          <p className="title">DANH SÁCH QUẢN LÝ</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
@@ -58,7 +59,7 @@ const Sidebar = () => {
                         <LocalShippingIcon className="icon" />
                         <span>Delivery</span>
                     </li> */}
-          <p className="title">USEFUL</p>
+          <p className="title">HỮU ÍCH</p>
           <Link to="/admin/decentralization" style={{ textDecoration: "none" }}>
             <li>
               <InsertChartIcon className="icon" />
@@ -88,7 +89,7 @@ const Sidebar = () => {
                         <SettingsApplicationsIcon className="icon" />
                         <span>Settings</span>
                     </li> */}
-          <p className="title">USER</p>
+          <p className="title">CÀI ĐẶT</p>
           {/* <li>
                         <AccountCircleOutlinedIcon className="icon" />
                         <span>Profile</span>

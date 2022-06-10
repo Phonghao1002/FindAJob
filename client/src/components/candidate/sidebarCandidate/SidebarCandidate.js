@@ -37,13 +37,13 @@ const SidebarCandidate = () => {
     <div className="sidebarCandidate">
       <div className="topsidebarCandidate">
         <Link to="/candidate" style={{ textDecoration: "none" }}>
-          <span className="logo">Candidate</span>
+          <span className="logo">THANH QUẢN LÝ</span>
         </Link>
       </div>
       <hr />
       <div className="center">
         <ul>
-          <p className="title">MAIN</p>
+          <p className="title">CÁ NHÂN</p>
 
           <Link to="/candidate" style={{ textDecoration: "none" }}>
             <li>
@@ -51,8 +51,6 @@ const SidebarCandidate = () => {
               <span>Hồ sơ cá nhân</span>
             </li>
           </Link>
-
-          <p className="title">LISTS</p>
           <Link
             to="/candidate/changePassword"
             style={{ textDecoration: "none" }}
@@ -62,6 +60,8 @@ const SidebarCandidate = () => {
               <span>Đổi mật khẩu</span>
             </li>
           </Link>
+          <p className="title">DANH SÁCH CÔNG VIỆC</p>
+
           <div className="cart-icon">
             <h1>{saveJob.length}</h1>
             <Link to="/candidate/myJobs" style={{ textDecoration: "none" }}>
@@ -111,7 +111,7 @@ const SidebarCandidate = () => {
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
           </li> */}
-          <p className="title">USER</p>
+          <p className="title">CÀI ĐẶT</p>
           <li onClick={logoutUser}>
             <ExitToAppIcon className="icon" />
             <span>Đăng xuất</span>
