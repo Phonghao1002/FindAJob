@@ -79,16 +79,18 @@ const recruitNewsCtrl = {
         description,
         content,
         images,
+        requirements,
         category,
         rank,
         address,
         dayApply,
       } = req.body;
-      if (!images) return res.status(400).json({ msg: "No image upload" });
+      if (!images)
+        return res.status(400).json({ msg: "Không có hình ảnh tải lên" });
 
       const recruitNew = await RecruitNews.findOne({ recruitNews_id });
       if (recruitNew)
-        return res.status(400).json({ msg: "This product already exists." });
+        return res.status(400).json({ msg: "Tin tuyển dụng này đã tồn tại." });
 
       const newRecruitNew = new RecruitNews({
         recruitNews_id,
@@ -97,6 +99,7 @@ const recruitNewsCtrl = {
         description,
         content,
         images,
+        requirements,
         category,
         rank,
         address,
@@ -105,7 +108,7 @@ const recruitNewsCtrl = {
       });
       // res.json(newRecruitNew)
       await newRecruitNew.save();
-      res.json({ msg: "Created a recruit News!" });
+      res.json({ msg: "Đã tạo mới một Tin  tuyển dụng!" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -113,7 +116,7 @@ const recruitNewsCtrl = {
   deleteRecruitNews: async (req, res) => {
     try {
       await RecruitNews.findByIdAndDelete(req.params.id);
-      res.json({ msg: "Deleted a recruit News!" });
+      res.json({ msg: "Đã xóa một tin tuyển dụng!" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -126,12 +129,14 @@ const recruitNewsCtrl = {
         description,
         content,
         images,
+        requirements,
         category,
         rank,
         address,
         dayApply,
       } = req.body;
-      if (!images) return res.status(400).json({ msg: "No image upload" });
+      if (!images)
+        return res.status(400).json({ msg: "Không có hình ảnh tải lên" });
 
       await RecruitNews.findOneAndUpdate(
         { _id: req.params.id },
@@ -141,6 +146,7 @@ const recruitNewsCtrl = {
           description,
           content,
           images,
+          requirements,
           category,
           rank,
           address,
@@ -148,7 +154,7 @@ const recruitNewsCtrl = {
         }
       );
 
-      res.json({ msg: "Updated a recruit News!" });
+      res.json({ msg: "Đã cập nhật một tin tuyển dụng!" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

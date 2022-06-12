@@ -9,7 +9,7 @@ const MaiList = () => {
       </span>
       <div className="mailInputContainer">
         <input type="text" placeholder="Gửi email của bạn" />
-        <button>Subscribe</button>
+        <button>Đăng ký</button>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ const data = [
   { name: "Tháng 1", Tong: 1200 },
   { name: "Tháng 2", Tong: 2100 },
   { name: "Tháng 3", Tong: 800 },
-  { name: "Tháng tư", Tong: 1600 },
+  { name: "Tháng 4", Tong: 1600 },
   { name: "Tháng 5", Tong: 900 },
   { name: "Tháng 6", Tong: 1700 },
 ];

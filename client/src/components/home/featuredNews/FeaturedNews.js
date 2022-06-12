@@ -28,13 +28,13 @@ const FeaturedNews = () => {
       </div>
       <div className="featuredItem">
         <img
-          src="https://cf.bstatic.com/xdata/images/city/max500/689422.webp?k=2595c93e7e067b9ba95f90713f80ba6e5fa88a66e6e55600bd27a5128808fdf2&o="
+          src="https://img6.thuthuatphanmem.vn/uploads/2022/04/15/hinh-anh-tich-cuc-va-thach-thuc_090516405.jpg"
           alt=""
           className="featuredImg"
         />
         <div className="featuredTitles">
-          <h1>Austin</h1>
-          <h2>532 properties</h2>
+          <h1>Năng lượng tích cực</h1>
+          <h2>Nổ lực từng ngày</h2>
         </div>
       </div>
     </div>

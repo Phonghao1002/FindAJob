@@ -21,7 +21,7 @@ router.post("/create", userCtrl.createUsers);
 
 router.patch("/update/:id", userCtrl.updateUser);
 
-router.patch("/update_role/:id", auth, authAdmin, userCtrl.updateUsersRole);
+router.patch("/update_role/:id", userCtrl.updateUsersRole);
 
 router.patch("/addsaveJobs", auth, userCtrl.addSaveJobs);
 

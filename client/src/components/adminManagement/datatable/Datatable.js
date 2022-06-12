@@ -79,12 +79,12 @@ const Datatable = ({}) => {
         <Table sx={{ minWidth: 800 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="right">ID</StyledTableCell>
+              <StyledTableCell align="right">Mã</StyledTableCell>
 
-              <StyledTableCell>Tên Tài khoản</StyledTableCell>
+              <StyledTableCell>Tên người dùng</StyledTableCell>
               {/* <StyledTableCell align="right">image</StyledTableCell> */}
               <StyledTableCell align="right">Email</StyledTableCell>
-              <StyledTableCell align="right">Password</StyledTableCell>
+              <StyledTableCell align="right">Mật khẩu</StyledTableCell>
               <StyledTableCell align="right">Ngày tạo&nbsp;</StyledTableCell>
               {/* <StyledTableCell align="right">Avartar&nbsp;</StyledTableCell> */}
               {/* <StyledTableCell align="right">updatedAt&nbsp;</StyledTableCell> */}
@@ -98,7 +98,11 @@ const Datatable = ({}) => {
 
                 <StyledTableCell component="th" scope="row">
                   <div className="cellWithImg">
-                    <img className="cellImg" src={user.avatar} alt="avatar" />
+                    <img
+                      className="cellImg"
+                      src={user?.avatar?.url}
+                      alt="avatar"
+                    />
                     {user.name}
                   </div>
                 </StyledTableCell>

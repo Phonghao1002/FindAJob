@@ -5,8 +5,40 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Widget = ({ type }) => {
+  const [recruitmentPendings, setRecruitmentPending] = useState([]);
+  const [recruitmentApproveds, setRecruitmentApproved] = useState([]);
+  const [result, setResult] = useState(0);
+  const [result1, setResult1] = useState(0);
+
+  useEffect(() => {
+    const getRecruitmentPending = async () => {
+      const res = await axios.get("/api/recruitmentPending");
+      setRecruitmentPending(res.data.recruitmentPending);
+      console.log("aaa", recruitmentPendings);
+
+      setResult(res.data.result);
+      console.log("vvv", result);
+    };
+
+    getRecruitmentPending();
+  }, []);
+
+  useEffect(() => {
+    const getRecruitmentApproved = async () => {
+      const res = await axios.get("/api/recruitmentApproved");
+      setRecruitmentApproved(res.data.recruitmentApproved);
+      console.log("aaa", recruitmentApproveds);
+
+      setResult1(res.data.result);
+      console.log("vvv", result1);
+    };
+
+    getRecruitmentApproved();
+  }, []);
   let data;
 
   //temporary
@@ -34,7 +66,7 @@ const Widget = ({ type }) => {
       data = {
         title: "Tài khoản hoạt động",
         isMoney: false,
-        diff: 5,
+        diff: result,
         link: "Xem chi tiết",
         icon: (
           <PersonOutlinedIcon
@@ -51,7 +83,7 @@ const Widget = ({ type }) => {
       data = {
         title: "Tin đã được duyệt",
         isMoney: true,
-        diff: 15,
+        diff: result1,
         link: "Xem chi tiết",
         icon: (
           <NewspaperIcon
@@ -65,7 +97,7 @@ const Widget = ({ type }) => {
       data = {
         title: "Tin chờ phê duyệt",
         isMoney: true,
-        diff: 10,
+        diff: { result },
         link: "Xem chi tiết",
         icon: (
           <NewspaperIcon
@@ -86,7 +118,7 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney} {data.diff}
+          {data.isMoney} {data.diff.result}
         </span>
         <span className="link">{data.link}</span>
       </div>

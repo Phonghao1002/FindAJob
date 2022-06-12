@@ -1,134 +1,140 @@
 .homeRecruiterPersonalPage {
-    display: flex;
+  display: flex;
 }
 
 .homePersonalPageContainer {
-    flex: 5;
-
+  flex: 5;
 }
 
 .PersonalPage {
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
 
-    .personalContainer {
+  .personalContainer {
+    flex: 1;
+
+    .topPersonalPage,
+    .bottomPersonalPage {
+      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+      padding: 10px;
+      margin: 20px;
+      display: flex;
+
+      h1 {
+        color: lightgray;
+        font-size: 20px;
+      }
+
+      .left {
+        display: flex;
         flex: 1;
+        flex-direction: column;
+        gap: 150px;
+        // margin-left: 100px;
 
-        .topPersonalPage,
-        .bottomPersonalPage {
-            -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-            box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
-            padding: 10px;
-            margin: 20px;
-            display: flex;
+        #file_img {
+          width: 50px;
+          height: 50px;
+          position: absolute;
+          margin-top: 150px;
+          margin-left: 200px;
+          background: white;
 
-            h1 {
-                color: lightgray;
-                font-size: 20px;
-            }
-
-            .left {
-                display: flex;
-                flex: 1;
-                flex-direction: column;
-                gap: 150px;
-                // margin-left: 100px;
-
-                .lefttop {
-                    margin-bottom: 30px;
-                    text-align: center;
-
-                    img {
-                        width: 100px;
-                        height: 100px;
-                        border-radius: 50%;
-                        object-fit: cover;
-                        text-align: center;
-    
-                    }
-
-                }
-
-                .leftright{
-                    margin-bottom: 30px;
-                    text-align: center;
-
-
-                    img {
-                        width: 120px;
-                        height: 120px;
-                        border-radius: 5%;
-                        object-fit: cover;
-                        text-align: center;
-    
-                    }
-
-                }
-
-
-               
-            }
-
-            .right {
-                flex: 2;
-
-                form {
-                    display: flex;
-                    // flex-direction: column;
-                    flex-wrap: wrap;
-                    gap: 30px;
-                    justify-content: space-around;
-
-                    .formInput {
-                        width: 40%;
-
-                        label {
-                            display: flex;
-                            align-items: center;
-                            gap: 10px;
-
-                            .icon {
-                                cursor: pointer;
-                            }
-                        }
-
-                        input {
-                            width: 100%;
-                            padding: 5px;
-                            border: none;
-                            border-bottom: 1px solid gray;
-                        }
-
-                        select {
-                            width: 100%;
-                        }
-
-                        textarea {
-                            width: 100%;
-
-                        }
-                    }
-
-
-                }
-
-                // h2 {
-
-                //     padding: 10px 30px;
-                //     // margin: 50px 50px;
-                // }
-
-                button {
-                    width: 150px;
-                    padding: 10px;
-                    border: none;
-                    background-color: teal;
-                    color: white;
-                    font-weight: bold;
-                    cursor: pointer;
-                    margin-top: 10px;
-                }
-            }
+          img {
+            margin-left: 200px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            text-align: center;
+          }
+          span {
+            font-size: 10px;
+            position: absolute;
+            top: 5px;
+            margin-right: -160px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: 900;
+            color: crimson;
+          }
         }
+
+        .leftright {
+          margin-bottom: 30px;
+          text-align: center;
+
+          img {
+            width: 120px;
+            height: 120px;
+            border-radius: 5%;
+            object-fit: cover;
+            text-align: center;
+          }
+        }
+      }
+
+      .right {
+        flex: 2;
+
+        form {
+          display: flex;
+          // flex-direction: column;
+          flex-wrap: wrap;
+          gap: 30px;
+          justify-content: space-around;
+
+          .formInput {
+            width: 40%;
+
+            label {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+
+              .icon {
+                cursor: pointer;
+              }
+            }
+
+            input {
+              width: 100%;
+              padding: 5px;
+              border: none;
+              border-bottom: 1px solid gray;
+            }
+
+            select {
+              width: 100%;
+            }
+
+            textarea {
+              width: 100%;
+            }
+          }
+        }
+
+        // h2 {
+
+        //     padding: 10px 30px;
+        //     // margin: 50px 50px;
+        // }
+
+        button {
+          width: 150px;
+          padding: 10px;
+          border: none;
+          background-color: teal;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+          margin-top: 10px;
+        }
+      }
     }
+  }
 }

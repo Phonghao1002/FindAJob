@@ -28,8 +28,8 @@ const PersonalPageRecruit = () => {
           <div className="singleContainer">
             <div className="top">
               <div className="left">
-                <div className="editButton">Edit</div>
-                <h1 className="title">Information</h1>
+                {/* <div className="editButton">Edit</div> */}
+                <h1 className="title">Thông tin</h1>
                 <div className="item">
                   <img src={infoUser.avatar} alt="" className="itemImg" />
                   <div className="details">
@@ -39,19 +39,19 @@ const PersonalPageRecruit = () => {
                       <span className="itemValue">{infoUser.email}</span>
                     </div>
                     <div className="detailItem">
-                      <span className="itemKey">birthday:</span>
+                      <span className="itemKey">Ngày sinh:</span>
                       <span className="itemValue">{infoUser.birthday}</span>
                     </div>
                     <div className="detailItem">
-                      <span className="itemKey">Phone:</span>
+                      <span className="itemKey">Số điện thoại:</span>
                       <span className="itemValue">{infoUser.phone}</span>
                     </div>
                     <div className="detailItem">
-                      <span className="itemKey">gender:</span>
+                      <span className="itemKey">Giới tính:</span>
                       <span className="itemValue">{infoUser.gender}</span>
                     </div>
                     <div className="detailItem">
-                      <span className="itemKey">Address:</span>
+                      <span className="itemKey">Địa chỉ:</span>
                       <span className="itemValue">{infoUser.address}</span>
                     </div>
                     {/* <div className="detailItem">
@@ -68,7 +68,10 @@ const PersonalPageRecruit = () => {
                   <button type="button">Cập nhật</button>
                 </Link>
 
-                <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" />
+                <Chart
+                  aspect={3 / 1}
+                  title="Thống kê khả năng làm việc của nhà tuyển dụng trong 6 tháng qua"
+                />
               </div>
             </div>
             {/* <div className="bottom">

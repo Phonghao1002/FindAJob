@@ -1,24 +1,34 @@
-// require("dotenv").config();
-// const nodemailer = require("nodemailer");
-// let sendSimpleEmail = async (dataSend) => {
-//   let transporter = nodemailer.createTransport({
-//     host: "smtp.gmail.com",
-//     port: 587,
-//     secure: false,
-//     auth: {
-//       user: process.env.EMAIL_APP,
-//       pass: process.env.EMAIL_APP_PASSWORD,
-//     },
-//   });
+const nodemailer = require("nodemailer");
+require("dotenv").config();
 
-//   // thats the key part, without all these it didn't work for me
-//   let info = transporter.sendMail({
-//     from: '"hào phạm" <phamphonghao1002@gmail.com>',
-//     to: dataSend.reciverEmail,
-//     subject: "Test Nodemailer",
-//     text: "You recieved message from ",
-//     html: "<b>Hello</b>",
-//   });
-// };
+class Mailer {
+  constructor() {
+    this.transporter = nodemailer.createTransport({
+      service: "Gmail",
+      auth: {
+        user: "phamphonghao1002@gmail.com",
+        pass: "rumahncogzoobuuu",
+      },
+    });
+  }
 
-// module.exports = { sendSimpleEmail: sendSimpleEmail };
+  // eslint-disable-next-line class-methods-use-this
+  message = (to, subject, html) => ({
+    from: "phamphonghao1002@gmail.com",
+    to,
+    subject,
+    html,
+  });
+
+  sendMail(mail) {
+    this.transporter.sendMail(mail, (err, info) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(`Message sent: ${info.response}`);
+      }
+    });
+  }
+}
+
+module.exports = Mailer;

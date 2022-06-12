@@ -15,10 +15,21 @@ import Container from "@mui/material/Container";
 import SidebarCandidate from "../sidebarCandidate/SidebarCandidate";
 import NavbarCandidate from "../NavbarCandidate/NavbarCandidate";
 // import KeyIcon from '@mui/icons-material/Key';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { axios } from "axios";
+import Navbargeneral from "../../navbargeneral/Navbargeneral";
 
 const ChangePassword = () => {
+  const [infoUser, setInfoUser] = useState({});
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("infoUser"));
+    if (data) {
+      setInfoUser(data);
+    }
+    // setUsers(initialState);
+    // console.log("infoUser", infoUser);
+  }, []);
   const [user, setUser] = useState({
     password: "",
   });
@@ -44,7 +55,7 @@ const ChangePassword = () => {
     <div className="homeChangePassword">
       <SidebarCandidate />
       <div className="homeChangePasswordContainer">
-        <NavbarCandidate />
+        <Navbargeneral infoUser={infoUser} />
         <div className="login-page">
           <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -60,7 +71,7 @@ const ChangePassword = () => {
                 <LockOutlinedIcon />
               </Avatar>
               <Typography component="h1" variant="h5">
-                Change Password
+                Đặt lại mật khẩu
               </Typography>
               <Box component="form" noValidate sx={{ mt: 3 }}>
                 <Grid container spacing={2}>
@@ -71,7 +82,7 @@ const ChangePassword = () => {
                       required
                       fullWidth
                       id="firstName"
-                      label="Password"
+                      label="Mật khẩu"
                       autoFocus
                       onChange={onChangeInput}
                     />
@@ -81,7 +92,7 @@ const ChangePassword = () => {
                       required
                       fullWidth
                       id="lastName"
-                      label="New Password"
+                      label="Mật khẩu mới"
                       name="lastName"
                       autoComplete="family-name"
                       onChange={onChangeInput}
@@ -92,7 +103,7 @@ const ChangePassword = () => {
                       required
                       fullWidth
                       id="password"
-                      label="Confirm Password"
+                      label="Nhập lại mật khẩu"
                       name="password"
                       value={user.password}
                       autoComplete="email"
@@ -113,14 +124,14 @@ const ChangePassword = () => {
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  Reset My Password
+                  Đặt lại mật khẩu
                 </Button>
                 <Grid container justifyContent="flex-end">
-                  <Grid item>
+                  {/* <Grid item>
                     <Link href="/login" variant="body2">
                       Return to? Sign in
                     </Link>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Box>
             </Box>

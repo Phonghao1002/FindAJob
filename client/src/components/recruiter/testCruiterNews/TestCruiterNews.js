@@ -92,7 +92,12 @@ const TestCruiterNews = () => {
       alert(err.response.data.msg);
     }
   };
-  console.log("đsấd", recruitNews);
+  // console.log("đsấd", recruitNews);
+
+  const formatPrice = (value) => {
+    let valueString = new Intl.NumberFormat("en-US").format(value);
+    return valueString;
+  };
   return (
     <div className="homeManagementNewsRecruit">
       <SidebarRecruiter />
@@ -145,7 +150,7 @@ const TestCruiterNews = () => {
                       {recruitNew.content}{" "}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {recruitNew.price}
+                      {formatPrice(recruitNew.price)} VNĐ
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {recruitNew.address}

@@ -10,6 +10,7 @@ const initialState = {
   title: "",
   price: 0,
   description: "",
+  requirements: "",
   content: "",
   category: "",
   address: "",
@@ -158,7 +159,7 @@ const CreateRecruitNews = () => {
       </div>
       <form onSubmit={handleSubmit}>
         <div className="row">
-          <label htmlFor="recruitNews_id">RecruitNews ID</label>
+          <label htmlFor="recruitNews_id">Mã tin tuyển dụng</label>
           <input
             type="text"
             name="recruitNews_id"
@@ -171,7 +172,7 @@ const CreateRecruitNews = () => {
         </div>
 
         <div className="row">
-          <label htmlFor="title">Title</label>
+          <label htmlFor="title">Tiêu đề</label>
           <input
             type="text"
             name="title"
@@ -183,7 +184,7 @@ const CreateRecruitNews = () => {
         </div>
 
         <div className="row">
-          <label htmlFor="price">Price</label>
+          <label htmlFor="price">Mức lương</label>
           <input
             type="number"
             name="price"
@@ -195,7 +196,7 @@ const CreateRecruitNews = () => {
         </div>
 
         <div className="row">
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">Mô tả công việc</label>
           <textarea
             type="text"
             name="description"
@@ -208,8 +209,21 @@ const CreateRecruitNews = () => {
         </div>
 
         <div className="row">
-          <label htmlFor="content">Content</label>
+          <label htmlFor="description">Yêu cầu công việc</label>
           <textarea
+            type="text"
+            name="requirements"
+            id="requirements"
+            required
+            value={recruitNews.requirements}
+            rows="5"
+            onChange={handleChangeInput}
+          />
+        </div>
+
+        <div className="row">
+          <label htmlFor="content">Tên Công ty</label>
+          <input
             type="text"
             name="content"
             id="content"
@@ -221,7 +235,7 @@ const CreateRecruitNews = () => {
         </div>
 
         <div className="row">
-          <label htmlFor="content">Address</label>
+          <label htmlFor="content">Địa chỉ</label>
           <input
             type="text"
             name="address"
@@ -234,7 +248,7 @@ const CreateRecruitNews = () => {
         </div>
 
         <div className="row">
-          <label htmlFor="rank">Rank</label>
+          <label htmlFor="rank">Vị trí cần tuyển</label>
           <input
             type="text"
             name="rank"
@@ -260,13 +274,13 @@ const CreateRecruitNews = () => {
         </div>
 
         <div className="row">
-          <label htmlFor="categories">Categories: </label>
+          <label htmlFor="categories">Danh mục: </label>
           <select
             name="category"
             value={recruitNews.category}
             onChange={handleChangeInput}
           >
-            <option value="">Please select a category</option>
+            <option value="">Hãy chọn một danh mục</option>
             {categories.map((category) => (
               <option value={category.name} key={category._id}>
                 {category.name}
@@ -275,7 +289,7 @@ const CreateRecruitNews = () => {
           </select>
         </div>
 
-        <button type="submit">{onEdit ? "Update" : "Create"}</button>
+        <button type="submit">{onEdit ? "Chỉnh sửa" : "Tạo mới"}</button>
       </form>
     </div>
   );

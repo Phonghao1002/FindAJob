@@ -12,7 +12,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import AppBar from "@material-ui/core/AppBar";
 import { DataGrid } from "@mui/x-data-grid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Navbargeneral from "../../navbargeneral/Navbargeneral";
 
 const columns = [
   { field: "id", headerName: "ID", width: 50 },
@@ -137,13 +138,22 @@ const useStyles = makeStyles((theme) => ({
 
 const Decentralization = () => {
   const classes = useStyles();
+  const [infoUser, setInfoUser] = useState({});
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("infoUser"));
+    if (data) {
+      setInfoUser(data);
+    }
+    // console.log(data);
+  }, []);
   // const [openTable, setOpenTable] = useState(false);
 
   return (
     <div className="decentralization">
       <Sidebar />
       <div className="decentralizationContainer">
-        <NavbarAdmin />
+        <Navbargeneral infoUser={infoUser} />
         <div className={classes.home}>
           <div className={classes.root}>
             <CssBaseline />

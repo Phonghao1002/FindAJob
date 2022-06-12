@@ -46,7 +46,35 @@ const RecruitmentCtrl = {
           status,
         }
       );
-      res.json({ msg: "Profile browsing successful!" });
+      res.json({ msg: "Duyệt hồ sơ thành công!" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+
+  getRecruitmentPending: async (req, res) => {
+    try {
+      const recruitmentPending = await Recruitment.find({
+        status: "pending",
+      });
+      res.json({
+        recruitmentPending: recruitmentPending,
+        result: recruitmentPending.length,
+      });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+
+  getRecruitmentApproved: async (req, res) => {
+    try {
+      const recruitmentApproved = await Recruitment.find({
+        status: "Approved",
+      });
+      res.json({
+        recruitmentApproved: recruitmentApproved,
+        result: recruitmentApproved.length,
+      });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

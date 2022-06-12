@@ -2,9 +2,12 @@ const Users = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const emailService = require("../routes/emailService");
+const Mailer = require("../routes/emailService");
 // const {google} = require('googleapis')
 // const {OAuth2} = google.auth
 // const fetch = require('node-fetch')
+
+const mailer = new Mailer();
 
 // const client = new OAuth2(process.env.MAILING_SERVICE_CLIENT_ID)
 
@@ -13,9 +16,13 @@ const userCtrl = {
   register: async (req, res) => {
     try {
       const { name, email, password } = req.body;
+      const mail = mailer.message(email, "Test mail", "WellCome");
+      mailer.sendMail(mail);
 
       if (!name || !email || !password)
-        return res.status(400).json({ msg: "Please fill in all fields." });
+        return res
+          .status(400)
+          .json({ msg: "Vui lòng điền vào tất cả các lĩnh vực." });
 
       // if (!validateEmail(email))
       //     return res.status(400).json({ msg: "Invalid emails." })
@@ -23,13 +30,12 @@ const userCtrl = {
       //   reciverEmail: email,
       // });
       const user = await Users.findOne({ email });
-      if (user)
-        return res.status(400).json({ msg: "This email already exists." });
+      if (user) return res.status(400).json({ msg: "Email này đã tồn tại." });
 
       if (password.length < 6)
         return res
           .status(400)
-          .json({ msg: "Password must be at least 6 characters." });
+          .json({ msg: "Mật khẩu phải có ít nhất 6 ký tự." });
 
       //Mã hóa mật khẩu
       const passwordHash = await bcrypt.hash(password, 12);
@@ -59,7 +65,7 @@ const userCtrl = {
       // const url = `${CLIENT_URL}/user/activate/${activation_token}`;
       // sendMail(email, url);
 
-      res.json({ msg: "Register Success! " });
+      res.json({ msg: "Đăng ký thành công! " });
 
       // res.json(newUser)
     } catch (err) {
@@ -72,15 +78,17 @@ const userCtrl = {
       const { email, password } = req.body;
 
       if (!email || !password)
-        return res.status(400).json({ msg: "Please fill in all fields." });
+        return res
+          .status(400)
+          .json({ msg: "Vui lòng điền vào tất cả các lĩnh vực." });
 
       const user = await Users.findOne({ email });
       if (!user)
-        return res.status(400).json({ msg: "This email does not exist." });
+        return res.status(400).json({ msg: "Email này không tồn tại." });
 
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch)
-        return res.status(400).json({ msg: "Password is incorrect." });
+        return res.status(400).json({ msg: "Mật khẩu không đúng." });
 
       // If login success , create access token and refresh token
       const accesstoken = createAccessToken({ id: user._id });
@@ -93,7 +101,7 @@ const userCtrl = {
       });
       const infoUser = await Users.findOne({ email });
       res.json({
-        msg: "Login success!",
+        msg: "Đăng nhập thành công!",
         accesstoken,
         infoUser,
       });
@@ -106,11 +114,13 @@ const userCtrl = {
     try {
       const rf_token = req.cookies.refreshtoken;
       if (!rf_token)
-        return res.status(400).json({ msg: "Please Login or Register" });
+        return res.status(400).json({ msg: "Vui lòng đăng nhập hoặc đăng ký" });
 
       jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err)
-          return res.status(400).json({ msg: "Please Login or Register" });
+          return res
+            .status(400)
+            .json({ msg: "Vui lòng đăng nhập hoặc đăng ký" });
 
         const accesstoken = createAccessToken({ id: user.id });
 
@@ -130,7 +140,7 @@ const userCtrl = {
       if (password.length < 6)
         return res
           .status(400)
-          .json({ msg: "Password must be at least 6 characters." });
+          .json({ msg: "Mật khẩu phải có ít nhất 6 ký tự." });
 
       await Users.findOneAndUpdate(
         { _id: req.user.id },
@@ -139,7 +149,7 @@ const userCtrl = {
         }
       );
 
-      res.json({ msg: "Password successfully changed!" });
+      res.json({ msg: "Mật khẩu đã được thay đổi thành công!" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -148,7 +158,8 @@ const userCtrl = {
   getUser: async (req, res) => {
     try {
       const user = await Users.findById(req.user.id).select("-password");
-      if (!user) return res.status(400).json({ msg: "User does not exist." });
+      if (!user)
+        return res.status(400).json({ msg: "Người dùng không tồn tại." });
 
       res.json(user);
     } catch (err) {
@@ -168,7 +179,7 @@ const userCtrl = {
   logout: async (req, res) => {
     try {
       res.clearCookie("refreshtoken", { path: "/user/refresh_token" });
-      return res.json({ msg: "Logged out" });
+      return res.json({ msg: "Đã đăng xuất" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -186,13 +197,13 @@ const userCtrl = {
         birthday,
         company,
         password,
-        logo,
       } = req.body;
-      if (!avatar) return res.status(400).json({ msg: "No image upload" });
+      if (!avatar)
+        return res.status(400).json({ msg: "Không có hình ảnh tải lên" });
 
       const user = await Users.findOne({ name });
       if (user)
-        return res.status(400).json({ msg: "This users already exists." });
+        return res.status(400).json({ msg: "Người dùng này đã tồn tại." });
 
       const newUser = new Users({
         name,
@@ -204,12 +215,11 @@ const userCtrl = {
         birthday,
         company,
         password,
-        logo,
         status: "pending",
       });
       // res.json(newRecruitNew)
       await newUser.save();
-      res.json({ msg: "Created a User News!" });
+      res.json({ msg: "Đã tạo mới một Người Dùng!" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -217,18 +227,10 @@ const userCtrl = {
   updateUser: async (req, res) => {
     // res.json({ msg: "Update Success!" });
     try {
-      const {
-        name,
-        avatar,
-        phone,
-        address,
-        gender,
-        birthday,
-        company,
-        password,
-        logo,
-      } = req.body;
-      if (!avatar) return res.status(400).json({ msg: "No image upload" });
+      const { name, avatar, phone, address, gender, birthday, company } =
+        req.body;
+      if (!avatar)
+        return res.status(400).json({ msg: "Không có hình ảnh tải lên" });
 
       await Users.findByIdAndUpdate(
         { _id: req.params.id },
@@ -240,12 +242,10 @@ const userCtrl = {
           gender,
           birthday,
           company,
-          password,
-          logo,
         }
       );
 
-      res.json({ msg: "Update Success!" });
+      res.json({ msg: "Cập nhật thành công!" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -262,7 +262,7 @@ const userCtrl = {
         }
       );
 
-      res.json({ msg: "Update role Success!" });
+      res.json({ msg: "Cập nhật vai trò Thành công!" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -271,7 +271,8 @@ const userCtrl = {
   addSaveJobs: async (req, res) => {
     try {
       const user = await Users.findById(req.user.id);
-      if (!user) return res.status(400).json({ msg: "User does not exist." });
+      if (!user)
+        return res.status(400).json({ msg: "Người dùng không tồn tại." });
 
       await Users.findOneAndUpdate(
         { _id: req.user.id },
@@ -280,7 +281,7 @@ const userCtrl = {
         }
       );
 
-      return res.json({ msg: "Added to cartAdded to my work" });
+      return res.json({ msg: "Đã thêm vào mục công việc của tôi!" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

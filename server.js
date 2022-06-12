@@ -46,34 +46,34 @@ app.use("/api", require("./routes/recruitmentRouter"));
 //     console.log("Server is ready to take our messages");
 //   }
 // });
-// app.post("/contact_us", (req, res, next) => {
-//   var name = req.body.name;
-//   var email = req.body.email;
-//   var subject = req.body.subject;
-//   var message = req.body.message;
-
-//   var mail = {
-//     from: "hào phạm",
-//     to: "phamphonghao10022000@gmail.com",
-//     subject: "Test Nodemailer",
-//     text: "You recieved message from " + req.body.email,
-//     html:
-//       "<b>Hello</b>"
-//   };
-
-//   transporter.sendMail(mail, (err, data) => {
-//     if (err) {
-//       console.log("failed");
-//       res.json({
-//         status: "fail",
-//       });
-//     } else {
-//       console.log("successful");
-//       res.json({
-//         status: "success",
-//       });
-//     }
+// app.post("/sendMail", async (req, res) => {
+//   const { email } = req.body;
+//   let transporter = nodemailer.createTransport({
+//     service: "gmail",
+//     auth: {
+//       user: "phamphonghao1002@gmail.com",
+//       pass: "phao405393",
+//     },
 //   });
+//   await transporter.sendMail(
+//     {
+//       from: "phamphonghao1002@gmail.com",
+//       to: `${email}`,
+//       subject: "Test Nodemailer",
+//       text: "You recieved message from " + req.body.email,
+//       html: "<b>Hello</b>",
+//     },
+//     (err) => {
+//       if (err) {
+//         return res.json({
+//           message: "lỗi",
+//           err,
+//         });
+//       }
+//       return res.json({ message: "đã gửi thành công ${email}" });
+//     }
+//   );
+// });
 // });
 // Connect to mongodb
 const URI = process.env.MONGODB_URL;

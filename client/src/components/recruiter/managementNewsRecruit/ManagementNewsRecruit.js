@@ -115,28 +115,34 @@ const ManagementNewsRecruit = () => {
         <div className="datatable">
           <div className="datatableTitle">
             Danh sách hồ sơ ứng tuyển
-            <Link to="/#" className="link">
+            {/* <Link to="/#" className="link">
               Add New
-            </Link>
+            </Link> */}
           </div>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 800 }} aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <StyledTableCell align="right">id</StyledTableCell>
-                  <StyledTableCell>urlCV</StyledTableCell>
+                  <StyledTableCell align="right">Mã</StyledTableCell>
+                  <StyledTableCell>File CV</StyledTableCell>
                   {/* <StyledTableCell align="right">image</StyledTableCell> */}
-                  <StyledTableCell align="right">name</StyledTableCell>
-                  <StyledTableCell align="right">descriptions</StyledTableCell>
+                  <StyledTableCell align="right">Họ Tên</StyledTableCell>
                   <StyledTableCell align="right">
-                    phoneNumber&nbsp;
+                    Mô tả bản thân
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    Số điện thoại&nbsp;
                   </StyledTableCell>
                   <StyledTableCell align="right">email&nbsp;</StyledTableCell>
                   <StyledTableCell align="right">
-                    createdAt&nbsp;
+                    Ngày tạo&nbsp;
                   </StyledTableCell>
-                  <StyledTableCell align="right">status&nbsp;</StyledTableCell>
-                  <StyledTableCell align="left">Action&nbsp;</StyledTableCell>
+                  <StyledTableCell align="right">
+                    Trạng thái&nbsp;
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    Hành dộng&nbsp;
+                  </StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

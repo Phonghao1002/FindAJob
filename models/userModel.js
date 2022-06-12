@@ -54,12 +54,12 @@ const userSchema = new mongoose.Schema(
       unique: true,
       default: null,
     },
-    logo: {
-      type: String,
-      // default: null,
-      default:
-        "https://res.cloudinary.com/safehorizons/image/upload/v1650769686/test/ofwecfzgvwzolaaiqube.jpg",
-    },
+    // logo: {
+    //   type: String,
+    //   // default: null,
+    //   default:
+    //     "https://res.cloudinary.com/safehorizons/image/upload/v1650769686/test/ofwecfzgvwzolaaiqube.jpg",
+    // },
     company: {
       type: String,
       // default: null,

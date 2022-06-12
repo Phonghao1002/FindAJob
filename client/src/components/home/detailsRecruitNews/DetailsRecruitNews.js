@@ -44,6 +44,9 @@ const DetailsRecruitNews = () => {
       src: "https://vcdn-kinhdoanh.vnecdn.net/2020/03/16/fpt-danang-new-01-1718-1584330284.jpg",
     },
     {
+      src: "https://cdnmedia.baotintuc.vn/2017/10/27/17/09/doanhnghiep.jpg",
+    },
+    {
       src: "https://talenta.vn/wp-content/uploads/2018/11/itnews1_UXIE.jpg",
     },
   ];
@@ -76,6 +79,11 @@ const DetailsRecruitNews = () => {
   };
 
   const onRecruitmentClick = () => {};
+
+  const formatPrice = (value) => {
+    let valueString = new Intl.NumberFormat("en-US").format(value);
+    return valueString;
+  };
 
   return (
     <div>
@@ -143,36 +151,21 @@ const DetailsRecruitNews = () => {
               <p className="hotelDesc">{detailRecruitNew.description}</p>
 
               <h1 className="hotelTitle">Yêu cầu công việc</h1>
-              <span>
-                Previous working experience as Software Developer for 1 year up
-              </span>
-              <ul>
-                For Backend:
-                <li>Good at OOP, Design Pattern</li>
-                <li>Good knowledge of web skills: .NET, .NET Core </li>
-                <li>Experience with Agile Process and Scrum Methodologies</li>
-                <li>
-                  Experience with Extreme Programming methodologies such as
-                  Test-Driven Development, Refactoring, and Continuous
-                  Integration.
-                </li>
-                <li>
-                  Experience with one of these cloud platforms: Azure, AWS, or
-                  GCP
-                </li>
-              </ul>
+              <span className="hotelDesc">{detailRecruitNew.requirements}</span>
             </div>
             <div className="hotelDetailsPrice">
               <h1>Ứng tuyển ngay!</h1>
               <div className="hotelExpire">
                 <DateRangeIcon className="icon" />
-                <span>Hết hạn nộp: </span>
-                <span>04/06/2022</span>
+                <span>Bạn còn: </span>
+                <span>
+                  {detailRecruitNew.dayApply} ngày để nộp hồ sơ ứng tuyển
+                </span>
               </div>
               <div className="hotelPrice">
-                <AttachMoneyIcon className="icon" />
-                <span>Lương: </span>
-                <span>{detailRecruitNew.price}</span>
+                {/* <AttachMoneyIcon className="icon" /> */}
+                {/* <span>Lương: </span> */}
+                <span>$ Lương: {formatPrice(detailRecruitNew.price)} VNĐ</span>
               </div>
               <h1>THÔNG TIN KHÁC</h1>
               <ul>

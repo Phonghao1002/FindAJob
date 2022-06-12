@@ -30,6 +30,10 @@ const recruitNewsSchema = new mongoose.Schema(
       type: Object,
       required: true,
     },
+    requirements: {
+      type: String,
+      required: true,
+    },
     category: {
       type: String,
       required: true,

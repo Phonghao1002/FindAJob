@@ -79,7 +79,7 @@ const Categories = () => {
         <Navbargeneral infoUser={infoUser} />
         <div className="categories">
           <form onSubmit={createCategory}>
-            <label htmlFor="category">Category</label>
+            <label htmlFor="category">Danh mục</label>
             <input
               type="text"
               name="category"
@@ -99,10 +99,10 @@ const Categories = () => {
                   <button
                     onClick={() => editCategory(category._id, category.name)}
                   >
-                    Edit
+                    Sửa
                   </button>
                   <button onClick={() => deleteCategory(category._id)}>
-                    Delete
+                    Xóa
                   </button>
                 </div>
               </div>

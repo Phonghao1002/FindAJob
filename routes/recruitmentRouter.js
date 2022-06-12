@@ -11,6 +11,12 @@ router.route("/applicationHistory").get(RecruitmentCtrl.getRecruitmentHistory);
 //
 router.route("/updateRecruitMent/:id").patch(RecruitmentCtrl.updateRecuitment); //
 
+router.route("/recruitmentPending").get(RecruitmentCtrl.getRecruitmentPending);
+
+router
+  .route("/recruitmentApproved")
+  .get(RecruitmentCtrl.getRecruitmentApproved);
+
 // .post(recruitNewsCtrl.createRecruitNews)
 
 // router.route('/recruitNews/:id')

@@ -4,6 +4,8 @@ import { useContext } from "react";
 // import { GlobalState } from "../../../GlobalState"
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 const SearchItem = ({ recruitNew, isAdmin, addSaveJobs }) => {
   // const state = useContext(GlobalState)

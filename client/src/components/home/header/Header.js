@@ -18,8 +18,10 @@ const Header = ({ type }) => {
   const state = useContext(GlobalState);
   const [recruitNews, setRecruitNews] = state.recruitmentNewsAPI.recruitNews;
   const [categories] = state.categoriesAPI.categories;
+  console.log("category", categories);
 
   const [category, setCategory] = state.recruitmentNewsAPI.category;
+  console.log("category", category);
   const [sort, setSort] = state.recruitmentNewsAPI.sort;
   const [search, setSearch] = state.recruitmentNewsAPI.search;
 

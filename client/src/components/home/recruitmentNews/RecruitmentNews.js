@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { GlobalState } from "../../../GlobalState";
 import SearchItem from "../searchItem/SearchItem";
 import Loading from "../../utils/loading/Loading";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 import "./recruitmentNews.css";
 import LoadMore from "./LoadMore";
 
@@ -10,6 +12,7 @@ const RecruitmentNews = () => {
   const [recruitNews] = state.recruitmentNewsAPI.recruitNews;
   const [isAdmin] = state.userAPI.isAdmin;
   const addSaveJobs = state.userAPI.addSaveJobs;
+  // console.log("aaa", addSaveJobs);
   const [categories] = state.categoriesAPI.categories;
 
   const [category, setCategory] = state.recruitmentNewsAPI.category;
@@ -128,7 +131,16 @@ const RecruitmentNews = () => {
                     <SearchItem />
                     <SearchItem />
                     <SearchItem /> */}
-          <LoadMore />
+          {/* <LoadMore /> */}
+          <Stack spacing={2}>
+            {/* <Pagination count={10} shape="rounded" /> */}
+            <Pagination
+              count={10}
+              variant="outlined"
+              shape="rounded"
+              className="pagination"
+            />
+          </Stack>
         </div>
         {recruitNews.length === 0 && <Loading />}
       </div>
