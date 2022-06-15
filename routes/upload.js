@@ -195,7 +195,7 @@ router.get("/getuploadCV", async (req, res) => {
       email,
       idJob,
       idUser,
-      status = "pending",
+      status = "Chưa duyệt",
     } = req.body;
     const fileCV = req.files.fileCV;
     try {

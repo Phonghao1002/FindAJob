@@ -40,10 +40,10 @@ const HomeRecruiter = () => {
           <Widget type="Tin đã được duyệt" />
           <Widget type="Tin chờ phê duyệt" />
         </div>
-        <div className="charts">
+        {/* <div className="charts">
           <Featured />
           <Chart title="6 tháng trước (Tuyển dụng)" aspect={2 / 1} />
-        </div>
+        </div> */}
         <div className="listContainer">
           <div className="listTitle">
             Danh sách đã nộp hồ sơ ứng tuyển trong 1 tuần qua

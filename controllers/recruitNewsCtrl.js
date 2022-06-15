@@ -61,7 +61,7 @@ const recruitNewsCtrl = {
       const recruitNews = await features.query;
 
       res.json({
-        status: "success",
+        status: "Đã được duyệt",
         result: recruitNews.length,
         recruitNews: recruitNews,
       });
@@ -104,7 +104,7 @@ const recruitNewsCtrl = {
         rank,
         address,
         dayApply,
-        status: "pending",
+        status: "Chưa duyệt",
       });
       // res.json(newRecruitNew)
       await newRecruitNew.save();

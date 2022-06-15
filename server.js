@@ -5,6 +5,7 @@ const fileUpload = require("express-fileupload");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
+// const router = require("./routes");
 
 const app = express();
 app.use(express.json());
@@ -22,6 +23,8 @@ app.use("/api", require("./routes/categoryRouter"));
 app.use("/api", require("./routes/upload"));
 app.use("/api", require("./routes/recruitNewsRouter"));
 app.use("/api", require("./routes/recruitmentRouter"));
+app.use("/api", require("./routes/applicationFile"));
+// app.use(router);
 
 //-----------------------sendmail-------------------//
 // app.use((request, response, next) => {

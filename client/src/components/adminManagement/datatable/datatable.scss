@@ -56,6 +56,19 @@
     }
   }
 
+  .cellBrowser {
+    align-items: center;
+
+    .viewBrowser {
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: darkblue;
+      background-color: rgb(95, 173, 246);
+      border: 1px dotted rgba(0, 0, 139, 0.596);
+      cursor: pointer;
+    }
+  }
+
   .cellAction {
     display: flex;
     align-items: center;

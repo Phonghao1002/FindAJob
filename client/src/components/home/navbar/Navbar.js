@@ -74,13 +74,25 @@ const Navbar = () => {
                 </Link>
               </>
             )}
+            {!checkUserLogin() && (
+              <div className="dropdown">
+                <div className="item">
+                  <span className="name">NHÀ TUYỂN DỤNG</span>
+                </div>
+
+                <div className="dropdown-content">
+                  <a href="/login">Đăng nhập</a>
+                  <a href="/registerRecruit">Đăng ký</a>
+                </div>
+              </div>
+            )}
 
             {/* <div className="cart-icon"> */}
             {/* <h1>0</h1> */}
             {/* <div className="item"> */}
             {/* <span>admin</span> */}
             {checkUserLogin() && (
-              <div class="dropdown">
+              <div className="dropdown">
                 <div className="item">
                   <img
                     src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
@@ -90,7 +102,7 @@ const Navbar = () => {
                   <span className="name">{infoUser.name}</span>
                 </div>
                 {/* <button class="dropbtn">Dropdown</button> */}
-                <div class="dropdown-content">
+                <div className="dropdown-content">
                   <a href="#">Trang cá nhân</a>
                   <a
                     href="#"
@@ -110,7 +122,7 @@ const Navbar = () => {
                     Trang Quản lý
                     {infoUser.role == 0 && (
                       <div className="cart-icon">
-                        <h1>0</h1>
+                        <h1>{saveJob.length}</h1>
                       </div>
                     )}
                   </a>

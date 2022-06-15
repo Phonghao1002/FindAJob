@@ -20,6 +20,12 @@ const RecruitmentNews = () => {
   const [search, setSearch] = state.recruitmentNewsAPI.search;
   // console.log(state)
 
+  const handleCategory = (e) => {
+    console.log("bbb", e.target.value);
+    setCategory(e.target.value);
+    setSearch("");
+  };
+
   return (
     <div className="listContainer">
       <div className="listWrapper">
@@ -41,14 +47,42 @@ const RecruitmentNews = () => {
           <div className="lsItem">
             <label>Bộ lọc</label>
             <div className="lsOptions">
-              <div className="lsOptionItem">
-                <span className="lsOptionText">Sắp xếp</span>
-                <select className="lsOptioncbbox">
-                  <option value="">Mới nhất</option>
-                  <option value="sort=oldest">Cũ nhất</option>
+              <div className="headerSearchItem">
+                <span className="headerSearchText">Danh mục: </span>
+                <select
+                  className="lsOptioncbbox"
+                  name="category"
+                  value={category}
+                  onChange={handleCategory}
+                >
+                  <option value="">Tất cả các loại ngôn ngữ</option>
+                  {categories.map((category) => (
+                    <option
+                      value={"category=" + category.name}
+                      key={category._id}
+                    >
+                      {category.name}
+                    </option>
+                  ))}
                 </select>
               </div>
+
               <div className="lsOptionItem">
+                <span className="lsOptionText">Sắp xếp</span>
+                <select
+                  value={sort}
+                  onChange={(e) => setSort(e.target.value)}
+                  className="lsOptioncbbox"
+                >
+                  <option value="">Tin mới nhất</option>
+                  <option value="sort=oldest">Tin cũ nhất</option>
+                </select>
+                {/* <select className="lsOptioncbbox">
+                  <option value="">Mới nhất</option>
+                  <option value="sort=oldest">Cũ nhất</option>
+                </select> */}
+              </div>
+              {/* <div className="lsOptionItem">
                 <span className="lsOptionText">Các loại ngôn ngữ phổ biến</span>
                 <select className="lsOptioncbbox">
                   <option>Tất cả</option>
@@ -60,7 +94,7 @@ const RecruitmentNews = () => {
                   <option>C-Sharp (C#)</option>
                   <option>...</option>
                 </select>
-              </div>
+              </div> */}
               {/* <div className="lsOptionItem">
                 <span className="lsOptionText">Ngành nghề</span>
                 <select className="lsOptioncbbox">

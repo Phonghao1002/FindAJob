@@ -38,9 +38,13 @@ export default function UserAPI(token) {
     if (check) {
       setSaveJob([...saveJob, { ...recruitNew, quantity: 1 }]);
 
-      // await axios.patch('/user/addsaveJobs', {saveJobs: [...saveJobs, {...recruiteNew, quantity: 1}]}, {
-      //     headers: {Authorization: token}
-      // })
+      await axios.patch(
+        "/user/addsaveJobs",
+        { saveJob: [...saveJob, { ...recruitNew, quantity: 1 }] },
+        {
+          headers: { Authorization: token },
+        }
+      );
     } else {
       alert("This job posting has been saved to my jobs");
     }
@@ -50,7 +54,7 @@ export default function UserAPI(token) {
     const getUsers = async () => {
       const res = await axios.get("/user/users");
       setUsers(res.data);
-      // console.log(res)
+      console.log(res.data);
     };
     getUsers();
   }, []);

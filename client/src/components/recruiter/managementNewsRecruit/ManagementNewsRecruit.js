@@ -74,10 +74,11 @@ const ManagementNewsRecruit = () => {
     getRecruitMent();
   }, []);
 
-  const handleBrowser = async (id) => {
+  const handleBrowser = async (id, email) => {
     await axios
       .patch(`http://localhost:4110/api/updateRecruitMent/${id}`, {
-        status: "Approved",
+        status: "Đã được duyệt",
+        email,
       })
       .then((res) => {
         alert(res.data.msg);
@@ -179,7 +180,7 @@ const ManagementNewsRecruit = () => {
                       {recruitment.status}
                     </StyledTableCell>
                     <StyledTableCell className="cellActionRN">
-                      {recruitment.status !== "success" && (
+                      {recruitment.status !== "Đã được duyệt" && (
                         <>
                           <Link
                             id="btn_view"
@@ -189,7 +190,12 @@ const ManagementNewsRecruit = () => {
                           >
                             <Button
                               className="viewButtonRN"
-                              onClick={() => handleBrowser(recruitment._id)}
+                              onClick={() =>
+                                handleBrowser(
+                                  recruitment._id,
+                                  recruitment.email
+                                )
+                              }
                             >
                               Duyệt
                             </Button>

@@ -13,6 +13,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../../datatablesource";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
+import axios from "axios";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -37,6 +38,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const Datatable = ({}) => {
   const state = useContext(GlobalState);
   const [users] = state.userAPI.users;
+  console.log("ád", users);
 
   const [data, setData] = useState(userRows);
 
@@ -44,28 +46,27 @@ const Datatable = ({}) => {
     setData(data.filter((item) => item.id !== id));
   };
 
-  const actionColumn = [
-    {
-      field: "action",
-      headerName: "Action",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
-            <div
-              className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
-            >
-              Delete
-            </div>
-          </div>
-        );
-      },
-    },
-  ];
+  const handleCandidate = async (id, email) => {
+    await axios
+      .patch(`http://localhost:4110/user/update_role/${id}`, {
+        role: 0,
+      })
+      .then((res) => {
+        alert(res.data.msg);
+      })
+      .catch((err) => console.log("err"));
+  };
+
+  const handleRecruit = async (id, email) => {
+    await axios
+      .patch(`http://localhost:4110/user/update_role/${id}`, {
+        role: 2,
+      })
+      .then((res) => {
+        alert(res.data.msg);
+      })
+      .catch((err) => console.log("err"));
+  };
 
   return (
     <div className="datatable">
@@ -84,11 +85,13 @@ const Datatable = ({}) => {
               <StyledTableCell>Tên người dùng</StyledTableCell>
               {/* <StyledTableCell align="right">image</StyledTableCell> */}
               <StyledTableCell align="right">Email</StyledTableCell>
-              <StyledTableCell align="right">Mật khẩu</StyledTableCell>
               <StyledTableCell align="right">Ngày tạo&nbsp;</StyledTableCell>
+              <StyledTableCell align="right">Trạng thái</StyledTableCell>
+
               {/* <StyledTableCell align="right">Avartar&nbsp;</StyledTableCell> */}
               {/* <StyledTableCell align="right">updatedAt&nbsp;</StyledTableCell> */}
-              <StyledTableCell align="left">Hành động&nbsp;</StyledTableCell>
+              {/* <StyledTableCell align="left">Hành động&nbsp;</StyledTableCell> */}
+              <StyledTableCell align="left">Phân quyền&nbsp;</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -98,29 +101,39 @@ const Datatable = ({}) => {
 
                 <StyledTableCell component="th" scope="row">
                   <div className="cellWithImg">
-                    <img
-                      className="cellImg"
-                      src={user?.avatar?.url}
-                      alt="avatar"
-                    />
+                    <img className="cellImg" src={user.avatar} alt="avatar" />
                     {user.name}
                   </div>
                 </StyledTableCell>
                 {/* <StyledTableCell align="right">{recruitNew.images} </StyledTableCell> */}
                 <StyledTableCell align="right">{user.email} </StyledTableCell>
-                <StyledTableCell align="right">{user.password}</StyledTableCell>
                 <StyledTableCell align="right">
                   {new Date(user.createdAt).toLocaleDateString()}
                 </StyledTableCell>
+                <StyledTableCell align="right">{user.status}</StyledTableCell>
+                {/* <StyledTableCell align="right" className="cellBrowser">
+                  <Button className="viewBrowser">Duyệt</Button>
+                </StyledTableCell> */}
+
                 {/* <StyledTableCell align="right">{user.avatar}</StyledTableCell> */}
                 {/* <StyledTableCell align="right">{recruitNew.category}</StyledTableCell> */}
                 <StyledTableCell className="cellAction">
                   {/* <Link id="btn_view" to={`/recruiter/edit_RecruitNews/${recruitNew._id}`}> */}
-                  <Button className="viewButton">Edit</Button>
+                  <Button
+                    className="viewButton"
+                    onClick={() => handleCandidate(user._id)}
+                  >
+                    Ứng Viên
+                  </Button>
                   {/* </Link> */}
 
                   {/* <Link id="btn_view" to="#" onClick={() => deleteRecruitNews(recruitNew._id, recruitNew.images.public_id)}> */}
-                  <Button className="deleteButton">Delete</Button>
+                  <Button
+                    className="deleteButton"
+                    onClick={() => handleRecruit(user._id)}
+                  >
+                    Nhà tuyển dụng
+                  </Button>
                   {/* </Link> */}
                 </StyledTableCell>
               </StyledTableRow>

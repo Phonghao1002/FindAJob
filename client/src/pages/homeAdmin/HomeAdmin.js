@@ -41,10 +41,10 @@ const Home = () => {
           <Widget type="Tin đã được duyệt" />
           <Widget type="Tin chờ phê duyệt" />
         </div>
-        <div className="charts">
+        {/* <div className="charts">
           <Featured />
           <Chart title="Biểu đồ tuyển dụng trong 6 tháng qua" aspect={2 / 1} />
-        </div>
+        </div> */}
         <div className="listContainer">
           <div className="listTitle">
             Danh sách đã nộp hồ sơ ứng tuyển trong 1 tuần qua

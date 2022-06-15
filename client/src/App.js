@@ -10,6 +10,7 @@ import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import Register from "./pages/login/Register";
+import RegisterRecruit from "./pages/login/RegisterRecruit";
 import Home from "./pages/home/Home";
 import HomeCandidate from "./pages/homeCandidate/HomeCandidate";
 import ChangePassword from "./components/candidate/changePassword/ChangePassword";
@@ -61,6 +62,7 @@ export default function App() {
 
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="registerRecruit" element={<RegisterRecruit />} />
             <Route path="resetPassword" element={<ResetPassword />} />
 
             <Route path="admin">

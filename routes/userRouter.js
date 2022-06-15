@@ -15,9 +15,11 @@ router.get("/infor", auth, userCtrl.getUser);
 
 router.get("/users", userCtrl.getUsers);
 
+router.get("/recruiter", userCtrl.getRecruit);
+
 router.get("/logout", userCtrl.logout);
 
-router.post("/create", userCtrl.createUsers);
+router.post("/registerRecruit", userCtrl.createUsers);
 
 router.patch("/update/:id", userCtrl.updateUser);
 

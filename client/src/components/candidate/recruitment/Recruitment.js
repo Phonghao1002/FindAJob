@@ -16,6 +16,8 @@ const Recruitment = () => {
   const [descriptions, setDescriptions] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [birthday, setBirthday] = useState("");
 
   const [infoUser, setInfoUser] = useState({});
 
@@ -31,7 +33,14 @@ const Recruitment = () => {
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("infoUser"));
     if (data) {
+      console.log("asd", data);
       setInfoUser(data);
+      setName(data.name);
+      setPhoneNumber(data.phone);
+      setEmail(data.email);
+      setDescriptions(data.description);
+      setAddress(data.address);
+      setBirthday(data.birthday);
     }
     // console.log("data", infoUser);
   }, []);
@@ -91,6 +100,7 @@ const Recruitment = () => {
                   <label>Họ và tên: </label>
                   <input
                     placeholder="file name"
+                    value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
 
@@ -107,6 +117,7 @@ const Recruitment = () => {
                   <label>SĐT: </label>
                   <input
                     placeholder="file name"
+                    value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                 </div>
@@ -118,6 +129,7 @@ const Recruitment = () => {
                   <label>Mô tả về bản thân</label>
                   <textarea
                     type=""
+                    value={descriptions}
                     placeholder="Viết giới thiệu ngắn gọn về bản thân (điểm mạnh, điểm yếu) 
                                     và nêu rõ mong muốn, lý do làm việc tại công ty này. 
                                     Đây là cách gây ấn tượng với nhà tuyển dụng nếu bạn 
@@ -129,7 +141,25 @@ const Recruitment = () => {
                   <label>email: </label>
                   <input
                     placeholder="file name"
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="formInput">
+                  <label>Địa chỉ: </label>
+                  <input
+                    placeholder="file name"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
+                </div>
+
+                <div className="formInput">
+                  <label>Ngày sinh: </label>
+                  <input
+                    placeholder="file name"
+                    value={birthday}
+                    onChange={(e) => setBirthday(e.target.value)}
                   />
                 </div>
 

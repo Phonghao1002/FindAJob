@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { GlobalState } from "../../../GlobalState";
 // import DateRangeIcon from '@mui/icons-material/DateRange';
+import { TrendingUpIcon } from "@mui/icons-material/TrendingUp";
 
 const Header = ({ type }) => {
   const state = useContext(GlobalState);
@@ -21,11 +22,12 @@ const Header = ({ type }) => {
   console.log("category", categories);
 
   const [category, setCategory] = state.recruitmentNewsAPI.category;
-  console.log("category", category);
+  // console.log("category", category);
   const [sort, setSort] = state.recruitmentNewsAPI.sort;
   const [search, setSearch] = state.recruitmentNewsAPI.search;
 
   const handleCategory = (e) => {
+    console.log("bbb", e.target.value);
     setCategory(e.target.value);
     setSearch("");
   };
@@ -65,7 +67,7 @@ const Header = ({ type }) => {
         {type !== "list" && (
           <>
             <h1 className="headerTitle">
-              Việc làm CNTT - Phần mềm tại Đà Nẵng
+              Việc làm Công nghệ thông Tin - Phần mềm tại Đà Nẵng
             </h1>
             <p className="headerDesc">
               Việc làm IT - Việc làm IT xịn dành cho Developer chất
@@ -85,7 +87,7 @@ const Header = ({ type }) => {
                   <option value="">Tất cả các loại ngôn ngữ</option>
                   {categories.map((category) => (
                     <option
-                      value={"category=" + category._id}
+                      value={"category=" + category.name}
                       key={category._id}
                     >
                       {category.name}

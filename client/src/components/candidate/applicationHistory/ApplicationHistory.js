@@ -17,6 +17,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Navbargeneral from "../../navbargeneral/Navbargeneral";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -39,7 +40,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const ApplicationHistory = () => {
-  const [infoUser, setInfoUser] = useState();
+  const [infoUser, setInfoUser] = useState({});
   const [recruitments, setRecruitments] = useState([]);
 
   useEffect(() => {
@@ -47,7 +48,7 @@ const ApplicationHistory = () => {
     if (data) {
       setInfoUser(data);
     }
-    // console.log("data", infoUser);
+    console.log("data", infoUser);
   }, []);
 
   const getRecruitMent = async () => {
@@ -65,6 +66,18 @@ const ApplicationHistory = () => {
     // console.log("data", infoUser);
   }, [infoUser]);
 
+  const deleteRecruitment = async (id) => {
+    try {
+      const deleteRecruiment = axios.delete(
+        `http://localhost:4110/api/recruitment/${id}`
+      );
+      await deleteRecruitment;
+      alert("Đã hủy nộp bài ứng tuyển !");
+    } catch (err) {
+      alert(err.response.data.msg);
+    }
+  };
+
   // const state = useContext(GlobalState)
 
   // const [recruitNews] = state.recruitmentNewsAPI.recruitNews
@@ -73,7 +86,7 @@ const ApplicationHistory = () => {
     <div className="homeApplyHistory">
       <SidebarCandidate />
       <div className="homeApplyHistoryContainer">
-        <NavbarCandidate />
+        <Navbargeneral infoUser={infoUser} />
         <div className="PersonalPage">
           <div className="personalContainer">
             <div className="topPersonalPage">
@@ -143,27 +156,22 @@ const ApplicationHistory = () => {
                           {recruitment.status}
                         </StyledTableCell>
                         <StyledTableCell className="cellActionRN">
-                          <Link
+                          {/* <Link
                             id="btn_view"
                             to="#"
                             // to={`/recruiter/edit_RecruitNews/${recruitNew._id}`}
                             style={{ textDecoration: "none" }}
                           >
                             <Button className="viewButtonRN">Edit</Button>
-                          </Link>
+                          </Link> */}
 
                           <Link
                             id="btn_delete"
                             to="#"
-                            // onClick={() =>
-                            //   deleteRecruitNews(
-                            //     recruitNew._id,
-                            //     recruitNew.images.public_id
-                            //   )
-                            // }
+                            onClick={() => deleteRecruitment(recruitment._id)}
                             style={{ textDecoration: "none" }}
                           >
-                            <Button className="deleteButtonRN">Delete</Button>
+                            <Button className="deleteButtonRN">Hủy</Button>
                           </Link>
                         </StyledTableCell>
                       </StyledTableRow>

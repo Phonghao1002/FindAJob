@@ -46,16 +46,17 @@ const SearchItem = ({ recruitNew, isAdmin, addSaveJobs }) => {
           </div>
         </div>
         <div className="siDetails">
-          <div className="siRating">
-            <span>Lưu tin:</span>
-
-            <button onClick={() => addSaveJobs(recruitNew)}>
-              <FavoriteBorderIcon />
-            </button>
-          </div>
+          <div className="siRating">{/* <span>Lưu tin:</span> */}</div>
           <div className="siDetailTexts">
+            <div className="siRating">
+              {/* <span>Lưu tin:</span> */}
+
+              <button onClick={() => addSaveJobs(recruitNew)}>
+                <FavoriteBorderIcon />
+              </button>
+            </div>
             <span className="siPrice">
-              Còn {recruitNew.dayApply} ngày để ứng tuyển
+              Thời hạn: {recruitNew.dayApply} ngày
             </span>
             {/* <span className="siTaxOp">{recruitNew.rank}</span> */}
             <Link

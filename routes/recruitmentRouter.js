@@ -17,6 +17,8 @@ router
   .route("/recruitmentApproved")
   .get(RecruitmentCtrl.getRecruitmentApproved);
 
+router.route("/recruitment/:id").delete(RecruitmentCtrl.deleteRecruitment);
+
 // .post(recruitNewsCtrl.createRecruitNews)
 
 // router.route('/recruitNews/:id')

@@ -16,7 +16,15 @@ const userCtrl = {
   register: async (req, res) => {
     try {
       const { name, email, password } = req.body;
-      const mail = mailer.message(email, "Test mail", "WellCome");
+      const mail = mailer.message(
+        email,
+        "Test mail",
+        `<div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
+      <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to the DevAT channel.</h2>
+      <p>Congratulations! You're almost set to start using DEVAT✮SHOP.
+          Just click the button below to validate your email address.
+      </p>`
+      );
       mailer.sendMail(mail);
 
       if (!name || !email || !password)
@@ -45,6 +53,7 @@ const userCtrl = {
         name,
         email,
         password: passwordHash,
+        // status: "Chưa duyệt",
       });
 
       // Save mongodb
@@ -176,6 +185,15 @@ const userCtrl = {
     }
   },
 
+  getRecruit: async (req, res) => {
+    try {
+      const users = await Users.find({ role: 2 });
+      res.json(users);
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+
   logout: async (req, res) => {
     try {
       res.clearCookie("refreshtoken", { path: "/user/refresh_token" });
@@ -190,7 +208,6 @@ const userCtrl = {
       const {
         name,
         email,
-        avatar,
         phone,
         address,
         gender,
@@ -198,24 +215,47 @@ const userCtrl = {
         company,
         password,
       } = req.body;
-      if (!avatar)
-        return res.status(400).json({ msg: "Không có hình ảnh tải lên" });
+
+      const mail = mailer.message(email, "Test mail", "WellCome");
+      mailer.sendMail(mail);
+
+      // if (
+      //   !name ||
+      //   !email ||
+      //   !phone ||
+      //   !address ||
+      //   !gender ||
+      //   !birthday ||
+      //   !company ||
+      //   !password
+      // )
+      //   return res
+      //     .status(400)
+      //     .json({ msg: "Vui lòng điền vào tất cả các lĩnh vực." });
 
       const user = await Users.findOne({ name });
       if (user)
         return res.status(400).json({ msg: "Người dùng này đã tồn tại." });
 
+      if (password.length < 6)
+        return res
+          .status(400)
+          .json({ msg: "Mật khẩu phải có ít nhất 6 ký tự." });
+
+      //Mã hóa mật khẩu
+      const passwordHash = await bcrypt.hash(password, 12);
+
       const newUser = new Users({
         name,
         email,
-        avatar,
         phone,
         address,
         gender,
         birthday,
         company,
-        password,
-        status: "pending",
+        password: passwordHash,
+        // status: "Chưa duyệt",
+        role: 2,
       });
       // res.json(newRecruitNew)
       await newUser.save();
@@ -242,6 +282,7 @@ const userCtrl = {
           gender,
           birthday,
           company,
+          // status: "Chưa duyệt",
         }
       );
 
@@ -282,6 +323,15 @@ const userCtrl = {
       );
 
       return res.json({ msg: "Đã thêm vào mục công việc của tôi!" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+
+  deleteRecruitment: async (req, res) => {
+    try {
+      await Recruitment.findByIdAndDelete(req.params.id);
+      res.json({ msg: "Đã xóa một hồ sơ tuyển dụng!" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

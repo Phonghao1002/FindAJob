@@ -29,7 +29,9 @@ const Login = () => {
   const loginSubmit = async (e) => {
     e.preventDefault();
     try {
-      let respense = await axios.post("/user/login", { ...user });
+      let respense = await axios.post("http://localhost:4110/user/login", {
+        ...user,
+      });
       let info = {
         ...respense.data.infoUser,
         accesstoken: respense.data.accesstoken,

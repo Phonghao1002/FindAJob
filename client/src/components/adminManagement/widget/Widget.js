@@ -12,6 +12,7 @@ const Widget = ({ type }) => {
   const [recruitmentPendings, setRecruitmentPending] = useState([]);
   const [recruitmentApproveds, setRecruitmentApproved] = useState([]);
   const [result, setResult] = useState(0);
+
   const [result1, setResult1] = useState(0);
 
   useEffect(() => {
@@ -81,9 +82,9 @@ const Widget = ({ type }) => {
       break;
     case "Tin đã được duyệt":
       data = {
-        title: "Tin đã được duyệt",
+        title: "Hồ sơ chưa được duyệt",
         isMoney: true,
-        diff: result1,
+        diff: { result: result1 },
         link: "Xem chi tiết",
         icon: (
           <NewspaperIcon
@@ -95,9 +96,9 @@ const Widget = ({ type }) => {
       break;
     case "Tin chờ phê duyệt":
       data = {
-        title: "Tin chờ phê duyệt",
+        title: "Hồ sơ đã được duyệt",
         isMoney: true,
-        diff: { result },
+        diff: { result: result },
         link: "Xem chi tiết",
         icon: (
           <NewspaperIcon

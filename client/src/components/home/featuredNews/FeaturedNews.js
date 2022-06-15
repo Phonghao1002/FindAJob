@@ -5,13 +5,13 @@ const FeaturedNews = () => {
     <div className="featuredNews">
       <div className="featuredItem">
         <img
-          src="https://cf.bstatic.com/xdata/images/city/max500/957801.webp?k=a969e39bcd40cdcc21786ba92826063e3cb09bf307bcfeac2aa392b838e9b7a5&o="
+          src="https://i0.wp.com/drkhoe.vn/wp-content/uploads/2020/05/cau-noi-hay-ve-thanh-cong.jpg"
           alt=""
           className="featuredImg"
         />
         <div className="featuredTitles">
-          <h1>Điểm du lịch</h1>
-          <h2>kỳ nghĩ cùng gia đình</h2>
+          <h1>Nếu bạn có sự quyết liệt và nhiệt huyết trong điều bạn làm</h1>
+          <h2>Thành công sẽ đến với bạn</h2>
         </div>
       </div>
 
