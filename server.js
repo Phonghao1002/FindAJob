@@ -5,7 +5,10 @@ const fileUpload = require("express-fileupload");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
+const pdf = require("html-pdf");
 // const router = require("./routes");
+
+// const pdfTemplate = require("./routes/documents");
 
 const app = express();
 app.use(express.json());
@@ -25,7 +28,18 @@ app.use("/api", require("./routes/recruitNewsRouter"));
 app.use("/api", require("./routes/recruitmentRouter"));
 app.use("/api", require("./routes/applicationFile"));
 // app.use(router);
+app.post("/create-pdf", (req, res) => {
+  pdf.create(pdfTemplate(req.body), {}).toFile("rezultati.pdf", (err) => {
+    if (err) {
+      res.send(Promise.reject());
+    }
+    res.send(Promise.resolve());
+  });
+});
 
+app.get("/fetch-pdf", (req, res) => {
+  res.sendFile(`${__dirname}/rezultati.pdf`);
+});
 //-----------------------sendmail-------------------//
 // app.use((request, response, next) => {
 //   response.header("Access-Control-Allow-Origin", "*");

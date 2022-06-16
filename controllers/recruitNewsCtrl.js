@@ -56,8 +56,8 @@ const recruitNewsCtrl = {
       // console.log(req.query)
       const features = new APIfeatures(RecruitNews.find(), req.query)
         .filtering()
-        .sorting();
-      // .paginating();
+        .sorting()
+        .paginating();
       const recruitNews = await features.query;
 
       res.json({

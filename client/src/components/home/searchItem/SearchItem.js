@@ -6,10 +6,11 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import { GlobalState } from "../../../GlobalState";
 
 const SearchItem = ({ recruitNew, isAdmin, addSaveJobs }) => {
-  // const state = useContext(GlobalState)
-  // console.log(addSaveJobs)
+  const state = useContext(GlobalState);
+  console.log(addSaveJobs);
 
   // function MouseOver() {
   //     alert('Lưu tin')
@@ -48,13 +49,13 @@ const SearchItem = ({ recruitNew, isAdmin, addSaveJobs }) => {
         <div className="siDetails">
           <div className="siRating">{/* <span>Lưu tin:</span> */}</div>
           <div className="siDetailTexts">
-            <div className="siRating">
-              {/* <span>Lưu tin:</span> */}
+            {/* <div className="siRating"> */}
+            {/* <span>Lưu tin:</span> */}
 
-              <button onClick={() => addSaveJobs(recruitNew)}>
+            {/* <button onClick={() => addSaveJobs(recruitNew)}>
                 <FavoriteBorderIcon />
               </button>
-            </div>
+            </div> */}
             <span className="siPrice">
               Thời hạn: {recruitNew.dayApply} ngày
             </span>

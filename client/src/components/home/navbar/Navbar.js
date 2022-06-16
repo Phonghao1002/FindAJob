@@ -30,7 +30,7 @@ const options = [
 const Navbar = () => {
   const state = useContext(GlobalState);
   const [saveJob] = state.userAPI.saveJob;
-  console.log(saveJob);
+  // console.log(saveJob);
   const defaultOption = options[0];
   const [infoUser, setInfoUser] = useState({});
 
@@ -39,7 +39,7 @@ const Navbar = () => {
     if (data) {
       setInfoUser(data);
     }
-    console.log("infoUser", infoUser);
+    // console.log("infoUser", infoUser);
   }, []);
 
   const checkUserLogin = () => {
@@ -103,7 +103,28 @@ const Navbar = () => {
                 </div>
                 {/* <button class="dropbtn">Dropdown</button> */}
                 <div className="dropdown-content">
-                  <a href="#">Trang cá nhân</a>
+                  {infoUser.role == "0" && (
+                    <>
+                      <a
+                        href="#"
+                        onClick={() => {
+                          {
+                            if (infoUser.role == "0") {
+                              <a>Tạo hồ sơ</a>;
+                              window.location.href = "/createFileCV";
+                            } else if (infoUser.role == "2") {
+                              window.location.href = "";
+                            } else {
+                              window.location.href = "";
+                            }
+                            // role = 1 ? 2 : (window.location.href = "/admin");
+                          }
+                        }}
+                      >
+                        Tạo hồ sơ CV
+                      </a>
+                    </>
+                  )}
                   <a
                     href="#"
                     onClick={() => {

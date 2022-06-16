@@ -36,14 +36,14 @@ const RecruitmentNews = () => {
             <input
               type="text"
               value={search}
-              placeholder="Nhập vị trí, tên Công ty, địa điểm ..."
+              placeholder="Nhập tên công việc ..."
               onChange={(e) => setSearch(e.target.value.toLowerCase())}
             />
           </div>
-          <div className="lsItem">
+          {/* <div className="lsItem">
             <label>Ngày tuyển dụng</label>
             <input placeholder="10/5/2022" />
-          </div>
+          </div> */}
           <div className="lsItem">
             <label>Bộ lọc</label>
             <div className="lsOptions">
@@ -111,7 +111,7 @@ const RecruitmentNews = () => {
                   <option>Quản trị mạng</option>
                 </select>
               </div> */}
-              <div className="lsOptionItem">
+              {/* <div className="lsOptionItem">
                 <span className="lsOptionText">Tất cả trình độ</span>
                 <select className="lsOptioncbbox">
                   <option>Đại học</option>
@@ -120,7 +120,7 @@ const RecruitmentNews = () => {
                   <option>Lao động phổ thông</option>
                   <option>Không yêu cầu</option>
                 </select>
-              </div>
+              </div> */}
               <div className="lsOptionItem">
                 <span className="lsOptionText">Mức lương</span>
                 <select
@@ -165,18 +165,20 @@ const RecruitmentNews = () => {
                     <SearchItem />
                     <SearchItem />
                     <SearchItem /> */}
-          {/* <LoadMore /> */}
-          <Stack spacing={2}>
-            {/* <Pagination count={10} shape="rounded" /> */}
-            <Pagination
+          <LoadMore />
+          {/* <Stack spacing={2}> */}
+          {/* <Pagination count={10} shape="rounded" /> */}
+          {/* <Pagination
               count={10}
               variant="outlined"
               shape="rounded"
               className="pagination"
             />
-          </Stack>
+          </Stack> */}
         </div>
-        {recruitNews.length === 0 && <Loading />}
+        {recruitNews.length === 0 && (
+          <h1>Không có tin tuyển dụng nào của danh mục C#</h1>
+        )}
       </div>
     </div>
   );

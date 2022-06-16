@@ -52,10 +52,11 @@ const RecruitmentCtrl = {
       );
       const mail = mailer.message(
         email,
-        "Hello from ",
+        "Xin chào bạn ",
         `<div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
-      <h2 style="text-align: center; text-transform: uppercase;color: teal;">chúc mừng.</h2>
-      <p>ok
+      <h2 style="text-align: center; text-transform: uppercase;color: teal;">Cảm ơn bạn đã ứng tuyển vào Công Ty</h2>
+      <p>Hiện tại chúng tôi đã xét duyệt hồ sơ cho bạn. bạn đã đủ các tiêu chuẩn để trở thành một thành viên trong Công Ty chúng tôi.
+          Cảm ơn bạn đã tin tưỡng để ứng tuyển vào Công Ty. Hẹn gặp bạn vào ngày 30/7 vào luc 7h30 tại Công Ty.
       </p>`
       );
       mailer.sendMail(mail);

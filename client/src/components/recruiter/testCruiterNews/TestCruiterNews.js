@@ -88,6 +88,7 @@ const TestCruiterNews = () => {
       await deleteRecruitNews;
       setCallback(!callback);
       setLoading(false);
+      alert("Đã xóa thành công tin tuyển dụng!");
     } catch (err) {
       alert(err.response.data.msg);
     }
@@ -126,9 +127,9 @@ const TestCruiterNews = () => {
                   <StyledTableCell align="right">
                     Danh mục&nbsp;
                   </StyledTableCell>
-                  <StyledTableCell align="right">
+                  {/* <StyledTableCell align="right">
                     Trạng thái&nbsp;
-                  </StyledTableCell>
+                  </StyledTableCell> */}
                   <StyledTableCell align="left">
                     Hành động&nbsp;
                   </StyledTableCell>
@@ -161,9 +162,9 @@ const TestCruiterNews = () => {
                     <StyledTableCell align="right">
                       {recruitNew.category}
                     </StyledTableCell>
-                    <StyledTableCell align="right">
+                    {/* <StyledTableCell align="right">
                       {recruitNew.status}
-                    </StyledTableCell>
+                    </StyledTableCell> */}
                     <StyledTableCell className="cellActionRN" align="center">
                       <Link
                         id="btn_view"

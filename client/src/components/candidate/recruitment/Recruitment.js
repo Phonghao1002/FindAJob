@@ -33,7 +33,7 @@ const Recruitment = () => {
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("infoUser"));
     if (data) {
-      console.log("asd", data);
+      // console.log("asd", data);
       setInfoUser(data);
       setName(data.name);
       setPhoneNumber(data.phone);

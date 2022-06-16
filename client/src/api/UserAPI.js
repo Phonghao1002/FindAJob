@@ -54,7 +54,7 @@ export default function UserAPI(token) {
     const getUsers = async () => {
       const res = await axios.get("/user/users");
       setUsers(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     };
     getUsers();
   }, []);

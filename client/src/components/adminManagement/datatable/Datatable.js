@@ -86,7 +86,7 @@ const Datatable = ({}) => {
               {/* <StyledTableCell align="right">image</StyledTableCell> */}
               <StyledTableCell align="right">Email</StyledTableCell>
               <StyledTableCell align="right">Ngày tạo&nbsp;</StyledTableCell>
-              <StyledTableCell align="right">Trạng thái</StyledTableCell>
+              {/* <StyledTableCell align="right">Trạng thái</StyledTableCell> */}
 
               {/* <StyledTableCell align="right">Avartar&nbsp;</StyledTableCell> */}
               {/* <StyledTableCell align="right">updatedAt&nbsp;</StyledTableCell> */}
@@ -110,7 +110,7 @@ const Datatable = ({}) => {
                 <StyledTableCell align="right">
                   {new Date(user.createdAt).toLocaleDateString()}
                 </StyledTableCell>
-                <StyledTableCell align="right">{user.status}</StyledTableCell>
+                {/* <StyledTableCell align="right">{user.status}</StyledTableCell> */}
                 {/* <StyledTableCell align="right" className="cellBrowser">
                   <Button className="viewBrowser">Duyệt</Button>
                 </StyledTableCell> */}

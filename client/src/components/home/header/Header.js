@@ -19,7 +19,7 @@ const Header = ({ type }) => {
   const state = useContext(GlobalState);
   const [recruitNews, setRecruitNews] = state.recruitmentNewsAPI.recruitNews;
   const [categories] = state.categoriesAPI.categories;
-  console.log("category", categories);
+  // console.log("category", categories);
 
   const [category, setCategory] = state.recruitmentNewsAPI.category;
   // console.log("category", category);
@@ -27,7 +27,7 @@ const Header = ({ type }) => {
   const [search, setSearch] = state.recruitmentNewsAPI.search;
 
   const handleCategory = (e) => {
-    console.log("bbb", e.target.value);
+    // console.log("bbb", e.target.value);
     setCategory(e.target.value);
     setSearch("");
   };
@@ -59,10 +59,12 @@ const Header = ({ type }) => {
             <BusinessIcon />
             <span>Các công ty</span>
           </div>
-          <div className="headerListItem">
-            <FileOpenIcon />
-            <span>CV tuyệt vời</span>
-          </div>
+          <Link to="/createFileCV" style={{ textDecoration: "none" }}>
+            <div className="headerListItem">
+              <FileOpenIcon />
+              <span>CV tuyệt vời</span>
+            </div>
+          </Link>
         </div>
         {type !== "list" && (
           <>
@@ -101,7 +103,7 @@ const Header = ({ type }) => {
                     type="text"
                     value={search}
                     className="headerSearchInput"
-                    placeholder="Nhập vị trí, Tên công ty, địa chỉ..."
+                    placeholder="Nhập tên công việc..."
                     onChange={(e) => setSearch(e.target.value.toLowerCase())}
                   />
                   <button className="headerBtn">Tìm kiếm</button>

@@ -33,6 +33,7 @@ import Recruitment from "./components/candidate/recruitment/Recruitment";
 import PersonalPage from "./components/candidate/personalPage/PersonalPage";
 import EditrecruiterPersonalPage from "./components/recruiter/editrecruiterPersonalPage/EditrecruiterPersonalPage";
 import PersonalPageRecruit from "./components/recruiter/personalPageRecruit/PersonalPageRecruit";
+import CreateFileCV from "./components/home/createFileCV/CreateFileCV";
 
 export default function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -64,6 +65,7 @@ export default function App() {
             <Route path="register" element={<Register />} />
             <Route path="registerRecruit" element={<RegisterRecruit />} />
             <Route path="resetPassword" element={<ResetPassword />} />
+            <Route path="createFileCV" element={<CreateFileCV />} />
 
             <Route path="admin">
               <Route index element={<HomeAdmin />} />

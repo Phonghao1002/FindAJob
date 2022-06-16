@@ -17,15 +17,15 @@ const RecruitNewsAPI = () => {
           page * 9
         }&${category}&${sort}&title[regex]=${search}`
       );
-      console.log(
-        "ss",
-        `/api/recruitNews?limit=${
-          page * 9
-        }&${category}&${sort}&title[regex]=${search}`
-      );
+      // console.log(
+      //   "ss",
+      //   `/api/recruitNews?limit=${
+      //     page * 9
+      //   }&${category}&${sort}&title[regex]=${search}`
+      // );
 
       setRecruitNews(res.data.recruitNews);
-      console.log(res.data.recruitNews);
+      // console.log(res.data.recruitNews);
       setResult(res.data.result);
     };
     getRecruitNews();
