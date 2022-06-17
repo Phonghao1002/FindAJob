@@ -25,7 +25,7 @@ const Single = () => {
             {/* <div className="editButton">Edit</div> */}
             <h1 className="title">Thông tin cá nhân</h1>
             <div className="item">
-              <img src={infoUser?.avatar?.url} alt="" className="itemImg" />
+              <img src={infoUser.avatar} alt="" className="itemImg" />
               <div className="details">
                 <h1 className="itemTitle">{infoUser.name}</h1>
                 <div className="detailItem">

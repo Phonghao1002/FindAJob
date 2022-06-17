@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer");
 const pdf = require("html-pdf");
 // const router = require("./routes");
 
-// const pdfTemplate = require("./routes/documents");
+const pdfTemplate = require("./routes/documents");
 
 const app = express();
 app.use(express.json());

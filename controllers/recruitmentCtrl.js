@@ -2,6 +2,48 @@ const Recruitment = require("../models/recruitmentModel");
 const User = require("../models/userModel");
 const Mailer = require("../routes/emailService");
 const mailer = new Mailer();
+
+class APIfeatures {
+  constructor(query, queryString) {
+    this.query = query;
+    this.queryString = queryString;
+  }
+  filtering() {
+    const queryObj = { ...this.queryString }; //queryString = req.query
+    // console.log({defore: queryObj}) //truoc khi delete page
+
+    const excludedFields = ["page", "sort", "limit"];
+    excludedFields.forEach((el) => delete queryObj[el]);
+
+    // console.log({after: queryObj}) //sau khi delete page no chi log ra id
+
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(
+      /\b(gte|gt|lt|lte|regex)\b/g,
+      (match) => "$" + match
+    );
+
+    // console.log({queryStr})
+    // //    gte = greater than or equal
+    // //    lte = lesser than or equal
+    // //    lt = lesser than
+    // //    gt = greater than
+    this.query.find(JSON.parse(queryStr));
+    return this;
+  }
+
+  sorting() {
+    if (this.queryString.sort) {
+      const sortBy = this.queryString.sort.split(",").join(" ");
+      // console.log(sortBy)
+      this.query = this.query.sort(sortBy);
+    } else {
+      this.query = this.query.sort("-createdAt");
+    }
+
+    return this;
+  }
+}
 const RecruitmentCtrl = {
   getListRecruitment: async (req, res) => {
     try {
@@ -13,9 +55,16 @@ const RecruitmentCtrl = {
   },
   getRecruitment: async (req, res) => {
     try {
-      const recruitNews = await Recruitment.find({
-        idJob: req.query.idJob,
-      });
+      const features = new APIfeatures(
+        Recruitment.find({
+          idJob: req.query.idJob,
+        }),
+        req.query
+      )
+        .filtering()
+        .sorting();
+
+      const recruitNews = await features.query;
 
       return res
         .status(200)
@@ -27,9 +76,19 @@ const RecruitmentCtrl = {
 
   getRecruitmentHistory: async (req, res) => {
     try {
-      const recruitmentHistory = await Recruitment.find({
-        idUser: req.query.idUser,
-      });
+      const features = new APIfeatures(
+        Recruitment.find({
+          idUser: req.query.idUser,
+        }),
+        req.query
+      )
+        .filtering()
+        .sorting();
+      // const recruitmentHistory = await Recruitment.find({
+      //   idUser: req.query.idUser,
+      // });
+
+      const recruitmentHistory = await features.query;
 
       return res
         .status(200)

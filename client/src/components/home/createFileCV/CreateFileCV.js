@@ -44,7 +44,7 @@ const CreateFileCV = () => {
     setState({ ...states, [name]: value });
   };
 
-  const createAndDownloadPdf = async (requestParams) => {
+  const createAndDownloadPdf = async () => {
     // let formData = new FormData();
     // formData.append("fullname", fullname);
     // formData.append("phone", phone);
@@ -55,33 +55,20 @@ const CreateFileCV = () => {
 
     try {
       await axios
-        .post(
-          "/user/create-resume",
-          { ...states },
-          {
-            requestParams: requestParams,
-          },
-          {
-            responseType: "arraybuffer", // important...because we need to convert it to a blob. If we don't specify this, response.data will be the raw data. It cannot be converted to blob directly.
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/pdf",
-            },
-          }
-        )
+        .post("/user/create-resume", { ...states })
         .then(() =>
           axios.get("/user/fetch-pdf", {
             responseType: "blob",
           })
-        );
-      // .then((res) => {
-      //   const pdfBlog = new Blob([res.data], {
-      //     headers: {
-      //       "content-type": "application/pdf",
-      //     },
-      //   });
-      //   saveAs(pdfBlog, "resume.pdf");
-      // });
+        )
+        .then((res) => {
+          const pdfBlog = new Blob([res.data], {
+            headers: {
+              "content-type": "application/pdf",
+            },
+          });
+          saveAs(pdfBlog, "resume.pdf");
+        });
       // .then((response) => {
       //   const url = window.URL.createObjectURL(new Blob([response.data]));
       //   const link = document.createElement("a");
@@ -116,7 +103,7 @@ const CreateFileCV = () => {
                   <label>Họ và tên: </label>
                   <input
                     type="text"
-                    placeholder="Name"
+                    placeholder="Họ và Tên"
                     name="fullname"
                     value={states.fullname}
                     onChange={handleChange}
@@ -135,7 +122,7 @@ const CreateFileCV = () => {
                   <label>SĐT: </label>
                   <input
                     type="text"
-                    placeholder="Receipt ID"
+                    placeholder="0123456789"
                     name="phone"
                     value={states.phone}
                     onChange={handleChange}
@@ -149,7 +136,7 @@ const CreateFileCV = () => {
                   <label>Mô tả về bản thân</label>
                   <input
                     type="text"
-                    placeholder="description"
+                    placeholder="Mô tả về bàn thân"
                     value={states.description}
                     name="description"
                     onChange={handleChange}
@@ -167,9 +154,7 @@ const CreateFileCV = () => {
                 </div>
 
                 <div className="formInput">
-                  <button onClick={() => createAndDownloadPdf()}>
-                    Download PDF
-                  </button>
+                  <button onClick={createAndDownloadPdf}>Download PDF</button>
                 </div>
               </form>
             </div>

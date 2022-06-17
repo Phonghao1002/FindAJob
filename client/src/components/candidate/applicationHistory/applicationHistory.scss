@@ -17,7 +17,8 @@
           padding: 10px;
           margin: 20px;
           display: flex;
-          flex-direction: column;
+          gap: 10px;
+          // flex-direction: column;
 
           h1 {
             color: lightgray;
@@ -31,6 +32,12 @@
           flex-direction: column;
           //   margin-left: 150px;
           width: 100%;
+
+          .datatableTitle {
+            display: flex;
+            // gap: 400px;
+            // justify-content: space-between;
+          }
         }
       }
     }

@@ -51,7 +51,7 @@ const Navbargeneral = ({ infoUser }) => {
             <img
               src={
                 ""
-                  ? infoUser?.avatar?.url
+                  ? infoUser.avatar
                   : "https://res.cloudinary.com/safehorizons/image/upload/v1654732368/avatar/lxsvhqrtmsrkv3emqh3k.jpg"
               }
               alt=""

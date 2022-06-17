@@ -42,6 +42,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const ApplicationHistory = () => {
   const [infoUser, setInfoUser] = useState({});
   const [recruitments, setRecruitments] = useState([]);
+  const [sort, setSort] = useState("");
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("infoUser"));
@@ -53,7 +54,7 @@ const ApplicationHistory = () => {
 
   const getRecruitMent = async () => {
     const res = await axios.get(
-      `http://localhost:4110/api/applicationHistory?idUser=${infoUser._id}`
+      `http://localhost:4110/api/applicationHistory?idUser=${infoUser._id}&${sort}`
     );
     setRecruitments(res.data.data);
   };
@@ -64,7 +65,7 @@ const ApplicationHistory = () => {
       getRecruitMent();
     }
     // console.log("data", infoUser);
-  }, [infoUser]);
+  }, [infoUser, sort]);
 
   const deleteRecruitment = async (id) => {
     try {
@@ -98,6 +99,21 @@ const ApplicationHistory = () => {
                 {/* <Link to="/#" className="link">
                   Add New
                 </Link> */}
+                <div className="headerSearchItem">
+                  <span>Bộ lọc: </span>
+                  <select
+                    value={sort}
+                    onChange={(e) => setSort(e.target.value)}
+                    className="lsOptioncbbox"
+                  >
+                    <option value="">Tin mới nhất</option>
+                    <option value="sort=oldest">Tin cũ nhất</option>
+                    {/* <option value='sort=-sold'>lượt tương tác nhiều nhất</option> */}
+                    {/* <option value="sort=-price">Lương: Cao - Thấp</option>
+                <option value="sort=price">Lương: Thấp - Cao</option> */}
+                  </select>
+                </div>
+                <span>Tổng hồ sơ đã ứng tuyển: {recruitments.length}</span>
               </div>
               <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 800 }} aria-label="customized table">
@@ -164,15 +180,20 @@ const ApplicationHistory = () => {
                           >
                             <Button className="viewButtonRN">Edit</Button>
                           </Link> */}
-
-                          <Link
-                            id="btn_delete"
-                            to="#"
-                            onClick={() => deleteRecruitment(recruitment._id)}
-                            style={{ textDecoration: "none" }}
-                          >
-                            <Button className="deleteButtonRN">Hủy</Button>
-                          </Link>
+                          {recruitment.status !== "Đã được duyệt" && (
+                            <>
+                              <Link
+                                id="btn_delete"
+                                to="#"
+                                onClick={() =>
+                                  deleteRecruitment(recruitment._id)
+                                }
+                                style={{ textDecoration: "none" }}
+                              >
+                                <Button className="deleteButtonRN">Hủy</Button>
+                              </Link>
+                            </>
+                          )}
                         </StyledTableCell>
                       </StyledTableRow>
                     ))}

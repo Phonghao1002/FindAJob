@@ -60,7 +60,7 @@ const Header = ({ type }) => {
             <span>Các công ty</span>
           </div>
           <Link to="/createFileCV" style={{ textDecoration: "none" }}>
-            <div className="headerListItem">
+            <div className="headerListItemCV">
               <FileOpenIcon />
               <span>CV tuyệt vời</span>
             </div>

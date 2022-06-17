@@ -1,4 +1,4 @@
-module.exports = ({ name, price1, price2, receiptId }) => {
+module.exports = ({ fullname, phone, description, email }) => {
   const today = new Date();
   return `
     <!doctype html>
@@ -102,10 +102,10 @@ module.exports = ({ name, price1, price2, receiptId }) => {
                       <table>
                          <tr>
                             <td>
-                               Customer name: ${name}
+                               Customer name: ${fullname}
                             </td>
                             <td>
-                               Receipt number: ${receiptId}
+                               Receipt number: ${phone}
                             </td>
                          </tr>
                       </table>
@@ -117,16 +117,16 @@ module.exports = ({ name, price1, price2, receiptId }) => {
                 </tr>
                 <tr class="item">
                    <td>First item:</td>
-                   <td>${price1}$</td>
+                   <td>${description}$</td>
                 </tr>
                 <tr class="item">
                    <td>Second item:</td>
-                   <td>${price2}$</td>
+                   <td>${email}$</td>
                 </tr>
              </table>
              <br />
              <h1 class="justify-center">Total price: ${
-               parseInt(price1) + parseInt(price2)
+               parseInt(description) + parseInt(email)
              }$</h1>
           </div>
        </body>

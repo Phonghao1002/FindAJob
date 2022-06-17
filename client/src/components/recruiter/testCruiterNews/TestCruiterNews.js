@@ -51,6 +51,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const TestCruiterNews = () => {
   const state = useContext(GlobalState);
   const [recruitNews] = state.recruitmentNewsAPI.recruitNews;
+  const [sort, setSort] = state.recruitmentNewsAPI.sort;
+  const [search, setSearch] = state.recruitmentNewsAPI.search;
   const [loading, setLoading] = useState(false);
   const [token] = state.token;
   const [isAdmin] = state.userAPI.isAdmin;
@@ -107,6 +109,32 @@ const TestCruiterNews = () => {
         <div className="tableForm">
           <div className="datatableTitle">
             Danh sách tin tuyển dụng
+            <div className="Search">
+              <div className="lsItemInput">
+                <label>Nhập vào ô tìm kiếm</label>
+                <input
+                  type="text"
+                  value={search}
+                  placeholder="Nhập tên công việc ..."
+                  onChange={(e) => setSearch(e.target.value.toLowerCase())}
+                />
+              </div>
+              <div className="lsOptionItemsort">
+                <span className="lsOptionText">Sắp xếp</span>
+                <select
+                  value={sort}
+                  onChange={(e) => setSort(e.target.value)}
+                  className="lsOptioncbbox"
+                >
+                  <option value="">Tin mới nhất</option>
+                  <option value="sort=oldest">Tin cũ nhất</option>
+                </select>
+                {/* <select className="lsOptioncbbox">
+                  <option value="">Mới nhất</option>
+                  <option value="sort=oldest">Cũ nhất</option>
+                </select> */}
+              </div>
+            </div>
             <Link to="/recruiter/createRecruitNews" className="link">
               Tạo mới tin tuyển dụng
             </Link>

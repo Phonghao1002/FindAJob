@@ -7,6 +7,7 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Widget = ({ type }) => {
   const [recruitmentPendings, setRecruitmentPending] = useState([]);
@@ -46,46 +47,46 @@ const Widget = ({ type }) => {
   const amount = 100;
   // const diff = 20;
   switch (type) {
-    case "Tài khoản chờ phê duyệt":
-      data = {
-        title: "Tài khoản chờ phê duyệt",
-        isMoney: false,
-        diff: 10,
-        link: "Xem chi tiết",
-        icon: (
-          <PersonOutlinedIcon
-            className="icon"
-            style={{
-              color: "crimson",
-              backgroundColor: "rgba(255, 0, 0, 0.2)",
-            }}
-          />
-        ),
-      };
-      break;
-    case "Tài khoản hoạt động":
-      data = {
-        title: "Tài khoản hoạt động",
-        isMoney: false,
-        diff: result,
-        link: "Xem chi tiết",
-        icon: (
-          <PersonOutlinedIcon
-            className="icon"
-            style={{
-              backgroundColor: "rgba(30 144 255)",
-              color: "goldenrod",
-            }}
-          />
-        ),
-      };
-      break;
-    case "Tin đã được duyệt":
+    // case "Tài khoản chờ phê duyệt":
+    //   data = {
+    //     title: "Tài khoản chờ phê duyệt",
+    //     isMoney: false,
+    //     diff: 10,
+    //     link: "Xem chi tiết",
+    //     icon: (
+    //       <PersonOutlinedIcon
+    //         className="icon"
+    //         style={{
+    //           color: "crimson",
+    //           backgroundColor: "rgba(255, 0, 0, 0.2)",
+    //         }}
+    //       />
+    //     ),
+    //   };
+    //   break;
+    // case "Tài khoản hoạt động":
+    //   data = {
+    //     title: "Tài khoản hoạt động",
+    //     isMoney: false,
+    //     diff: result,
+    //     link: "Xem chi tiết",
+    //     icon: (
+    //       <PersonOutlinedIcon
+    //         className="icon"
+    //         style={{
+    //           backgroundColor: "rgba(30 144 255)",
+    //           color: "goldenrod",
+    //         }}
+    //       />
+    //     ),
+    //   };
+    //   break;
+    case "Hồ sơ chưa được duyệt":
       data = {
         title: "Hồ sơ chưa được duyệt",
         isMoney: true,
-        diff: { result: result1 },
-        link: "Xem chi tiết",
+        diff: { result: result },
+        link: "/recruiter/pendingProfile",
         icon: (
           <NewspaperIcon
             className="icon"
@@ -94,12 +95,12 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "Tin chờ phê duyệt":
+    case "Hồ sơ đã được duyệt":
       data = {
         title: "Hồ sơ đã được duyệt",
         isMoney: true,
-        diff: { result: result },
-        link: "Xem chi tiết",
+        diff: { result: result1 },
+        link: "/recruiter/approvedProfile",
         icon: (
           <NewspaperIcon
             className="icon"
@@ -121,7 +122,7 @@ const Widget = ({ type }) => {
         <span className="counter">
           {data.isMoney} {data.diff.result}
         </span>
-        <span className="link">{data.link}</span>
+        <Link to={data.link}>Xem chi tiết</Link>
       </div>
       <div className="right">
         <div className="percentage positive">

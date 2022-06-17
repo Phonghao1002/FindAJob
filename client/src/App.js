@@ -34,6 +34,8 @@ import PersonalPage from "./components/candidate/personalPage/PersonalPage";
 import EditrecruiterPersonalPage from "./components/recruiter/editrecruiterPersonalPage/EditrecruiterPersonalPage";
 import PersonalPageRecruit from "./components/recruiter/personalPageRecruit/PersonalPageRecruit";
 import CreateFileCV from "./components/home/createFileCV/CreateFileCV";
+import PendingProfile from "./components/recruiter/pendingProfile/PendingProfile";
+import ApprovedProfile from "./components/recruiter/approvedProfile/ApprovedProfile";
 
 export default function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -74,6 +76,8 @@ export default function App() {
 
             <Route path="recruiter">
               <Route index element={<HomeRecruiter />} />
+              <Route path="pendingProfile" element={<PendingProfile />} />
+              <Route path="approvedProfile" element={<ApprovedProfile />} />
               <Route path="personalPage" element={<PersonalPageRecruit />} />
               <Route
                 path="EditrecruiterPersonalPage/:id"

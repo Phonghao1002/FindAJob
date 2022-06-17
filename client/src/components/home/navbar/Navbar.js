@@ -141,11 +141,11 @@ const Navbar = () => {
                     }}
                   >
                     Trang Quản lý
-                    {infoUser.role == 0 && (
+                    {/* {infoUser.role == 0 && (
                       <div className="cart-icon">
                         <h1>{saveJob.length}</h1>
                       </div>
-                    )}
+                    )} */}
                   </a>
                   <a href="#" onClick={handleOnLogout}>
                     Đăng xuất

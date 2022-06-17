@@ -43,6 +43,7 @@ const ManagementNewsRecruit = () => {
   const state = useContext(GlobalState);
   const params = useParams();
   const [infoUser, setInfoUser] = useState({});
+  const [sort, setSort] = useState("");
   // const [recruitNews] = state.recruitmentNewsAPI.recruitNews
 
   const [recruitments, setRecruitments] = useState([]);
@@ -62,7 +63,9 @@ const ManagementNewsRecruit = () => {
     setData(data.filter((item) => item.id !== id));
   };
   const getRecruitMent = async () => {
-    const res = await axios.get(`/api/recruitment?idJob=${params.id}`);
+    const res = await axios.get(
+      `http://localhost:4110/api/recruitment?idJob=${params.id}&${sort}`
+    );
     setRecruitments(res.data.data);
     console.log("aaa", res.data.data);
   };
@@ -72,7 +75,7 @@ const ManagementNewsRecruit = () => {
     }
 
     getRecruitMent();
-  }, []);
+  }, [sort]);
 
   const handleBrowser = async (id, email) => {
     await axios
@@ -119,7 +122,23 @@ const ManagementNewsRecruit = () => {
             {/* <Link to="/#" className="link">
               Add New
             </Link> */}
+            <div className="headerSearchItem">
+              <span>Bộ lọc: </span>
+              <select
+                value={sort}
+                onChange={(e) => setSort(e.target.value)}
+                className="lsOptioncbbox"
+              >
+                <option value="">Tin mới nhất</option>
+                <option value="sort=oldest">Tin cũ nhất</option>
+                {/* <option value='sort=-sold'>lượt tương tác nhiều nhất</option> */}
+                {/* <option value="sort=-price">Lương: Cao - Thấp</option>
+                <option value="sort=price">Lương: Thấp - Cao</option> */}
+              </select>
+            </div>
+            <span>Tổng số hồ sơ đã ứng tuyển: {recruitments.length}</span>
           </div>
+
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 800 }} aria-label="customized table">
               <TableHead>
@@ -221,7 +240,6 @@ const ManagementNewsRecruit = () => {
               </TableBody>
             </Table>
           </TableContainer>
-
           {/* <DataGrid
             className="datagrid"
             rows={recruitNews}

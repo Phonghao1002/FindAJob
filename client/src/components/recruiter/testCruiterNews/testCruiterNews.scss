@@ -19,13 +19,43 @@
   margin-bottom: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 50px;
+  // justify-content: space-between;
+
+  .Search {
+    display: flex;
+    font-size: 17px;
+    width: 650px;
+
+    .lsItemInput {
+      display: flex;
+      margin-right: 30px;
+      gap: 10px;
+    }
+
+    .lsOptionItemsort {
+      display: flex;
+      // align-items: center;
+      gap: 10px;
+      // justify-content: space-between;
+      width: 200px;
+
+      .lsOptionText {
+        width: 70px;
+      }
+
+      .lsOptioncbbox {
+        width: 100px;
+      }
+    }
+  }
 
   .link {
     text-decoration: none;
     color: green;
     font-size: 16px;
     font-weight: 400;
+    background-color: rgb(205, 255, 238);
     border: 1px solid green;
     padding: 5px;
     border-radius: 5px;

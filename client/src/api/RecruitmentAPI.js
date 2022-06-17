@@ -1,20 +1,22 @@
-// import axios from 'axios'
-// import { useEffect, useState } from 'react'
+import axios from "axios";
+import { useEffect, useState } from "react";
+import RecruitNewsAPI from "./RecruitNewsAPI";
 
-// export default function CategoriesAPI(token) {
-//     const [categories, setCategories] = useState([])
-//     const [callback, setCallback] = useState(false)
+export default function RecruitmentAPI() {
+  const [filePendings, setFilePending] = useState([]);
 
-//     useEffect(() => {
-//         const getCategories = async () =>{
-//             const res = await axios.get('/api/category')
-//             setCategories(res.data)
-//         }
+  useEffect(() => {
+    const getFilePending = () => async () => {
+      const res = await axios.get(
+        "http://localhost:4110/api/recruitmentPending"
+      );
+      setFilePending(res.data);
+      console.log("sos", filePendings);
+    };
 
-//         getCategories()
-//     },[callback])
-//     return {
-//         categories: [categories, setCategories],
-//         callback: [callback, setCallback]
-//     }
-// }
+    getFilePending();
+  }, []);
+  return {
+    filePendings: [filePendings, setFilePending],
+  };
+}

@@ -36,8 +36,8 @@ const Home = () => {
       <div className="homeAdminContainer">
         <Navbargeneral infoUser={infoUser} />
         <div className="widgets">
-          <Widget type="Tài khoản chờ phê duyệt" />
-          <Widget type="Tài khoản hoạt động" />
+          {/* <Widget type="Tài khoản chờ phê duyệt" />
+          <Widget type="Tài khoản hoạt động" /> */}
           <Widget type="Tin đã được duyệt" />
           <Widget type="Tin chờ phê duyệt" />
         </div>

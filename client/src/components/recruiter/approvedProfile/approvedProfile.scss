@@ -1,8 +1,8 @@
-.homeManagementNewsRecruit {
+.homeApprovedRecruit {
   display: flex;
 }
 
-.homeCategoryContainer {
+.homeApprovedContainer {
   flex: 5;
 }
 
@@ -28,15 +28,6 @@
       padding: 5px;
       border-radius: 5px;
       cursor: pointer;
-    }
-
-    span {
-      font-size: 15px;
-      color: blue;
-      background-color: rgb(200, 227, 251);
-      margin-right: 40px;
-      padding: 5px;
-      border-radius: 10%;
     }
   }
 
