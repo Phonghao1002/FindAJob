@@ -48,15 +48,7 @@ const Navbargeneral = ({ infoUser }) => {
             <ListOutlinedIcon className="icon" />
           </div>
           <div className="item">
-            <img
-              src={
-                ""
-                  ? infoUser.avatar
-                  : "https://res.cloudinary.com/safehorizons/image/upload/v1654732368/avatar/lxsvhqrtmsrkv3emqh3k.jpg"
-              }
-              alt=""
-              className="avatar"
-            />
+            <img src={infoUser.avatar} alt="" className="avatar" />
             <span>{infoUser.name}</span>
           </div>
         </div>

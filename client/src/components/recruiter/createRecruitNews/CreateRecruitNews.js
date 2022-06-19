@@ -6,7 +6,6 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 const initialState = {
-  recruitNews_id: "",
   title: "",
   price: 0,
   description: "",
@@ -57,15 +56,15 @@ const CreateRecruitNews = () => {
       // if (!isAdmin) return alert("You're not an admin");
       const file = e.target.files[0];
 
-      if (!file) return alert("File not exist.");
+      if (!file) return alert("Tệp không tồn tại!");
 
       if (file.size > 1024 * 1024)
         // 1mb
-        return alert("Size too large!");
+        return alert("Kích thước quá lớn!");
 
       if (file.type !== "image/jpeg" && file.type !== "image/png")
         // 1mb
-        return alert("File format is incorrect.");
+        return alert("Định dạng tệp không chính xác!");
 
       let formData = new FormData();
       formData.append("file", file);
@@ -158,7 +157,7 @@ const CreateRecruitNews = () => {
         )}
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="row">
+        {/* <div className="row">
           <label htmlFor="recruitNews_id">Mã tin tuyển dụng</label>
           <input
             type="text"
@@ -169,7 +168,7 @@ const CreateRecruitNews = () => {
             onChange={handleChangeInput}
             disabled={onEdit}
           />
-        </div>
+        </div> */}
 
         <div className="row">
           <label htmlFor="title">Tiêu đề</label>

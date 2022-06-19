@@ -1,6 +1,7 @@
 .datatable {
   height: 1000px;
   padding: 20px;
+  width: 100%;
 
   .datatableTitle {
     width: 100%;
@@ -72,6 +73,7 @@
   .cellAction {
     display: flex;
     align-items: center;
+    width: 100%;
     gap: 10px;
 
     .viewButton {

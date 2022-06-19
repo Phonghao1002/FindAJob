@@ -28,7 +28,7 @@ const SidebarCandidate = () => {
   // console.log(saveJobs)
 
   const logoutUser = async () => {
-    await axios.get("/user/logout");
+    await axios.get("http://localhost:4110/user/logout");
 
     localStorage.removeItem("firstLogin");
     window.location.href = "/";
@@ -37,7 +37,7 @@ const SidebarCandidate = () => {
     <div className="sidebarCandidate">
       <div className="topsidebarCandidate">
         <Link to="/candidate" style={{ textDecoration: "none" }}>
-          <span className="logo">THANH QUẢN LÝ</span>
+          <span className="logo">TRANG CÁ NHÂN</span>
         </Link>
       </div>
       <hr />

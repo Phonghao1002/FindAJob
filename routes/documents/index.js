@@ -1,4 +1,17 @@
-module.exports = ({ fullname, phone, description, email }) => {
+module.exports = ({
+  fullname,
+  phone,
+  description,
+  email,
+  address,
+  birthday,
+  gender,
+  school,
+  degree,
+  rank,
+  salary,
+  foreignLanguage,
+}) => {
   const today = new Date();
   return `
     <!doctype html>
@@ -89,7 +102,7 @@ module.exports = ({ fullname, phone, description, email }) => {
                             <td class="title"><img  src="https://i2.wp.com/cleverlogos.co/wp-content/uploads/2018/05/reciepthound_1.jpg?fit=800%2C600&ssl=1"
                                style="width:100%; max-width:156px;"></td>
                             <td>
-                               Datum: ${`${today.getDate()}. ${
+                               Ngày tạo: ${`${today.getDate()}. ${
                                  today.getMonth() + 1
                                }. ${today.getFullYear()}.`}
                             </td>
@@ -102,26 +115,70 @@ module.exports = ({ fullname, phone, description, email }) => {
                       <table>
                          <tr>
                             <td>
-                               Customer name: ${fullname}
+                               Họ và Tên: ${fullname}
                             </td>
                             <td>
-                               Receipt number: ${phone}
+                               Số điện thoại: ${phone}
                             </td>
                          </tr>
                       </table>
                    </td>
                 </tr>
                 <tr class="heading">
-                   <td>Bought items:</td>
-                   <td>Price</td>
+                   <td class="justify-center">Thông tin cá nhân:</td>
+                   <td class="justify-center">Thông tin tương ứng:</td>
                 </tr>
                 <tr class="item">
-                   <td>First item:</td>
-                   <td>${description}$</td>
+                   <td>Mô tả bản thân:</td>
+                   <td>${description}</td>
                 </tr>
                 <tr class="item">
-                   <td>Second item:</td>
-                   <td>${email}$</td>
+                   <td>Địa chỉ:</td>
+                   <td>${address}</td>
+                </tr>
+                <tr class="item">
+                   <td>email:</td>
+                   <td>${email}</td>
+                </tr>
+                <tr class="item">
+                   <td>Ngày sinh:</td>
+                   <td>${birthday}</td>
+                </tr>
+                <tr class="item">
+                   <td>Giới tính:</td>
+                   <td>${gender}</td>
+                </tr>
+                <tr class="heading">
+                   <td class="justify-center">Thêm học vấn:</td>
+                   <td class="justify-center">Thông tin tương ứng:</td>
+                </tr>
+                <tr class="item">
+                   <td>Trường:</td>
+                   <td>${school}</td>
+                </tr>
+                <tr class="item">
+                   <td>Bằng cấp:</td>
+                   <td>${degree}</td>
+                </tr>
+                <tr class="heading">
+                   <td class="justify-center">Công việc mong muốn:</td>
+                   <td class="justify-center">Thông tin tương ứng:</td>
+                </tr>
+                <tr class="item">
+                   <td>Cấp bậc mong muốn:</td>
+                   <td>${rank}</td>
+                </tr>
+                <tr class="item">
+                   <td>Mức lương mong muốn (USD/ tháng):</td>
+                   <td>${salary}$</td>
+                </tr>
+                <tr class="heading">
+                   <td class="justify-center">Ngoại ngữ:</td>
+                   <td class="justify-center">Thông tin tương ứng:</td>
+                </tr>
+                <tr class="item">
+                   <td>Ngoại ngữ:</td>
+                   <td>${foreignLanguage}</td>
                 </tr>
              </table>
              <br />

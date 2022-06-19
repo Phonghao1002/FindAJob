@@ -35,8 +35,12 @@
 
           .datatableTitle {
             display: flex;
+            gap: 40px;
             // gap: 400px;
             // justify-content: space-between;
+            span {
+              font-size: 15px;
+            }
           }
         }
       }

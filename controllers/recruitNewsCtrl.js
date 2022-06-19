@@ -73,7 +73,6 @@ const recruitNewsCtrl = {
   createRecruitNews: async (req, res) => {
     try {
       const {
-        recruitNews_id,
         title,
         price,
         description,
@@ -88,12 +87,11 @@ const recruitNewsCtrl = {
       if (!images)
         return res.status(400).json({ msg: "Không có hình ảnh tải lên" });
 
-      const recruitNew = await RecruitNews.findOne({ recruitNews_id });
+      const recruitNew = await RecruitNews.findOne({ title });
       if (recruitNew)
         return res.status(400).json({ msg: "Tin tuyển dụng này đã tồn tại." });
 
       const newRecruitNew = new RecruitNews({
-        recruitNews_id,
         title: title.toLowerCase(),
         price,
         description,
@@ -104,7 +102,7 @@ const recruitNewsCtrl = {
         rank,
         address,
         dayApply,
-        status: "Chưa duyệt",
+        // status: "Chưa duyệt",
       });
       // res.json(newRecruitNew)
       await newRecruitNew.save();

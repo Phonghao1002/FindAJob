@@ -157,8 +157,8 @@ const userCtrl = {
           password: passwordHash,
         }
       );
-
-      res.json({ msg: "Mật khẩu đã được thay đổi thành công!" });
+      const accesstoken = createAccessToken({ id: req.user._id });
+      res.json({ msg: "Mật khẩu đã được thay đổi thành công!", accesstoken });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

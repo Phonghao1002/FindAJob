@@ -42,9 +42,9 @@ const ChangePassword = () => {
   const changepasswordSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/user/reset", { ...user });
+      await axios.post("http://localhost:4110/user/reset", { ...user });
 
-      localStorage.setItem("firstLogin", true);
+      // localStorage.setItem("firstLogin", true);
 
       window.location.href = "/";
     } catch (err) {
@@ -73,9 +73,14 @@ const ChangePassword = () => {
               <Typography component="h1" variant="h5">
                 Đặt lại mật khẩu
               </Typography>
-              <Box component="form" noValidate sx={{ mt: 3 }}>
+              <Box
+                component="form"
+                noValidate
+                sx={{ mt: 3 }}
+                onSubmit={changepasswordSubmit}
+              >
                 <Grid container spacing={2}>
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <TextField
                       autoComplete="given-name"
                       name="firstName"
@@ -86,15 +91,16 @@ const ChangePassword = () => {
                       autoFocus
                       onChange={onChangeInput}
                     />
-                  </Grid>
+                  </Grid> */}
                   <Grid item xs={12}>
                     <TextField
                       required
                       fullWidth
-                      id="lastName"
+                      id="password"
                       label="Mật khẩu mới"
-                      name="lastName"
-                      autoComplete="family-name"
+                      name="password"
+                      autoComplete="password"
+                      value={user.password}
                       onChange={onChangeInput}
                     />
                   </Grid>
@@ -103,10 +109,10 @@ const ChangePassword = () => {
                       required
                       fullWidth
                       id="password"
-                      label="Nhập lại mật khẩu"
+                      label="Nhập lại mật khẩu mới"
                       name="password"
+                      autoComplete="password"
                       value={user.password}
-                      autoComplete="email"
                       onChange={onChangeInput}
                     />
                   </Grid>

@@ -68,6 +68,17 @@ const Datatable = ({}) => {
       .catch((err) => console.log("err"));
   };
 
+  const handleAdmin = async (id, email) => {
+    await axios
+      .patch(`http://localhost:4110/user/update_role/${id}`, {
+        role: 1,
+      })
+      .then((res) => {
+        alert(res.data.msg);
+      })
+      .catch((err) => console.log("err"));
+  };
+
   return (
     <div className="datatable">
       <div className="datatableTitle">
@@ -77,7 +88,7 @@ const Datatable = ({}) => {
         </Link>
       </div>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 800 }} aria-label="customized table">
+        <Table sx={{ minWidth: 1000 }} aria-label="customized table">
           <TableHead>
             <TableRow>
               <StyledTableCell align="right">Mã</StyledTableCell>
@@ -85,6 +96,9 @@ const Datatable = ({}) => {
               <StyledTableCell>Tên người dùng</StyledTableCell>
               {/* <StyledTableCell align="right">image</StyledTableCell> */}
               <StyledTableCell align="right">Email</StyledTableCell>
+              <StyledTableCell align="right">
+                Quyền của tài khoản
+              </StyledTableCell>
               <StyledTableCell align="right">Ngày tạo&nbsp;</StyledTableCell>
               {/* <StyledTableCell align="right">Trạng thái</StyledTableCell> */}
 
@@ -107,6 +121,9 @@ const Datatable = ({}) => {
                 </StyledTableCell>
                 {/* <StyledTableCell align="right">{recruitNew.images} </StyledTableCell> */}
                 <StyledTableCell align="right">{user.email} </StyledTableCell>
+                <StyledTableCell align="right">
+                  {user.role == 0 ? "Ứng Viên" : "Nhà tuyển dụng"}{" "}
+                </StyledTableCell>
                 <StyledTableCell align="right">
                   {new Date(user.createdAt).toLocaleDateString()}
                 </StyledTableCell>
@@ -133,6 +150,12 @@ const Datatable = ({}) => {
                     onClick={() => handleRecruit(user._id)}
                   >
                     Nhà tuyển dụng
+                  </Button>
+                  <Button
+                    className="deleteButton"
+                    onClick={() => handleAdmin(user._id)}
+                  >
+                    Người quản trị
                   </Button>
                   {/* </Link> */}
                 </StyledTableCell>

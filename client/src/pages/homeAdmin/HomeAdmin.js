@@ -38,8 +38,8 @@ const Home = () => {
         <div className="widgets">
           {/* <Widget type="Tài khoản chờ phê duyệt" />
           <Widget type="Tài khoản hoạt động" /> */}
-          <Widget type="Tin đã được duyệt" />
-          <Widget type="Tin chờ phê duyệt" />
+          <Widget type="Hồ sơ chưa được duyệt" />
+          <Widget type="Hồ sơ đã được duyệt" />
         </div>
         {/* <div className="charts">
           <Featured />

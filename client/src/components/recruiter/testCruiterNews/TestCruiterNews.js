@@ -111,7 +111,7 @@ const TestCruiterNews = () => {
             Danh sách tin tuyển dụng
             <div className="Search">
               <div className="lsItemInput">
-                <label>Nhập vào ô tìm kiếm</label>
+                <label>Tìm kiếm</label>
                 <input
                   type="text"
                   value={search}

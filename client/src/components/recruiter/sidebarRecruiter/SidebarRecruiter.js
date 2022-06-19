@@ -18,14 +18,22 @@ import BrowseGalleryIcon from "@mui/icons-material/BrowseGallery";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { DarkModeContext } from "../../../context/darkModeContext";
+import axios from "axios";
 
 const SidebarRecruiter = () => {
   const { dispatch } = useContext(DarkModeContext);
+
+  const logoutUser = async () => {
+    await axios.get("http://localhost:4110/user/logout");
+
+    localStorage.removeItem("firstLogin");
+    window.location.href = "/";
+  };
   return (
     <div className="sidebarRecruiter">
       <div className="top">
         <Link to="/recruiter" style={{ textDecoration: "none" }}>
-          <span className="logo">THANH QUẢN LÝ</span>
+          <span className="logo">TRANG QUẢN LÝ</span>
         </Link>
       </div>
       <hr />
@@ -109,12 +117,11 @@ const SidebarRecruiter = () => {
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li> */}
-          <Link to="/login" style={{ textDecoration: "none" }}>
-            <li>
-              <ExitToAppIcon className="icon" />
-              <span>Đăng xuất</span>
-            </li>
-          </Link>
+
+          <li onClick={logoutUser}>
+            <ExitToAppIcon className="icon" />
+            <span>Đăng xuất</span>
+          </li>
         </ul>
       </div>
       <div className="bottom">

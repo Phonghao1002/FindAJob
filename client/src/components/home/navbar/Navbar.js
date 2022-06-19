@@ -5,6 +5,7 @@ import "react-dropdown/style.css";
 import axios from "axios";
 import { useContext, useState, useEffect } from "react";
 import { GlobalState } from "../../../GlobalState";
+import { Avatar } from "@mui/material/Avatar";
 
 const options = [
   { value: "one", label: "One" },
@@ -94,11 +95,7 @@ const Navbar = () => {
             {checkUserLogin() && (
               <div className="dropdown">
                 <div className="item">
-                  <img
-                    src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                    alt=""
-                    className="avatar"
-                  />
+                  <img src={infoUser.Avatar} alt="" className="avatar" />
                   <span className="name">{infoUser.name}</span>
                 </div>
                 {/* <button class="dropbtn">Dropdown</button> */}
@@ -140,7 +137,7 @@ const Navbar = () => {
                       }
                     }}
                   >
-                    Trang Quản lý
+                    {infoUser.role == "0" ? "Trang cá nhân" : "Trang quản lý"}
                     {/* {infoUser.role == 0 && (
                       <div className="cart-icon">
                         <h1>{saveJob.length}</h1>

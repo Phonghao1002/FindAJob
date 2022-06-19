@@ -12,9 +12,38 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import axios from "axios";
+import { useState } from "react";
 // import KeyIcon from '@mui/icons-material/Key';
 
 const ResetPassword = () => {
+  const [user, setUser] = useState({
+    password: "",
+  });
+
+  const onChangeInput = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  const ResetPasswordSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      let respense = await axios.post("http://localhost:4110/user/reset", {
+        ...user,
+      });
+      let info = {
+        ...respense.data.infoUser,
+        accesstoken: respense.data.accesstoken,
+      };
+
+      localStorage.setItem("infoUser", JSON.stringify(info));
+      window.location.href = "/";
+    } catch (err) {
+      alert(err.response.data.msg);
+    }
+  };
+
   return (
     <div className="login-page">
       <Container component="main" maxWidth="xs">
@@ -33,9 +62,14 @@ const ResetPassword = () => {
           <Typography component="h1" variant="h5">
             Đổi mật khẩu
           </Typography>
-          <Box component="form" noValidate sx={{ mt: 3 }}>
+          <Box
+            component="form"
+            noValidate
+            sx={{ mt: 3 }}
+            onSubmit={ResetPasswordSubmit}
+          >
             <Grid container spacing={2}>
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
                 <TextField
                   autoComplete="given-name"
                   name="firstName"
@@ -45,7 +79,7 @@ const ResetPassword = () => {
                   label="Mật khẩu"
                   autoFocus
                 />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12}>
                 <TextField
                   required
@@ -54,6 +88,8 @@ const ResetPassword = () => {
                   label="Mật khẩu mới"
                   name="lastName"
                   autoComplete="family-name"
+                  value={user.password}
+                  onChange={onChangeInput}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -64,6 +100,8 @@ const ResetPassword = () => {
                   label="Nhập lại mật khẩu mới"
                   name="email"
                   autoComplete="email"
+                  value={user.password}
+                  onChange={onChangeInput}
                 />
               </Grid>
 

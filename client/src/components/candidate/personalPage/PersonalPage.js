@@ -4,6 +4,8 @@ import Loading from "../../utils/loading/Loading";
 import "./personalPage.scss";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import SidebarCandidate from "../sidebarCandidate/SidebarCandidate";
+import Navbargeneral from "../../navbargeneral/Navbargeneral";
 
 const initialState = {
   name: "",
@@ -106,85 +108,89 @@ const PersonalPage = () => {
   //   display: avatar ? "block" : "none",
   // };
   return (
-    <div className="PersonalPage">
-      <div className="personalContainer">
-        <div className="topPersonalPage">
-          <h1>Hồ sơ cá nhân</h1>
-        </div>
-        <div className="bottomPersonalPage">
-          <div className="left">
-            <div id="file_img">
-              <img
-                src={
-                  avatar
-                    ? avatar.url
-                    : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-                }
-                alt=""
-              />
-              <span onClick={handleDestroy}>X</span>
+    <div className="homePersonalCandidate">
+      <SidebarCandidate />
+      <div className="homePersonalCandidateContainer">
+        <Navbargeneral infoUser={infoUser} />
+        <div className="PersonalPage">
+          <div className="personalContainer">
+            <div className="topPersonalPage">
+              <h1>Hồ sơ cá nhân</h1>
             </div>
-          </div>
-          <div className="right">
-            <form onSubmit={handleSubmit}>
-              <div className="formInput">
-                <label htmlFor="file">
-                  File ảnh: <DriveFolderUploadOutlinedIcon />
-                </label>
-                <input
-                  type="file"
-                  name="file"
-                  id="file"
-                  onChange={handleUpload}
-                  style={{ display: "none" }}
-                />
+            <div className="bottomPersonalPage">
+              <div className="left">
+                <div id="file_img">
+                  <img
+                    src={
+                      avatar
+                        ? avatar.url
+                        : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                    }
+                    alt=""
+                  />
+                  <span onClick={handleDestroy}>X</span>
+                </div>
               </div>
+              <div className="right">
+                <form onSubmit={handleSubmit}>
+                  <div className="formInput">
+                    <label htmlFor="file">
+                      File ảnh: <DriveFolderUploadOutlinedIcon />
+                    </label>
+                    <input
+                      type="file"
+                      name="file"
+                      id="file"
+                      onChange={handleUpload}
+                      style={{ display: "none" }}
+                    />
+                  </div>
 
-              <div className="formInput">
-                <label>Họ và Tên</label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Phong Hào"
-                  onChange={handleChangeInput}
-                  value={Users.name}
-                />
-              </div>
-              <div className="formInput">
-                <label>Ngày sinh</label>
-                <input
-                  type="text"
-                  name="birthday"
-                  id="birthday"
-                  placeholder="10/02/2000"
-                  onChange={handleChangeInput}
-                  value={Users.birthday}
-                />
-              </div>
-              <div className="formInput">
-                <label>Số điện thoại</label>
-                <input
-                  type="text"
-                  name="phone"
-                  id="phone"
-                  placeholder="+1 23456789"
-                  value={Users.phone}
-                  onChange={handleChangeInput}
-                />
-              </div>
-              <div className="formInput">
-                <label>Địa chỉ</label>
-                <input
-                  type="text"
-                  name="address"
-                  id="address"
-                  placeholder="Quang Tri"
-                  value={Users.address}
-                  onChange={handleChangeInput}
-                />
-              </div>
-              {/* <div className="formInput">
+                  <div className="formInput">
+                    <label>Họ và Tên</label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      placeholder="Phong Hào"
+                      onChange={handleChangeInput}
+                      value={Users.name}
+                    />
+                  </div>
+                  <div className="formInput">
+                    <label>Ngày sinh</label>
+                    <input
+                      type="text"
+                      name="birthday"
+                      id="birthday"
+                      placeholder="10/02/2000"
+                      onChange={handleChangeInput}
+                      value={Users.birthday}
+                    />
+                  </div>
+                  <div className="formInput">
+                    <label>Số điện thoại</label>
+                    <input
+                      type="text"
+                      name="phone"
+                      id="phone"
+                      placeholder="+1 23456789"
+                      value={Users.phone}
+                      onChange={handleChangeInput}
+                    />
+                  </div>
+                  <div className="formInput">
+                    <label>Địa chỉ</label>
+                    <input
+                      type="text"
+                      name="address"
+                      id="address"
+                      placeholder="Quang Tri"
+                      value={Users.address}
+                      onChange={handleChangeInput}
+                    />
+                  </div>
+                  {/* <div className="formInput">
                 <label>Username</label>
                 <input
                   type=""
@@ -194,7 +200,7 @@ const PersonalPage = () => {
                   onChange={handleChangeInput}
                 />
               </div> */}
-              {/* <div className="formInput">
+                  {/* <div className="formInput">
                 <label>Email</label>
                 <input
                   type="text"
@@ -205,22 +211,22 @@ const PersonalPage = () => {
                   onChange={handleChangeInput}
                 />
               </div> */}
-              <div className="formInput">
-                <label>Giới tính</label>
-                <input
-                  type="text"
-                  name="gender"
-                  id="gender"
-                  placeholder="gender"
-                  value={Users.gender}
-                  onChange={handleChangeInput}
-                />
-              </div>
-              {/* <div className="formInput">
+                  <div className="formInput">
+                    <label>Giới tính</label>
+                    <input
+                      type="text"
+                      name="gender"
+                      id="gender"
+                      placeholder="gender"
+                      value={Users.gender}
+                      onChange={handleChangeInput}
+                    />
+                  </div>
+                  {/* <div className="formInput">
                 <label>Gender</label> */}
-              {/* <input type="" placeholder="Nam" /> */}
+                  {/* <input type="" placeholder="Nam" /> */}
 
-              {/* <select
+                  {/* <select
                   onChange={handleChangeInput}
                   value={Users.gender}
                   name="gender"
@@ -228,18 +234,20 @@ const PersonalPage = () => {
                   <option>Nam</option>
                   <option>Nu</option>
                 </select> */}
-              {/* </div> */}
-              {/* <div className="formInput">
+                  {/* </div> */}
+                  {/* <div className="formInput">
                 <label>Mô tả về bản thân</label>
                 <textarea type="" placeholder="Mô tả bản thân" />
               </div> */}
-              {/* <div className="formInput">
+                  {/* <div className="formInput">
                 <label>Địa chỉ</label>
                 <textarea type="" placeholder="Đà Nẵng" />
               </div> */}
 
-              <button>Cập nhật</button>
-            </form>
+                  <button>Cập nhật</button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>

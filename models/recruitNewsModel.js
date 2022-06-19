@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 const recruitNewsSchema = new mongoose.Schema(
   {
-    recruitNews_id: {
-      type: String,
-      unique: true,
-      trim: true,
-      required: true,
-    },
+    // recruitNews_id: {
+    //   type: String,
+    //   unique: true,
+    //   trim: true,
+    //   required: true,
+    // },
     title: {
       type: String,
       trim: true,
@@ -58,9 +58,9 @@ const recruitNewsSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    status: {
-      type: String,
-    },
+    // status: {
+    //   type: String,
+    // },
   },
   {
     timestamps: true, //important

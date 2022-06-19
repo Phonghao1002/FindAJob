@@ -66,6 +66,7 @@ const ApprovedProfile = () => {
             {/* <Link to="/#" className="link">
                 Add New
               </Link> */}
+            <span>Tổng số {recruitmentApproveds.length}</span>
           </div>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 800 }} aria-label="customized table">
