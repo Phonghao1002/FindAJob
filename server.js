@@ -27,6 +27,7 @@ app.use("/api", require("./routes/upload"));
 app.use("/api", require("./routes/recruitNewsRouter"));
 app.use("/api", require("./routes/recruitmentRouter"));
 app.use("/api", require("./routes/applicationFile"));
+app.use("/api", require("./routes/saveJobsRouter"));
 // app.use(router);
 app.post("/create-pdf", (req, res) => {
   pdf.create(pdfTemplate(req.body), {}).toFile("rezultati.pdf", (err) => {

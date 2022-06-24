@@ -18,6 +18,7 @@ const Home = () => {
     const data = JSON.parse(localStorage.getItem("infoUser"));
     if (data) {
       setInfoUser(data);
+      // console.log("User info", data);
     }
   }, []);
   return (
@@ -27,7 +28,7 @@ const Home = () => {
       <div className="homeContainer">
         <FeaturedNews />
         <h1 className="homeTitle">Tin tuyển dụng</h1>
-        <RecruitmentNews />
+        <RecruitmentNews infoUser={infoUser} />
         <MaiList />
         <Footer />
       </div>

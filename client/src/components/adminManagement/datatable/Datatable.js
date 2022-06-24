@@ -83,9 +83,9 @@ const Datatable = ({}) => {
     <div className="datatable">
       <div className="datatableTitle">
         Danh sách Người Dùng
-        <Link to="/users/new" className="link">
+        {/* <Link to="/users/new" className="link">
           Tạo mới Người Dùng
-        </Link>
+        </Link> */}
       </div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 1000 }} aria-label="customized table">
@@ -122,7 +122,11 @@ const Datatable = ({}) => {
                 {/* <StyledTableCell align="right">{recruitNew.images} </StyledTableCell> */}
                 <StyledTableCell align="right">{user.email} </StyledTableCell>
                 <StyledTableCell align="right">
-                  {user.role == 0 ? "Ứng Viên" : "Nhà tuyển dụng"}{" "}
+                  {user.role == 0
+                    ? "Ứng Viên"
+                    : user.role == 1
+                    ? "Người quản trị"
+                    : "Nhà tuyển dụng"}
                 </StyledTableCell>
                 <StyledTableCell align="right">
                   {new Date(user.createdAt).toLocaleDateString()}

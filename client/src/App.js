@@ -47,6 +47,7 @@ export default function App() {
     const data = JSON.parse(localStorage.getItem("infoUser"));
     if (data) {
       setInfoUser(data);
+      console.log("User info", infoUser);
     }
   }, []);
 

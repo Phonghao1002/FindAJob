@@ -101,7 +101,7 @@ const RecruitmentCtrl = {
   updateRecuitment: async (req, res) => {
     // res.json({ msg: "Update Success!" });
     try {
-      const { status, email } = req.body;
+      const { status, email, name } = req.body;
 
       await Recruitment.findByIdAndUpdate(
         { _id: req.params.id },
@@ -111,7 +111,7 @@ const RecruitmentCtrl = {
       );
       const mail = mailer.message(
         email,
-        "Xin chào bạn ",
+        `Xin chào bạn ${name}`,
         `<div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
       <h2 style="text-align: center; text-transform: uppercase;color: teal;">Cảm ơn bạn đã ứng tuyển vào Công Ty</h2>
       <p>Hiện tại chúng tôi đã xét duyệt hồ sơ cho bạn. bạn đã đủ các tiêu chuẩn để trở thành một thành viên trong Công Ty chúng tôi.

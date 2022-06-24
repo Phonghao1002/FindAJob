@@ -5,6 +5,7 @@ export default function UserAPI(token) {
   const [isLogged, setIsLogged] = useState(false);
   const [isAdmin, setIsAdmin] = useState();
   const [saveJob, setSaveJob] = useState([]);
+  const [cart, setCart] = useState([]);
   const [users, setUsers] = useState([]);
 
   const getUser = async () => {
@@ -28,23 +29,19 @@ export default function UserAPI(token) {
     }
   }, [token]);
 
-  const addSaveJobs = async (recruitNew) => {
-    if (!isLogged) return alert("Please login to continue buying");
+  const addCart = async (recruitNew) => {
+    // if (!isLogged) return alert("Please login to continue buying");
 
-    const check = saveJob.every((item) => {
+    const check = cart.every((item) => {
       return item._id !== recruitNew._id;
     });
 
     if (check) {
-      setSaveJob([...saveJob, { ...recruitNew, quantity: 1 }]);
+      setCart([...cart, { ...recruitNew, quantity: 1 }]);
 
-      await axios.patch(
-        "/user/addsaveJobs",
-        { saveJob: [...saveJob, { ...recruitNew, quantity: 1 }] },
-        {
-          headers: { Authorization: token },
-        }
-      );
+      await axios.patch("http://localhost:4110/user/addCart", {
+        cart: [...cart, { ...recruitNew, quantity: 1 }],
+      });
     } else {
       alert("This job posting has been saved to my jobs");
     }
@@ -63,7 +60,9 @@ export default function UserAPI(token) {
     isLogged: [isLogged, setIsLogged],
     isAdmin: [isAdmin, setIsAdmin],
     saveJob: [saveJob, setSaveJob],
-    addSaveJobs: addSaveJobs,
+    cart: [cart, setCart],
+    addCart: addCart,
+    // addSaveJobs: addSaveJobs,
     users: [users, setUsers],
   };
 }

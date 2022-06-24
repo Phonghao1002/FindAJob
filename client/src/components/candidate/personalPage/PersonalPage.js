@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import Loading from "../../utils/loading/Loading";
 import "./personalPage.scss";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SidebarCandidate from "../sidebarCandidate/SidebarCandidate";
 import Navbargeneral from "../../navbargeneral/Navbargeneral";
+import { GlobalState } from "../../../GlobalState";
 
 const initialState = {
   name: "",
@@ -17,19 +18,38 @@ const initialState = {
 
 const PersonalPage = () => {
   const navigate = useNavigate();
-  const [Users, setUsers] = useState(initialState);
+  const state = useContext(GlobalState);
+  const [User, setUser] = useState(initialState);
   const [avatar, setAvatar] = useState(false);
   const [loading, setLoading] = useState(false);
   const [infoUser, setInfoUser] = useState({});
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [gender, setGender] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [address, setAddress] = useState("");
+  // const [avatar, setI] = useState("");
+  const [users, setUsers] = state.userAPI.users;
+  const param = useParams();
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("infoUser"));
     if (data) {
       setInfoUser(data);
+      console.log("sdc", data);
+      // setName(data.name);
+      // setPhone(data.phone);
+      // setGender(data.gender);
+      // setBirthday(data.birthday);
+      // setAddress(data.address);
     }
-    setUsers(initialState);
+    setUser(initialState);
     // console.log("infoUser", infoUser);
   }, []);
+
+  // useEffect(() => {
+  //   if(infoUser.)
+  // })
 
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -37,15 +57,15 @@ const PersonalPage = () => {
       // if (!isAdmin) return alert("You're not an admin");
       const file = e.target.files[0];
 
-      if (!file) return alert("File not exist.");
+      if (!file) return alert("Tệp không tồn tại!");
 
       if (file.size > 1024 * 1024)
         // 1mb
-        return alert("Size too large!");
+        return alert("Kích thước quá lớn!");
 
       if (file.type !== "image/jpeg" && file.type !== "image/png")
         // 1mb
-        return alert("File format is incorrect.");
+        return alert("Định dạng tệp không chính xác!");
 
       let formData = new FormData();
       formData.append("file", file);
@@ -79,22 +99,29 @@ const PersonalPage = () => {
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     console.log(name, value);
-    setUsers({ ...Users, [name]: value });
+    setUser({ ...User, [name]: value });
   };
 
   const handleSubmit = async (e) => {
+    // let formData = new FormData();
+    // formData.append("name", name);
+    // formData.append("phone", phone);
+    // formData.append("gender", gender);
+    // formData.append("birthday", birthday);
+    // formData.append("address", address);
+
     e.preventDefault();
-    console.log("Users", avatar);
+    // console.log("Users", avatar);
     try {
-      if (!avatar) return alert("No Image Upload");
+      if (!avatar) return alert("Không có hình ảnh tải lên!");
 
       await axios
         .patch(`http://localhost:4110/user/update/${infoUser._id}`, {
-          ...Users,
+          ...User,
           avatar: avatar.url,
         })
         .then((res) => {
-          console.log(res.data.msg);
+          alert(res.data.msg);
           navigate("/candidate");
         })
         .catch((err) => alert(err));
@@ -154,7 +181,7 @@ const PersonalPage = () => {
                       id="name"
                       placeholder="Phong Hào"
                       onChange={handleChangeInput}
-                      value={Users.name}
+                      value={User.name}
                     />
                   </div>
                   <div className="formInput">
@@ -165,7 +192,7 @@ const PersonalPage = () => {
                       id="birthday"
                       placeholder="10/02/2000"
                       onChange={handleChangeInput}
-                      value={Users.birthday}
+                      value={User.birthday}
                     />
                   </div>
                   <div className="formInput">
@@ -175,7 +202,7 @@ const PersonalPage = () => {
                       name="phone"
                       id="phone"
                       placeholder="+1 23456789"
-                      value={Users.phone}
+                      value={User.phone}
                       onChange={handleChangeInput}
                     />
                   </div>
@@ -186,7 +213,7 @@ const PersonalPage = () => {
                       name="address"
                       id="address"
                       placeholder="Quang Tri"
-                      value={Users.address}
+                      value={User.address}
                       onChange={handleChangeInput}
                     />
                   </div>
@@ -218,7 +245,7 @@ const PersonalPage = () => {
                       name="gender"
                       id="gender"
                       placeholder="gender"
-                      value={Users.gender}
+                      value={User.gender}
                       onChange={handleChangeInput}
                     />
                   </div>

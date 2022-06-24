@@ -14,7 +14,7 @@ import { GlobalState } from "../../../GlobalState";
 import { Button } from "@mui/material";
 
 import { DataGrid } from "@mui/x-data-grid";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Navbargeneral from "../../navbargeneral/Navbargeneral";
 import axios from "axios";
 
@@ -39,9 +39,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const Decentralization = () => {
+  const state = useContext(GlobalState);
+  const [users] = state.userAPI.users;
   // const classes = useStyles();
   const [infoUser, setInfoUser] = useState({});
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("infoUser"));
@@ -50,15 +52,27 @@ const Decentralization = () => {
     }
     // console.log(data);
   }, []);
+
+  const handleRecruit = async (id, email) => {
+    await axios
+      .patch(`http://localhost:4110/user/update_status/${id}`, {
+        status: "block",
+      })
+      .then((res) => {
+        alert("Bạn đã khóa tài khoản thành công!");
+      })
+      .catch((err) => console.log("err"));
+  };
+
   // const [openTable, setOpenTable] = useState(false);
-  useEffect(() => {
-    const getUsers = async () => {
-      const res = await axios.get("http://localhost:4110/user/recruiter");
-      setUsers(res.data);
-      // console.log(res.data);
-    };
-    getUsers();
-  }, []);
+  // useEffect(() => {
+  //   const getUsers = async () => {
+  //     const res = await axios.get("http://localhost:4110/user/recruiter");
+  //     setUsers(res.data);
+  //     // console.log(res.data);
+  //   };
+  //   getUsers();
+  // }, []);
 
   return (
     <div className="decentralization">
@@ -84,7 +98,7 @@ const Decentralization = () => {
                   <StyledTableCell align="right">
                     Ngày tạo&nbsp;
                   </StyledTableCell>
-                  <StyledTableCell align="right">Trạng thái</StyledTableCell>
+                  <StyledTableCell align="right">Đã khóa</StyledTableCell>
 
                   {/* <StyledTableCell align="right">Avartar&nbsp;</StyledTableCell> */}
                   {/* <StyledTableCell align="right">updatedAt&nbsp;</StyledTableCell> */}
@@ -119,7 +133,7 @@ const Decentralization = () => {
                       {new Date(user.createdAt).toLocaleDateString()}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {user.status}
+                      {user.status == "block" ? "Đã khóa" : ""}
                     </StyledTableCell>
                     {/* <StyledTableCell align="right" className="cellBrowser">
                   <Button className="viewBrowser">Duyệt</Button>
@@ -129,11 +143,20 @@ const Decentralization = () => {
                     {/* <StyledTableCell align="right">{recruitNew.category}</StyledTableCell> */}
                     <StyledTableCell className="cellAction">
                       {/* <Link id="btn_view" to={`/recruiter/edit_RecruitNews/${recruitNew._id}`}> */}
-                      <Button className="viewButton">Ứng Viên</Button>
+                      {/* <Button
+                        className="viewButton"
+                      >
+                        Khóa tài khoản
+                      </Button> */}
                       {/* </Link> */}
 
                       {/* <Link id="btn_view" to="#" onClick={() => deleteRecruitNews(recruitNew._id, recruitNew.images.public_id)}> */}
-                      <Button className="deleteButton">Nhà tuyển dụng</Button>
+                      <Button
+                        className="deleteButton"
+                        onClick={() => handleRecruit(user._id)}
+                      >
+                        Khóa tài khoản
+                      </Button>
                       {/* </Link> */}
                     </StyledTableCell>
                   </StyledTableRow>

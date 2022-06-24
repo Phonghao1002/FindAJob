@@ -30,7 +30,7 @@ const SidebarCandidate = () => {
   const logoutUser = async () => {
     await axios.get("http://localhost:4110/user/logout");
 
-    localStorage.removeItem("firstLogin");
+    localStorage.setItem("infoUser", null);
     window.location.href = "/";
   };
   return (
@@ -62,7 +62,7 @@ const SidebarCandidate = () => {
           </Link>
           <p className="title">DANH SÁCH CÔNG VIỆC</p>
 
-          {/* <div className="cart-icon">
+          <div className="cart-icon">
             <h1>{saveJob.length}</h1>
             <Link to="/candidate/myJobs" style={{ textDecoration: "none" }}>
               <li>
@@ -70,7 +70,7 @@ const SidebarCandidate = () => {
                 <span>Công việc của tôi</span>
               </li>
             </Link>
-          </div> */}
+          </div>
           <Link
             to="/candidate/applicationHistory"
             style={{ textDecoration: "none" }}

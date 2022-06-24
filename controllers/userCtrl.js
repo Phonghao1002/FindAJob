@@ -309,20 +309,36 @@ const userCtrl = {
     }
   },
 
-  addSaveJobs: async (req, res) => {
+  updateUsersStatus: async (req, res) => {
+    try {
+      const { status } = req.body;
+
+      await Users.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          status,
+        }
+      );
+
+      res.json({ msg: "Cập nhật vai trò Thành công!" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+
+  addCart: async (req, res) => {
     try {
       const user = await Users.findById(req.user.id);
-      if (!user)
-        return res.status(400).json({ msg: "Người dùng không tồn tại." });
+      if (!user) return res.status(400).json({ msg: "User does not exist." });
 
       await Users.findOneAndUpdate(
         { _id: req.user.id },
         {
-          savejobs: req.body.savejobs,
+          cart: req.body.cart,
         }
       );
 
-      return res.json({ msg: "Đã thêm vào mục công việc của tôi!" });
+      return res.json({ msg: "Added to cart" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

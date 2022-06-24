@@ -69,11 +69,12 @@ const userSchema = new mongoose.Schema(
 
       // required: [true, "Please enter your company!"],
     },
-    // status: {
-    //   type: String,
-    //   trim: true,
-    //   unique: true,
-    // },
+    status: {
+      type: String,
+      trim: true,
+      unique: true,
+      default: null,
+    },
   },
   {
     timestamps: true,

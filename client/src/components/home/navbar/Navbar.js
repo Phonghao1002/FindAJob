@@ -31,6 +31,8 @@ const options = [
 const Navbar = () => {
   const state = useContext(GlobalState);
   const [saveJob] = state.userAPI.saveJob;
+  const [cart] = state.userAPI.cart;
+  const [isLogged] = state.userAPI.isLogged;
   // console.log(saveJob);
   const defaultOption = options[0];
   const [infoUser, setInfoUser] = useState({});
@@ -95,7 +97,7 @@ const Navbar = () => {
             {checkUserLogin() && (
               <div className="dropdown">
                 <div className="item">
-                  <img src={infoUser.Avatar} alt="" className="avatar" />
+                  <img src={infoUser.avatar} alt="" className="avatar" />
                   <span className="name">{infoUser.name}</span>
                 </div>
                 {/* <button class="dropbtn">Dropdown</button> */}
@@ -119,6 +121,35 @@ const Navbar = () => {
                         }}
                       >
                         Tạo hồ sơ CV
+                      </a>
+                    </>
+                  )}
+                  {infoUser.role == "0" && (
+                    <>
+                      <a
+                        href="#"
+                        onClick={() => {
+                          {
+                            if (infoUser.role == "0") {
+                              <a>Tin đã lưu</a>;
+                              {
+                                infoUser.role == 0 && (
+                                  <div className="cart-icon">
+                                    <h1>{cart.length}</h1>
+                                  </div>
+                                );
+                              }
+                              window.location.href = "/candidate/myJobs";
+                            } else if (infoUser.role == "2") {
+                              window.location.href = "";
+                            } else {
+                              window.location.href = "";
+                            }
+                            // role = 1 ? 2 : (window.location.href = "/admin");
+                          }
+                        }}
+                      >
+                        Tin đã lưu
                       </a>
                     </>
                   )}

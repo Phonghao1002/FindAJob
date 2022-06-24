@@ -7,11 +7,12 @@ import Stack from "@mui/material/Stack";
 import "./recruitmentNews.css";
 import LoadMore from "./LoadMore";
 
-const RecruitmentNews = () => {
+const RecruitmentNews = ({ infoUser }) => {
   const state = useContext(GlobalState);
   const [recruitNews] = state.recruitmentNewsAPI.recruitNews;
   const [isAdmin] = state.userAPI.isAdmin;
   const addSaveJobs = state.userAPI.addSaveJobs;
+  const addCart = state.userAPI.addCart;
   // console.log("aaa", addSaveJobs);
   const [categories] = state.categoriesAPI.categories;
 
@@ -154,6 +155,7 @@ const RecruitmentNews = () => {
                 recruitNew={recruitNew}
                 isAdmin={isAdmin}
                 addSaveJobs={addSaveJobs}
+                infoUser={infoUser}
               />
             );
           })}

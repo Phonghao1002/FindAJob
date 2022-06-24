@@ -50,7 +50,9 @@ router.patch("/update/:id", userCtrl.updateUser);
 
 router.patch("/update_role/:id", userCtrl.updateUsersRole);
 
-router.patch("/addsaveJobs", auth, userCtrl.addSaveJobs);
+router.patch("/update_status/:id", userCtrl.updateUsersStatus);
+
+router.patch("/addsaveJobs", auth, userCtrl.addCart);
 
 // router.post('/activation', userCtrl.activateEmail)
 

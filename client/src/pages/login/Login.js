@@ -37,8 +37,15 @@ const Login = () => {
         accesstoken: respense.data.accesstoken,
       };
 
-      localStorage.setItem("infoUser", JSON.stringify(info));
+      {
+        respense.data.infoUser.status == "block"
+          ? alert("tài khoản của bạn đã bị Người quản trị khóa!")
+          : localStorage.setItem("infoUser", JSON.stringify(info));
+      }
       window.location.href = "/";
+      // {
+      //   respense.data.infoUser.status != "block" &&
+      // }
     } catch (err) {
       alert(err.response.data.msg);
     }

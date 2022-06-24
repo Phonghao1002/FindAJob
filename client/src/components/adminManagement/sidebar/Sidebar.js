@@ -50,10 +50,17 @@ const Sidebar = () => {
             </li>
           </Link>
           <p className="title">DANH SÁCH QUẢN LÝ</p>
+          <Link to="/admin/decentralization" style={{ textDecoration: "none" }}>
+            <li>
+              <InsertChartIcon className="icon" />
+              <span>Quản lý danh sách Người Dùng</span>
+            </li>
+          </Link>
+
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
-              <span>Quản lý danh sách Người Dùng</span>
+              <span>Phân quyền</span>
             </li>
           </Link>
           {/* <Link to="/candidateManager" style={{ textDecoration: "none" }}>
@@ -67,13 +74,7 @@ const Sidebar = () => {
                         <LocalShippingIcon className="icon" />
                         <span>Delivery</span>
                     </li> */}
-          {/* <p className="title">HỮU ÍCH</p>
-          <Link to="/admin/decentralization" style={{ textDecoration: "none" }}>
-            <li>
-              <InsertChartIcon className="icon" />
-              <span>Phân quyền</span>
-            </li>
-          </Link> */}
+          {/* <p className="title">HỮU ÍCH</p> */}
 
           {/* <Link
             to="/recruiter/createRecruitNews"
