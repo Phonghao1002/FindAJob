@@ -86,7 +86,7 @@ const Widget = ({ type }) => {
         title: "Hồ sơ chưa được duyệt",
         isMoney: true,
         diff: { result: result },
-        link: "/recruiter/pendingProfile",
+        link: "/admin/pendingProfileAdmin",
         icon: (
           <NewspaperIcon
             className="icon"
@@ -100,7 +100,7 @@ const Widget = ({ type }) => {
         title: "Hồ sơ đã được duyệt",
         isMoney: true,
         diff: { result: result1 },
-        link: "/recruiter/approvedProfile",
+        link: "/admin/approvedProfileAdmin",
         icon: (
           <NewspaperIcon
             className="icon"

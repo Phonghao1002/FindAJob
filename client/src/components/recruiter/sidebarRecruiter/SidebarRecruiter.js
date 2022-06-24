@@ -26,7 +26,7 @@ const SidebarRecruiter = () => {
   const logoutUser = async () => {
     await axios.get("http://localhost:4110/user/logout");
 
-    localStorage.removeItem("firstLogin");
+    localStorage.setItem("infoUser", null);
     window.location.href = "/";
   };
   return (
@@ -66,7 +66,7 @@ const SidebarRecruiter = () => {
                         </li>
                     </Link> */}
 
-          <Link
+          {/* <Link
             to="/candidate/changePassword"
             style={{ textDecoration: "none" }}
           >
@@ -74,7 +74,7 @@ const SidebarRecruiter = () => {
               <TrendingUpIcon className="icon" />
               <span>Đổi mật khẩu</span>
             </li>
-          </Link>
+          </Link> */}
           <p className="title">DANH SÁCH QUẢN LÝ</p>
           <Link to="/recruiter/category" style={{ textDecoration: "none" }}>
             <li>

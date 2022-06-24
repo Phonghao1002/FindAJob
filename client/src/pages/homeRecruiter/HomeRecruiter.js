@@ -1,7 +1,7 @@
 import Chart from "../../components/adminManagement/chart/Chart";
 import Datatable from "../../components/adminManagement/datatable/Datatable";
 import Featured from "../../components/adminManagement/featured/Featured";
-import Widget from "../../components/adminManagement/widget/Widget";
+// import WidgetRecruit from "../../components/adminManagement/widget/Widget";
 import NavbarRecruiter from "../../components/recruiter/navbarRecruiter/NavbarRecruiter";
 import SidebarRecruiter from "../../components/recruiter/sidebarRecruiter/SidebarRecruiter";
 import Table from "../../components/adminManagement/table/Table";
@@ -9,6 +9,7 @@ import Table from "../../components/adminManagement/table/Table";
 import "./homeRecruiter.scss";
 import { useState, useEffect } from "react";
 import Navbargeneral from "../../components/navbargeneral/Navbargeneral";
+import WidgetRecruit from "../../components/recruiter/widgetRecruit/WidgetRecruit";
 
 const HomeRecruiter = () => {
   const [infoUser, setInfoUser] = useState({});
@@ -37,17 +38,15 @@ const HomeRecruiter = () => {
         <div className="widgets">
           {/* <Widget type="Tài khoản chờ phê duyệt" />
           <Widget type="Tài khoản hoạt động" /> */}
-          <Widget type="Hồ sơ chưa được duyệt" />
-          <Widget type="Hồ sơ đã được duyệt" />
+          <WidgetRecruit type="Hồ sơ chưa được duyệt" />
+          <WidgetRecruit type="Hồ sơ đã được duyệt" />
         </div>
         {/* <div className="charts">
           <Featured />
           <Chart title="6 tháng trước (Tuyển dụng)" aspect={2 / 1} />
         </div> */}
         <div className="listContainer">
-          <div className="listTitle">
-            Danh sách đã nộp hồ sơ ứng tuyển trong 1 tuần qua
-          </div>
+          <div className="listTitle">Danh sách đã nộp hồ sơ ứng tuyển</div>
           <Table />
         </div>
       </div>

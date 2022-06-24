@@ -61,10 +61,17 @@
     //     margin-right: 20px;
     // }
   }
+  .cellName {
+    width: 150px;
+  }
+  .celldescription {
+    width: 200px;
+  }
 
   .status {
     padding: 5px;
     border-radius: 5px;
+    width: 100px;
 
     &.Đã được duyệt {
       background-color: rgba(0, 128, 0, 0.05);

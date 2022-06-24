@@ -77,12 +77,13 @@ const ManagementNewsRecruit = () => {
     getRecruitMent();
   }, [sort]);
 
-  const handleBrowser = async (id, email, name) => {
+  const handleBrowser = async (id, email, name, phoneNumber) => {
     await axios
       .patch(`http://localhost:4110/api/updateRecruitMent/${id}`, {
         status: "Đã được duyệt",
         email,
         name,
+        phoneNumber,
       })
       .then((res) => {
         alert(res.data.msg);
@@ -178,10 +179,10 @@ const ManagementNewsRecruit = () => {
                         {recruitment.name}_CV
                       </a>
                     </StyledTableCell>
-                    <StyledTableCell align="right">
+                    <StyledTableCell align="right" className="cellName">
                       {recruitment.name}{" "}
                     </StyledTableCell>
-                    <StyledTableCell align="right">
+                    <StyledTableCell align="right" className="celldescription">
                       {recruitment.descriptions}
                     </StyledTableCell>
                     <StyledTableCell align="right">
@@ -214,7 +215,8 @@ const ManagementNewsRecruit = () => {
                                 handleBrowser(
                                   recruitment._id,
                                   recruitment.email,
-                                  recruitment.name
+                                  recruitment.name,
+                                  recruitment.phoneNumber
                                 )
                               }
                             >

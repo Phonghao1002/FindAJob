@@ -24,7 +24,7 @@ const Sidebar = () => {
   const logoutUser = async () => {
     await axios.get("http://localhost:4110/user/logout");
 
-    localStorage.removeItem("firstLogin");
+    localStorage.setItem("infoUser", null);
     window.location.href = "/";
   };
   return (

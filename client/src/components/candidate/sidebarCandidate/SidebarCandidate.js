@@ -62,15 +62,15 @@ const SidebarCandidate = () => {
           </Link>
           <p className="title">DANH SÁCH CÔNG VIỆC</p>
 
-          <div className="cart-icon">
-            <h1>{saveJob.length}</h1>
-            <Link to="/candidate/myJobs" style={{ textDecoration: "none" }}>
-              <li>
-                <WorkIcon className="icon" />
-                <span>Công việc của tôi</span>
-              </li>
-            </Link>
-          </div>
+          {/* <div className="cart-icon">
+            <h1>{saveJob.length}</h1> */}
+          <Link to="/candidate/myJobs" style={{ textDecoration: "none" }}>
+            <li>
+              <WorkIcon className="icon" />
+              <span>Công việc của tôi</span>
+            </li>
+          </Link>
+          {/* </div> */}
           <Link
             to="/candidate/applicationHistory"
             style={{ textDecoration: "none" }}

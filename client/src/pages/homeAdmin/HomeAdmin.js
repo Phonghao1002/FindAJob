@@ -46,9 +46,7 @@ const Home = () => {
           <Chart title="Biểu đồ tuyển dụng trong 6 tháng qua" aspect={2 / 1} />
         </div> */}
         <div className="listContainer">
-          <div className="listTitle">
-            Danh sách đã nộp hồ sơ ứng tuyển trong 1 tuần qua
-          </div>
+          <div className="listTitle">Danh sách đã nộp hồ sơ ứng tuyển</div>
           <Table />
         </div>
       </div>

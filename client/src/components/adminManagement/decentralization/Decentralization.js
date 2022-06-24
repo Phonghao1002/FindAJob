@@ -98,13 +98,16 @@ const Decentralization = () => {
                   <StyledTableCell align="right">
                     Ngày tạo&nbsp;
                   </StyledTableCell>
+                  <StyledTableCell align="right">
+                    Quyền của tài khoản
+                  </StyledTableCell>
                   <StyledTableCell align="right">Đã khóa</StyledTableCell>
 
                   {/* <StyledTableCell align="right">Avartar&nbsp;</StyledTableCell> */}
                   {/* <StyledTableCell align="right">updatedAt&nbsp;</StyledTableCell> */}
                   {/* <StyledTableCell align="left">Hành động&nbsp;</StyledTableCell> */}
                   <StyledTableCell align="left">
-                    Phân quyền&nbsp;
+                    Khóa tài khoản&nbsp;
                   </StyledTableCell>
                 </TableRow>
               </TableHead>
@@ -131,6 +134,13 @@ const Decentralization = () => {
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {new Date(user.createdAt).toLocaleDateString()}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {user.role == 0
+                        ? "Ứng Viên"
+                        : user.role == 1
+                        ? "Người quản trị"
+                        : "Nhà tuyển dụng"}
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {user.status == "block" ? "Đã khóa" : ""}

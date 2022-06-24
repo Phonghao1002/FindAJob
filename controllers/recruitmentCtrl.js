@@ -101,7 +101,7 @@ const RecruitmentCtrl = {
   updateRecuitment: async (req, res) => {
     // res.json({ msg: "Update Success!" });
     try {
-      const { status, email, name } = req.body;
+      const { status, email, name, phoneNumber } = req.body;
 
       await Recruitment.findByIdAndUpdate(
         { _id: req.params.id },
@@ -113,10 +113,12 @@ const RecruitmentCtrl = {
         email,
         `Xin chào bạn ${name}`,
         `<div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
-      <h2 style="text-align: center; text-transform: uppercase;color: teal;">Cảm ơn bạn đã ứng tuyển vào Công Ty</h2>
-      <p>Hiện tại chúng tôi đã xét duyệt hồ sơ cho bạn. bạn đã đủ các tiêu chuẩn để trở thành một thành viên trong Công Ty chúng tôi.
-          Cảm ơn bạn đã tin tưỡng để ứng tuyển vào Công Ty. Hẹn gặp bạn vào ngày 30/7 vào luc 7h30 tại Công Ty.
-      </p>`
+      <h2 style="text-align: center; text-transform: uppercase;color: teal;">Xin chào ${name}! </h2>
+      Cảm ơn bạn đã ứng tuyển vào Công Ty!
+      Hiện tại chúng tôi đã xét duyệt hồ sơ cho bạn. bạn đã đủ các tiêu chuẩn để trở thành một thành viên trong Công Ty chúng tôi.
+          Cảm ơn bạn đã tin tưỡng để ứng tuyển vào Công Ty. Hẹn gặp bạn vào ngày 30/7 vào luc 7h30 tại Công Ty để thực hiện phỏng vấn.
+          Chúng tôi sẽ liên hệ với bạn qua email này: ${email} hoặc với số điện thoại của bạn: ${phoneNumber}
+      `
       );
       mailer.sendMail(mail);
       res.json({ msg: "Duyệt hồ sơ thành công!" });

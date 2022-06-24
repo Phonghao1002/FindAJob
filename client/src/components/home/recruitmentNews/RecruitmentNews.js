@@ -178,9 +178,7 @@ const RecruitmentNews = ({ infoUser }) => {
             />
           </Stack> */}
         </div>
-        {recruitNews.length === 0 && (
-          <h1>Không có tin tuyển dụng nào của danh mục C#</h1>
-        )}
+        {recruitNews.length === 0 && <h1>Không có tin tuyển dụng nào</h1>}
       </div>
     </div>
   );

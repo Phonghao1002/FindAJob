@@ -17,6 +17,7 @@
           padding: 10px;
           margin: 20px;
           display: flex;
+          justify-content: space-between;
 
           h1 {
             color: lightgray;
@@ -26,8 +27,8 @@
         }
 
         .bottomPersonalPage {
-          // margin-left: 150px;
-          width: 100%;
+          margin-left: 150px;
+          width: 900px;
           display: flex;
           flex-direction: column;
 
@@ -43,6 +44,7 @@
             margin-bottom: 20px;
             // display: flex;
             // flex-direction: column;
+            height: 100%;
             cursor: pointer;
           }
 

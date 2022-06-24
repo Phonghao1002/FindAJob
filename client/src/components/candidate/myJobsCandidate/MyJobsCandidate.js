@@ -58,6 +58,7 @@ const MyJobsCandidate = () => {
           <div className="personalContainer">
             <div className="topPersonalPage">
               <h1>Công việc của tôi</h1>
+              <span>Số lượng tin đã lưu: {saveJobs.length}</span>
             </div>
             <div className="bottomPersonalPage">
               {saveJobs.map((item) => {
@@ -69,34 +70,34 @@ const MyJobsCandidate = () => {
                 </>;
               })}
               {saveJobs.map((item) => (
-                <>
-                  <div className="searchItem" key={item?.dataRecruitNews?._id}>
+                <div className="main" key={item.dataRecruitNews._id}>
+                  <div className="searchItem">
                     <img
-                      src={item?.dataRecruitNews?.images?.url}
+                      src={item.dataRecruitNews.images.url}
                       alt=""
                       className="siImg"
                     />
                     <div className="siDesc">
                       <h1
                         className="siTitle"
-                        title={item?.dataRecruitNews.title}
+                        title={item.dataRecruitNews.title}
                       >
-                        {item?.dataRecruitNews.title}
+                        {item.dataRecruitNews.title}
                       </h1>
-                      <span className="siDistance">500m from center</span>
+                      {/* <span className="siDistance">500m from center</span> */}
                       <span className="siTaxiOp">
-                        {item?.dataRecruitNews?.content}
+                        {item.dataRecruitNews.category}
                       </span>
                       <span className="siSubtitle">
-                        {item?.dataRecruitNews?.description}
+                        {item.dataRecruitNews.description}
                       </span>
                       {/* <span className="siFeatures">
                                 Entire studio • 1 bathroom • 21m² 1 full bed
                             </span> */}
-                      <span className="siCancelOp">Free cancellation </span>
-                      <span className="siCancelOpSubtitle">
+                      {/* <span className="siCancelOp">Free cancellation </span> */}
+                      {/* <span className="siCancelOpSubtitle">
                         You can cancel later, so lock in this great price today!
-                      </span>
+                      </span> */}
                     </div>
                     <div className="siDetails">
                       <div className="siRating">
@@ -109,12 +110,14 @@ const MyJobsCandidate = () => {
                       </div>
                       <div className="siDetailTexts">
                         <span className="siPrice">
-                          ${item?.dataRecruitNews?.price}
+                          ${item.dataRecruitNews.price}
                         </span>
-                        <span className="siTaxOp">Includes taxes and fees</span>
+                        <span className="siTaxOp">
+                          Thời hạn: {item.dataRecruitNews.dayApply} ngày
+                        </span>
                         <Link
                           id="siCheckButton"
-                          to={`/detailsRecruitNews/${item?.dataRecruitNews?._id}`}
+                          to={`/detailsRecruitNews/${item.dataRecruitNews._id}`}
                           style={{ textDecoration: "none" }}
                         >
                           Xem chi tiết
@@ -122,8 +125,7 @@ const MyJobsCandidate = () => {
                       </div>
                     </div>
                   </div>
-                  ;
-                </>
+                </div>
               ))}
             </div>
           </div>

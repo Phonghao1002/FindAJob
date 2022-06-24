@@ -39,7 +39,7 @@
 }
 
 .siTaxiOp {
-  font-size: 12px;
+  font-size: 15px;
   background-color: #008009;
   color: white;
   width: max-content;
@@ -109,7 +109,7 @@
 }
 
 .siPrice {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: bold;
 }
 

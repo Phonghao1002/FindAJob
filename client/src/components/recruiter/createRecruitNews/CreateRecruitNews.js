@@ -78,7 +78,8 @@ const CreateRecruitNews = () => {
       });
       setLoading(false);
       setImages(res.data);
-      console.log(res.data);
+      // console.log(res.data);
+      // alert("Đã thêm mới tin tuyển dụng!");
     } catch (err) {
       alert(err.response.data.msg);
     }

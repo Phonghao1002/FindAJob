@@ -36,6 +36,8 @@ import PersonalPageRecruit from "./components/recruiter/personalPageRecruit/Pers
 import CreateFileCV from "./components/home/createFileCV/CreateFileCV";
 import PendingProfile from "./components/recruiter/pendingProfile/PendingProfile";
 import ApprovedProfile from "./components/recruiter/approvedProfile/ApprovedProfile";
+import PendingProfileAdmin from "./components/adminManagement/pendingProfileAdmin/PendingProfileAdmin";
+import ApprovedProfileAdmin from "./components/adminManagement/approvedProfileAdmin/ApprovedProfileAdmin";
 
 export default function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -72,6 +74,14 @@ export default function App() {
 
             <Route path="admin">
               <Route index element={<HomeAdmin />} />
+              <Route
+                path="pendingProfileAdmin"
+                element={<PendingProfileAdmin />}
+              />
+              <Route
+                path="approvedProfileAdmin"
+                element={<ApprovedProfileAdmin />}
+              />
               <Route path=":decentralization" element={<Decentralization />} />
             </Route>
 
